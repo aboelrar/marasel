@@ -3,4 +3,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="your_order_ready">طلبك جاهز الان</string>
+    <string name="lorem_insum_is_simply_dummy_text_of_the_nprinting_and_typesetting">Lorem insum is simply dummy text of the\nprinting and typesetting</string>
+    <string name="skip">تخطى</string>
+    <string name="next">التالى</string>
+    <string name="mareseel">مراسيل</string>
+    <string name="mrasil">MRASIL</string>
+    <string name="regist">التسجيل</string>
+    <string name="user_or_client">تسجيل كمستخدم او مندوب</string>
+    <string name="regisr_seller">تسجيل كتاجر</string>
 </resources>

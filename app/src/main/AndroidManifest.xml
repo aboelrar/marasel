@@ -11,15 +11,17 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AuthScreens.ui.ChooseLoginType.ui.ChooseLLoginType"></activity>
         <activity android:name=".AuthScreens.ui.auth" />
-        <activity android:name=".WelcomeTour.SlidePages.ui.SlidePages" />
+        <activity android:name=".WelcomeTour.SlidePages.ui.SlidePages" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".WelcomeTour.language.ui.language" />
         <activity android:name=".WelcomeTour.SplashScreen.ui.SplashScreen" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
