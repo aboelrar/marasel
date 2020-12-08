@@ -10,6 +10,15 @@
     <string name="mareseel">مراسيل</string>
     <string name="mrasil">MRASIL</string>
     <string name="regist">التسجيل</string>
+    <string name="regist_u"><u>تسجيل حساب</u></string>
     <string name="user_or_client">تسجيل كمستخدم او مندوب</string>
     <string name="regisr_seller">تسجيل كتاجر</string>
+    <string name="loading_c">Loading...</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">كلمه السر</string>
+    <string name="or_login_with">أو قم بالدخول بواسطة</string>
+    <string name="phone">رقم الهاتف</string>
+    <string name="logged_in_successfully">Logged In Successfully...</string>
+
 </resources>

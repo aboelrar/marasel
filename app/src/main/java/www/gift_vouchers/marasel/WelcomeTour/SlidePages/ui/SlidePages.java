@@ -3,14 +3,18 @@ package www.gift_vouchers.marasel.WelcomeTour.SlidePages.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import me.relex.circleindicator.CircleIndicator;
+import www.gift_vouchers.marasel.AuthScreens.ui.auth;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.WelcomeTour.SlidePages.pattern.ViewImage;
 
 public class SlidePages extends AppCompatActivity {
-
+    LinearLayout skip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +26,14 @@ public class SlidePages extends AppCompatActivity {
 
         CircleIndicator circleIndicator = findViewById(R.id.indicator);
         circleIndicator.setViewPager(viewPager);
+
+        skip = findViewById(R.id.skip);
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SlidePages.this, auth.class));
+            }
+        });
 
     }
 }
