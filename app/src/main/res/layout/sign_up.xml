@@ -94,6 +94,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:hint="@string/email"
+                        android:id="@+id/email"
                         android:paddingRight="@dimen/_5sdp"
                         android:paddingLeft="@dimen/_5sdp"
                         android:textSize="@dimen/_15sdp"
@@ -114,6 +115,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:hint="@string/phone"
+                        android:id="@+id/phone"
                         android:paddingRight="@dimen/_5sdp"
                         android:paddingLeft="@dimen/_5sdp"
                         android:textSize="@dimen/_15sdp"
@@ -134,6 +136,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:hint="@string/password"
+                        android:id="@+id/password"
                         android:paddingRight="@dimen/_5sdp"
                         android:paddingLeft="@dimen/_5sdp"
                         android:textSize="@dimen/_15sdp"
@@ -150,7 +153,7 @@
                     android:text="@string/regist"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_19sdp"
-                    android:id="@+id/login" />
+                    android:id="@+id/regist" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

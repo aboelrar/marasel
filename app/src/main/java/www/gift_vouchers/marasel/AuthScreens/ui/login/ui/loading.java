@@ -9,6 +9,8 @@ import android.view.Window;
 
 import java.util.Objects;
 
+import www.gift_vouchers.marasel.MainScreen.ui.MainActivity;
+
 
 public class loading {
     public void dialog(final Context context, int resource, double widthh, String type) {
@@ -31,9 +33,9 @@ public class loading {
             public void run() {
 
                 if (type.equals("1")) {
-//                    context.startActivity(new Intent(context, Main_Activity_Company.class));
-//                    ((Activity) context).finish();
-//                    dialog.dismiss();
+                    context.startActivity(new Intent(context, MainActivity.class));
+                    ((Activity) context).finish();
+                    dialog.dismiss();
                 } else if (type.equals("3")) {
 //                    context.startActivity(new Intent(context, MainActivity.class));
 //                    ((Activity) context).finish();

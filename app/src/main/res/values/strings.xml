@@ -20,5 +20,11 @@
     <string name="or_login_with">أو قم بالدخول بواسطة</string>
     <string name="phone">رقم الهاتف</string>
     <string name="logged_in_successfully">Logged In Successfully...</string>
+    <string name="user_val">Username is too short!</string>
+    <string name="password_val">Password is too short!</string>
+    <string name="invalid_email_address">Invalid email address</string>
+    <string name="phone_val">Phone is too short!</string>
+    <string name="search_here_any_place">Search here any place</string>
+    <string name="nearest_stores">Nearest Stores</string>
 
 </resources>
