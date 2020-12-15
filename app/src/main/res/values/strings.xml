@@ -26,5 +26,6 @@
     <string name="phone_val">Phone is too short!</string>
     <string name="search_here_any_place">Search here any place</string>
     <string name="nearest_stores">Nearest Stores</string>
+    <string name="menu">Menu</string>
 
 </resources>

@@ -2,6 +2,7 @@ package www.gift_vouchers.marasel.MainScreen.ui.home.pattern;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +11,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import www.gift_vouchers.marasel.MainScreen.ui.Categories.ui.Categories;
 import www.gift_vouchers.marasel.MainScreen.ui.home.model.MaraselServiceList;
 import www.gift_vouchers.marasel.R;
+import www.gift_vouchers.marasel.utils.utils;
 
 public class MaraselServiceAdapter extends RecyclerView.Adapter<MaraselServiceAdapter.MaraselServiceHolder> {
     Context context;
@@ -45,10 +50,7 @@ public class MaraselServiceAdapter extends RecyclerView.Adapter<MaraselServiceAd
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//             holder.title.setTextColor(Color.WHITE);
-//             holder.icon.setColorFilter(context.getResources().getColor(R.color.f_color));
-////             holder.icon.setSupportBackgroundTintList(ContextCompat.getColorStateList(context, R.color.f_color));
-
+            replaceFragment(myList.get(position).getTitle(), myList.get(position).getId());
             }
         });
 
@@ -57,6 +59,19 @@ public class MaraselServiceAdapter extends RecyclerView.Adapter<MaraselServiceAd
     @Override
     public int getItemCount() {
         return myList.size();
+    }
+
+    void replaceFragment(String title,String id)
+    {
+        Fragment Categories = new Categories();
+        Bundle bundle = new Bundle();
+        bundle.putString("title", title);
+        bundle.putString("id", id);
+        //set Fragmentclass Arguments
+        Categories.setArguments(bundle);
+
+        ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frag, Categories).addToBackStack(null).commit();
     }
 
     class MaraselServiceHolder extends RecyclerView.ViewHolder {

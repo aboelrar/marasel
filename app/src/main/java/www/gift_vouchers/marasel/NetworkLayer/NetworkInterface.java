@@ -3,8 +3,10 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import www.gift_vouchers.marasel.AuthScreens.Model.AuthRoot;
+import www.gift_vouchers.marasel.MainScreen.ui.Categories.model.StoreByService;
 import www.gift_vouchers.marasel.MainScreen.ui.home.model.homeRoot;
 
 public interface NetworkInterface {
@@ -30,4 +32,10 @@ public interface NetworkInterface {
             @Header("Authorization") String authorization
     );
 
+    @GET("Home/store_by_service/{id}")
+    Call<StoreByService> StoreByService(
+            @Header("Authorization") String authorization,
+            @Path("id") String id,
+            @Query("page") String page
+    );
 }
