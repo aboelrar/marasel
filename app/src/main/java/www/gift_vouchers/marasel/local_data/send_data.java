@@ -198,4 +198,13 @@ public class send_data {
         editor.putString("num", num);
         editor.commit();
     }
+
+    //SET STORE DATA
+    public static void setStoreData(Context context, String num) {
+        //SAVE LANGUAGE STATUS
+        SharedPreferences sharedPreferences = context.getSharedPreferences("welcome", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("num", num);
+        editor.commit();
+    }
 }

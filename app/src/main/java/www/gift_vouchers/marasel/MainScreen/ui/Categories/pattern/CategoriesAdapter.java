@@ -1,13 +1,17 @@
 package www.gift_vouchers.marasel.MainScreen.ui.Categories.pattern;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -15,6 +19,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import www.gift_vouchers.marasel.MainScreen.ui.Categories.model.CategoryList;
+import www.gift_vouchers.marasel.MainScreen.ui.Store.ui.Store;
 import www.gift_vouchers.marasel.R;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.CategoriesHolder> {
@@ -41,6 +46,13 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
      holder.distance.setText(myList.get(position).getDistance());
      holder.rate.setText(myList.get(position).getRate());
      Glide.with(context).load(myList.get(position).getImg()).into(holder.img);
+
+     holder.item.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View view) {
+             replaceFragment(myList.get(position).getId());
+         }
+     });
     }
 
     @Override
@@ -51,6 +63,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     class CategoriesHolder extends RecyclerView.ViewHolder {
         ImageView img;
         TextView title, type, distance, rate;
+        LinearLayout item;
         public CategoriesHolder(@NonNull View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.img);
@@ -58,6 +71,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
             type = itemView.findViewById(R.id.type);
             distance = itemView.findViewById(R.id.distance);
             rate = itemView.findViewById(R.id.rate);
+            item = itemView.findViewById(R.id.item);
         }
     }
 
@@ -69,5 +83,17 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
 
             notifyItemInserted(mylists.size()-1);
         }
+    }
+
+    void replaceFragment(String id)
+    {
+        Fragment Categories = new Store();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        //set Fragmentclass Arguments
+        Categories.setArguments(bundle);
+
+        ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frag, Categories).addToBackStack(null).commit();
     }
 }
