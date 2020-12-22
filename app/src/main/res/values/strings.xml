@@ -32,5 +32,12 @@
     <string name="quantity">Quantity</string>
     <string name="total">Total</string>
     <string name="add_to_cart">Add To Cart</string>
+    <string name="egp">EGP</string>
+    <string name="quantityCantBeLess">Quantity Cant Be Less Than One</string>
+    <string name="basket">Basket</string>
+    <string name="new_order">New Order</string>
+    <string name="total_price">Total Price</string>
+    <string name="coupon_code">Coupon Code</string>
+    <string name="complete_order_now">Complete Order Now</string>
 
 </resources>

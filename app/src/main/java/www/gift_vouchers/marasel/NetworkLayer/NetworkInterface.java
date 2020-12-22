@@ -6,8 +6,10 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import www.gift_vouchers.marasel.AuthScreens.Model.AuthRoot;
+import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.CartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Categories.model.StoreByService;
 import www.gift_vouchers.marasel.MainScreen.ui.Product.Model.ProductsByCat;
+import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.AddToCartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.SingleProduct;
 import www.gift_vouchers.marasel.MainScreen.ui.Store.model.SingleStore;
 import www.gift_vouchers.marasel.MainScreen.ui.home.model.homeRoot;
@@ -59,6 +61,18 @@ public interface NetworkInterface {
     Call<SingleProduct> SingleProduct(
             @Header("Authorization") String authorization,
             @Path("product_id") String product_id
+    );
+
+    @GET("Order/add_to_cart")
+    Call<AddToCartRoot> addToCart(
+            @Header("Authorization") String authorization,
+            @Query("product_id") String product_id,
+            @Query("quantity") String quantity
+    );
+
+    @GET("Order/my_cart")
+    Call<CartRoot> myCart(
+            @Header("Authorization") String authorization
     );
 
 }

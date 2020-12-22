@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,12 +13,19 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
+
+import es.dmoral.toasty.Toasty;
+import www.gift_vouchers.marasel.MainScreen.ui.Cart.Ui.Cart;
+import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.AddToCartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.Datum;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.Image;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.SingleProduct;
+import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Pattern.ViewImageProductDetails;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.ProductDetailsBinding;
 import www.gift_vouchers.marasel.local_data.saved_data;
+import www.gift_vouchers.marasel.utils.utils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +34,10 @@ public class ProductDetails extends Fragment {
     ProductDetailsBinding binding;
     Datum datum;
     Image[] image;
+    View view;
+    int quantity = 1;
+    int totalPrice;
+    int price;
 
     public ProductDetails() {
         // Required empty public constructor
@@ -38,7 +50,7 @@ public class ProductDetails extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.product_details, container, false);
-        View view = binding.getRoot();
+        view = binding.getRoot();
 
         return view;
     }
@@ -49,8 +61,7 @@ public class ProductDetails extends Fragment {
         getData();
     }
 
-    void getData()
-    {
+    void getData() {
         ProductDetailsModelView productModelView = new ProductDetailsModelView();
         productModelView.getData(new saved_data().get_token(getContext()), getArguments().getString("id"));
 
@@ -62,15 +73,97 @@ public class ProductDetails extends Fragment {
         });
     }
 
-    void setData(SingleProduct SingleProduct)
-    {
+    void setData(SingleProduct SingleProduct) {
         datum = SingleProduct.getData();
-//        image = datum.getImages();
-//        Category = datum.getCategories();
+        image = datum.getImages();
 
         binding.title.setText(datum.getName());
-        binding.price.setText(datum.getPrice());
+        binding.price.setText(datum.getPrice() + " " + getString(R.string.egp));
+
+        ArrayList<String> imageSt = new ArrayList<>();
+        for (int index = 0; index < image.length; index++) {
+            imageSt.add(image[index].getImage());
+        }
+
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.view_pager);
+        ViewImageProductDetails ViewImageProductDetails = new ViewImageProductDetails(getContext(), imageSt);
+        viewPager.setAdapter(ViewImageProductDetails);
+        binding.indicator.setViewPager(viewPager);
+
+        //SET QUANTITY AND TOTAL PRICE
+        price = Integer.parseInt(datum.getPrice());
+        setQuantity();
+
+        //SET ADD TO CART
+        setAddToCart();
 
 
     }
+
+    //SET QUANTITY
+    void setQuantity() {
+
+        //SET INCREASE
+        binding.inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quantity++;
+                binding.quantity.setText("" + quantity); //SET QUANTITY PRICE
+
+                //SET TOTAL PRICE
+                totalPrice = quantity * price; //GET TOTAL PRICE
+                binding.totalPrice.setText("" + totalPrice + " " + getString(R.string.egp)); //SET TOTAL PRICE
+            }
+        });
+
+        //SET DECREASE
+        binding.dec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (quantity == 1) {
+
+                    Toasty.warning(getContext(), getString(R.string.quantityCantBeLess), Toasty.LENGTH_SHORT).show();
+                } else {
+                    quantity--;
+                    binding.quantity.setText("" + quantity); //SET QUANTITY PRICE
+
+                    //SET TOTAL PRICE
+                    totalPrice = quantity * price; //GET TOTAL PRICE
+                    binding.totalPrice.setText("" + totalPrice + " " + getString(R.string.egp)); //SET TOTAL PRICE
+                }
+            }
+        });
+    }
+
+    //SET ADD TO CART
+    void setAddToCart() {
+        AddToCartModelView addToCartModelView = new AddToCartModelView();
+
+        binding.addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //OPEN PROGRESS DIALOG
+                new utils().set_dialog(getContext());
+
+                addToCartModelView.getData("Bearer " + new saved_data().get_token(getContext()),
+                        getArguments().getString("id"), "" + quantity);
+            }
+        });
+
+        //OBSERVE DATA
+        addToCartModelView.MutableLiveData.observe(this, new Observer<AddToCartRoot>() {
+            @Override
+            public void onChanged(AddToCartRoot addToCartRoot) {
+
+                //CLOSE PROGRESS DIALOG
+                new utils().dismiss_dialog(getContext());
+
+                Toasty.success(getContext(), addToCartRoot.getMessage(), Toasty.LENGTH_SHORT).show();
+
+                new utils().Replace_Fragment(new Cart(),R.id.frag,getContext());
+            }
+        });
+    }
+
 }
