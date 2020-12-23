@@ -14,6 +14,7 @@ import android.provider.OpenableColumns;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -27,6 +28,7 @@ import com.google.firebase.iid.InstanceIdResult;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import es.dmoral.toasty.Toasty;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -182,11 +184,68 @@ public class utils {
             @Override
             public void onSuccess(InstanceIdResult instanceIdResult) {
                 token = instanceIdResult.getToken();
-                Log.e("token_is",token);
+                Log.e("token_is", token);
                 // send it to server
             }
         });
         return token;
+    }
+
+    /**
+     * SET QUANTITY INCREASE AND DECREASE
+     */
+    int quantityNum = 0;
+    int totalPrice = 0;
+
+    public void setQuantity(TextView inc, TextView dec, int quantity, TextView quantityText, int tPrice,
+                            int price, TextView totalPriceText, Context context,
+                            TextView quantityText2, TextView totalPriceText2) {
+        quantityNum = quantity;
+        totalPrice = tPrice;
+        //SET INCREASE
+        inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quantityNum++;
+                quantityText.setText("" + quantityNum); //SET QUANTITY PRICE
+
+                //SET TOTAL PRICE
+                totalPrice = quantityNum * price; //GET TOTAL PRICE
+                totalPriceText.setText("" + totalPrice + " " + context.getString(R.string.egp)); //SET TOTAL PRICE
+
+                //SET SECOND QUANTITY  CHECK IF NULL OR NOT
+                if (quantityText2 != null) {
+                    quantityText2.setText("" + quantityNum); //SET QUANTITY PRICE
+                    totalPriceText2.setText("" +"" + totalPrice + " " + context.getString(R.string.egp)); //SET TOTAL PRICE
+
+                }
+            }
+        });
+
+        //SET DECREASE
+        dec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (quantityNum == 1) {
+
+                    Toasty.warning(context, context.getString(R.string.quantityCantBeLess), Toasty.LENGTH_SHORT).show();
+                } else {
+                    quantityNum--;
+                    quantityText.setText("" + quantityNum); //SET QUANTITY PRICE
+
+                    //SET TOTAL PRICE
+                    totalPrice = quantityNum * price; //GET TOTAL PRICE
+                    totalPriceText.setText("" + totalPrice + " " + context.getString(R.string.egp)); //SET TOTAL PRICE
+
+                    //SET SECOND QUANTITY  CHECK IF NULL OR NOT
+                    if (quantityText2 != null) {
+                        quantityText2.setText("" + quantityNum); //SET QUANTITY PRICE
+                        totalPriceText2.setText("" +"" + totalPrice + " " + context.getString(R.string.egp)); //SET TOTAL PRICE
+
+                    }
+                }
+            }
+        });
     }
 
 

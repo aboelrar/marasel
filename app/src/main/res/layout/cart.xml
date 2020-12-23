@@ -14,7 +14,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_height="@dimen/_65sdp"
             android:layout_alignParentBottom="true"
             android:background="@color/f_color"
             android:id="@+id/complete_order_now"
@@ -48,6 +48,7 @@
                         android:layout_weight=".25"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
+                        android:padding="@dimen/_5sdp"
                         android:layout_height="@dimen/_20sdp" />
 
                     <View
@@ -65,14 +66,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Star Backs"
+                            android:id="@+id/catTitle"
                             android:layout_gravity="center"
                             android:textSize="@dimen/_17sdp"
                             android:textColor="@android:color/black" />
 
-                        <ImageView
+                        <de.hdodenhof.circleimageview.CircleImageView
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="@dimen/_70sdp"
+                            android:padding="@dimen/_5sdp"
                             android:src="@drawable/whitelogo"
+                            android:id="@+id/catLogo"
                             android:layout_gravity="center" />
                     </LinearLayout>
                 </LinearLayout>
@@ -122,6 +126,7 @@
                                 <de.hdodenhof.circleimageview.CircleImageView
                                     android:layout_width="@dimen/_50sdp"
                                     android:layout_height="@dimen/_50sdp"
+                                    android:id="@+id/productImg"
                                     android:layout_gravity="center"
                                     android:src="@drawable/basket" />
                             </LinearLayout>
@@ -137,7 +142,6 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="coffie black"
                                     android:id="@+id/title"
                                     android:layout_marginBottom="@dimen/_5sdp"
                                     android:textSize="@dimen/_14sdp" />
@@ -146,7 +150,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/f_color"
-                                    android:text="22 EGP"
                                     android:id="@+id/price"
                                     android:textSize="@dimen/_14sdp" />
                             </LinearLayout>
@@ -178,7 +181,6 @@
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1"
-                                        android:text="1"
                                         android:id="@+id/quantity_num"
                                         android:textSize="@dimen/_13sdp"
                                         android:gravity="center" />
@@ -218,8 +220,7 @@
                                 android:id="@+id/quantity"
                                 android:textSize="@dimen/_13sdp"
                                 android:paddingRight="@dimen/_12sdp"
-                                android:gravity="center|right"
-                                android:text="4" />
+                                android:gravity="center|right" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -245,8 +246,8 @@
                                 android:textColor="@color/f_color"
                                 android:textSize="@dimen/_15sdp"
                                 android:paddingRight="@dimen/_12sdp"
-                                android:gravity="center|right"
-                                android:text="88 EGP" />
+                                android:id="@+id/totalPrice"
+                                android:gravity="center|right" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -307,8 +308,7 @@
                     <TextView
                         android:layout_weight=".5"
                         android:layout_width="0dp"
-                        android:text="88 EGP"
-                        android:id="@+id/totalPrice"
+                        android:id="@+id/lastPrice"
                         android:textSize="@dimen/_16sdp"
                         android:textColor="@color/f_color"
                         android:gravity="center|right"

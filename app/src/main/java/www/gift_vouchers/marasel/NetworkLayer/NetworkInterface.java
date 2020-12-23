@@ -63,7 +63,7 @@ public interface NetworkInterface {
             @Path("product_id") String product_id
     );
 
-    @GET("Order/add_to_cart")
+    @POST("Order/add_to_cart")
     Call<AddToCartRoot> addToCart(
             @Header("Authorization") String authorization,
             @Query("product_id") String product_id,

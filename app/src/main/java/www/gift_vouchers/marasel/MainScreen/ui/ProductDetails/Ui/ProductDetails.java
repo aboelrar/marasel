@@ -92,47 +92,16 @@ public class ProductDetails extends Fragment {
 
         //SET QUANTITY AND TOTAL PRICE
         price = Integer.parseInt(datum.getPrice());
-        setQuantity();
+
+        // SET QUANTITY
+        new utils().setQuantity(binding.inc, binding.dec, quantity,
+                binding.quantity, totalPrice, price, binding.totalPrice,
+                getContext(), null, null);
 
         //SET ADD TO CART
         setAddToCart();
 
 
-    }
-
-    //SET QUANTITY
-    void setQuantity() {
-
-        //SET INCREASE
-        binding.inc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                quantity++;
-                binding.quantity.setText("" + quantity); //SET QUANTITY PRICE
-
-                //SET TOTAL PRICE
-                totalPrice = quantity * price; //GET TOTAL PRICE
-                binding.totalPrice.setText("" + totalPrice + " " + getString(R.string.egp)); //SET TOTAL PRICE
-            }
-        });
-
-        //SET DECREASE
-        binding.dec.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (quantity == 1) {
-
-                    Toasty.warning(getContext(), getString(R.string.quantityCantBeLess), Toasty.LENGTH_SHORT).show();
-                } else {
-                    quantity--;
-                    binding.quantity.setText("" + quantity); //SET QUANTITY PRICE
-
-                    //SET TOTAL PRICE
-                    totalPrice = quantity * price; //GET TOTAL PRICE
-                    binding.totalPrice.setText("" + totalPrice + " " + getString(R.string.egp)); //SET TOTAL PRICE
-                }
-            }
-        });
     }
 
     //SET ADD TO CART
@@ -147,7 +116,7 @@ public class ProductDetails extends Fragment {
                 new utils().set_dialog(getContext());
 
                 addToCartModelView.getData("Bearer " + new saved_data().get_token(getContext()),
-                        getArguments().getString("id"), "" + quantity);
+                        getArguments().getString("id"), binding.quantity.getText().toString());
             }
         });
 
@@ -161,7 +130,7 @@ public class ProductDetails extends Fragment {
 
                 Toasty.success(getContext(), addToCartRoot.getMessage(), Toasty.LENGTH_SHORT).show();
 
-                new utils().Replace_Fragment(new Cart(),R.id.frag,getContext());
+                new utils().Replace_Fragment(new Cart(), R.id.frag, getContext());
             }
         });
     }

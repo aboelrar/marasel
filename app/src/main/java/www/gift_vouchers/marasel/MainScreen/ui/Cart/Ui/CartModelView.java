@@ -1,5 +1,7 @@
 package www.gift_vouchers.marasel.MainScreen.ui.Cart.Ui;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import retrofit2.Call;
@@ -19,6 +21,8 @@ public class CartModelView {
         cartRoot.enqueue(new Callback<CartRoot>() {
             @Override
             public void onResponse(Call<CartRoot> call, Response<CartRoot> response) {
+                Log.e("polika", ""+response.code());
+
                 MutableLiveData.setValue(response.body());
             }
 

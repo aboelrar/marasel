@@ -8,7 +8,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.AddToCartRoot;
-import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.SingleProduct;
 import www.gift_vouchers.marasel.NetworkLayer.APIClient;
 
 public class AddToCartModelView {
