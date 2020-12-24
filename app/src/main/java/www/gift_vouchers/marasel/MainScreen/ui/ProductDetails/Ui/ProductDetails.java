@@ -104,7 +104,7 @@ public class ProductDetails extends Fragment {
 
     }
 
-    //SET ADD TO CART
+    // SET ADD TO CART
     void setAddToCart() {
         AddToCartModelView addToCartModelView = new AddToCartModelView();
 

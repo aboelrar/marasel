@@ -17,6 +17,7 @@ import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.CartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.Datum;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.Product;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.Store;
+import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Ui.makeOrder;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.CartBinding;
 import www.gift_vouchers.marasel.local_data.saved_data;
@@ -26,7 +27,7 @@ import www.gift_vouchers.marasel.utils.utils;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class Cart extends Fragment {
+public class Cart extends Fragment implements View.OnClickListener {
     CartBinding binding;
     CartModelView cartModelView = new CartModelView();
     Product[] products;
@@ -53,6 +54,7 @@ public class Cart extends Fragment {
     public void onStart() {
         super.onStart();
         getData();
+        binding.completeOrderNow.setOnClickListener(this);
     }
 
     void getData() {
@@ -65,10 +67,6 @@ public class Cart extends Fragment {
                 products = datum.getProducts(); //ADD PRODUCTS
                 store = datum.getStore(); //ADD STORES
                 totalPrice = datum.getTotalPrice(); //GET TOTAL PRICE
-
-
-                Log.e("ssss",  ""+ products[0].getQuantity());
-
 
                 binding.catTitle.setText(store.getName()); //SET CAT TITLE
                 Glide.with(getContext()).load(store.getIcon()).into(binding.catLogo); //SET CAT IMAGE
@@ -89,5 +87,13 @@ public class Cart extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.complete_order_now)
+        {
+            new utils().Replace_Fragment(new makeOrder(),R.id.frag,getContext());
+        }
     }
 }

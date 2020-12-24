@@ -95,14 +95,15 @@
                     android:drawablePadding="@dimen/_5sdp"
                     android:drawableLeft="@drawable/basket"
                     android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="center"
                     android:paddingLeft="@dimen/_5sdp"
-                    android:textSize="@dimen/_22sdp"
+                    android:textSize="@dimen/_15sdp"
                     android:textColor="@color/f_color" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_160sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:layout_marginLeft="@dimen/_10sdp">
 
@@ -260,8 +261,9 @@
                     android:drawablePadding="@dimen/_5sdp"
                     android:drawableLeft="@drawable/basket"
                     android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="center"
                     android:paddingLeft="@dimen/_5sdp"
-                    android:textSize="@dimen/_22sdp"
+                    android:textSize="@dimen/_15sdp"
                     android:textColor="@color/f_color" />
 
                 <androidx.cardview.widget.CardView
@@ -287,7 +289,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:src="#d3d3d3"
-                    android:layout_marginTop="@dimen/_30sdp" />
+                    android:layout_marginTop="@dimen/_20sdp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

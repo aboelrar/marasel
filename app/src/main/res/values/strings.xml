@@ -39,5 +39,10 @@
     <string name="total_price">Total Price</string>
     <string name="coupon_code">Coupon Code</string>
     <string name="complete_order_now">Complete Order Now</string>
+    <string name="delivery_place_and_time">Delivery Place And Time</string>
+    <string name="delivered_to">Delivered To</string>
+    <string name="please_choose_delivery_place">Please Choose Delivery Place</string>
+    <string name="choose_delivery_time">Choose Delivery Time</string>
+    <string name="delivery_time">Delivery Time</string>
 
 </resources>
