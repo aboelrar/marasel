@@ -1,8 +1,11 @@
 package www.gift_vouchers.marasel.utils;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -17,6 +20,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -38,9 +43,10 @@ import www.gift_vouchers.marasel.local_data.send_data;
 
 
 public class utils {
-
-    public String baseUrl = "http://book.thesoftwaregeeks.com/api/";
-
+    Boolean mLocationPermissionsGranted = false;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
+    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     static ProgressDialog pd;
 
 
@@ -246,6 +252,33 @@ public class utils {
                 }
             }
         });
+    }
+
+
+    /**
+     *  GET PERMISSION IF YES OR NO
+     */
+
+    public boolean getLocationPermission(Context context, Activity activity) {
+        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION};
+
+        if (ContextCompat.checkSelfPermission(context.getApplicationContext(),
+                FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(context.getApplicationContext(),
+                    COURSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                mLocationPermissionsGranted = true;
+            } else {
+                ActivityCompat.requestPermissions(activity,
+                        permissions,
+                        LOCATION_PERMISSION_REQUEST_CODE);
+            }
+        } else {
+            ActivityCompat.requestPermissions(activity,
+                    permissions,
+                    LOCATION_PERMISSION_REQUEST_CODE);
+        }
+        return mLocationPermissionsGranted;
     }
 
 

@@ -2,6 +2,7 @@ package www.gift_vouchers.marasel.MainScreen.ui.Cart.Ui;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -13,15 +14,21 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
+
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.CartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.Datum;
+import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.MyCartList;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.Product;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.Store;
+import www.gift_vouchers.marasel.MainScreen.ui.Cart.Pattern.MyCartAdapter;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Ui.makeOrder;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.CartBinding;
 import www.gift_vouchers.marasel.local_data.saved_data;
+import www.gift_vouchers.marasel.local_data.send_data;
 import www.gift_vouchers.marasel.utils.utils;
+import www.gift_vouchers.marasel.utils.utils_adapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +41,7 @@ public class Cart extends Fragment implements View.OnClickListener {
     Datum datum;
     Store store;
     int totalPrice;
+    ArrayList<MyCartList> cartList = new ArrayList<>();
 
     public Cart() {
 
@@ -54,7 +62,6 @@ public class Cart extends Fragment implements View.OnClickListener {
     public void onStart() {
         super.onStart();
         getData();
-        binding.completeOrderNow.setOnClickListener(this);
     }
 
     void getData() {
@@ -67,25 +74,31 @@ public class Cart extends Fragment implements View.OnClickListener {
                 products = datum.getProducts(); //ADD PRODUCTS
                 store = datum.getStore(); //ADD STORES
                 totalPrice = datum.getTotalPrice(); //GET TOTAL PRICE
-
                 binding.catTitle.setText(store.getName()); //SET CAT TITLE
                 Glide.with(getContext()).load(store.getIcon()).into(binding.catLogo); //SET CAT IMAGE
-                binding.title.setText(products[0].getName()); //SET TITLE
-                binding.quantityNum.setText("" + products[0].getQuantity()); //SET QUANTITY
-                binding.quantity.setText("" + products[0].getQuantity()); //SET QUANTITY NUM
-                Glide.with(getContext()).load(products[0].getIcon()).into(binding.productImg); //SET IMAGE
-                binding.price.setText(products[0].getPrice()); //SET PRICE
-                binding.totalPrice.setText("" + totalPrice + " " + getString(R.string.egp)); //SET TOTAL PRICE
                 binding.lastPrice.setText("" + datum.getTotalPrice() + " " + getString(R.string.egp)); //SET TOTAL PRICE
 
-                // SET QUANTITY
-                new utils().setQuantity(binding.inc, binding.dec, products[0].getQuantity(),
-                        binding.quantityNum, totalPrice,
-                        Integer.parseInt(products[0].getPrice()),
-                        binding.totalPrice, getContext(), binding.quantity ,binding.lastPrice);
+                //Add data to cart
+                for (int index = 0 ; index < products.length ; index++)
+                {
+                    //TOTAL PRICE
+                    int totalPrice = products[index].getQuantity() * Integer.parseInt(products[index].getPrice());
+
+                    cartList.add(new MyCartList(""+products[index].getId(),
+                            products[index].getName(),products[index].getPrice(),
+                           ""+totalPrice,""+products[index].getQuantity() ,
+                            products[index].getIcon()));
+                }
+
+                new utils_adapter().Adapter(binding.myCartList,
+                        new MyCartAdapter(getContext(),cartList),getContext());
 
             }
         });
+
+        //SET ON MAkE ORdER
+        binding.completeOrderNow.setOnClickListener(this);
+
 
     }
 
@@ -93,7 +106,13 @@ public class Cart extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if(v.getId() == R.id.complete_order_now)
         {
+            send_data.setStoreTitle(getContext(),store.getName()); //title
+            send_data.setStoreImg(getContext(),store.getIcon()); //Icon
+            send_data.setStoreLat(getContext(),store.getLat()); //Lat
+            send_data.setStoreLng(getContext(),store.getLng()); //Lng
+
             new utils().Replace_Fragment(new makeOrder(),R.id.frag,getContext());
         }
     }
+
 }

@@ -105,7 +105,7 @@ public class Product extends Fragment {
 
         new utils_adapter().Horozintal(binding.imgList,new ImgAdapter(getContext(),ImgList),getContext());
 
-
     }
+
 
 }

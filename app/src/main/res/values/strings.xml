@@ -44,5 +44,8 @@
     <string name="please_choose_delivery_place">Please Choose Delivery Place</string>
     <string name="choose_delivery_time">Choose Delivery Time</string>
     <string name="delivery_time">Delivery Time</string>
+    <string name="no_home_flat">Home number - flat</string>
+    <string name="confirm_delivery_place">Confirm Delivery Place</string>
+    <string name="enter_flat">Please Insert Flat Number</string>
 
 </resources>

@@ -148,4 +148,32 @@ public class saved_data {
         return num;
     }
 
+    //GET STORE TITLE
+    public String getStoreTitle(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("store", MODE_PRIVATE);
+        String num = sharedPreferences.getString("title", "0");
+        return num;
+    }
+
+    //GET STORE IMG
+    public String getStoreImg(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("store", MODE_PRIVATE);
+        String num = sharedPreferences.getString("img", "0");
+        return num;
+    }
+
+    //GET STORE LAT
+    public String getStoreLat(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("store", MODE_PRIVATE);
+        String num = sharedPreferences.getString("lat", "0");
+        return num;
+    }
+
+    //GET STORE LNG
+    public String getStoreLng(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("store", MODE_PRIVATE);
+        String num = sharedPreferences.getString("lng", "0");
+        return num;
+    }
+
 }

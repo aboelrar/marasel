@@ -8,6 +8,7 @@ import retrofit2.http.Query;
 import www.gift_vouchers.marasel.AuthScreens.Model.AuthRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.CartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Categories.model.StoreByService;
+import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.DeliveryPlace;
 import www.gift_vouchers.marasel.MainScreen.ui.Product.Model.ProductsByCat;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.AddToCartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.SingleProduct;
@@ -72,6 +73,11 @@ public interface NetworkInterface {
 
     @GET("Order/my_cart")
     Call<CartRoot> myCart(
+            @Header("Authorization") String authorization
+    );
+
+    @GET("Order/orderTimes")
+    Call<DeliveryPlace> orderTimes(
             @Header("Authorization") String authorization
     );
 

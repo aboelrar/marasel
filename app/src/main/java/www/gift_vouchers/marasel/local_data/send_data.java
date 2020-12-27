@@ -207,4 +207,36 @@ public class send_data {
         editor.putString("num", num);
         editor.commit();
     }
+
+    //SET TITLE DATA Store
+    public static void setStoreTitle(Context context, String title) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("store", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("title", title);
+        editor.commit();
+    }
+
+    //SET IMG DATA Store
+    public static void setStoreImg(Context context, String img) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("store", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("img", img);
+        editor.commit();
+    }
+
+    //SET IMG DATA LAT
+    public static void setStoreLat(Context context, String lat) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("store", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("lat", lat);
+        editor.commit();
+    }
+
+    //SET IMG DATA LNG
+    public static void setStoreLng(Context context, String lng) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("store", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("lng", lng);
+        editor.commit();
+    }
 }
