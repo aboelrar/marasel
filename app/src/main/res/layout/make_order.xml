@@ -167,6 +167,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/delivery_txt_time"
                             android:text="@string/choose_delivery_time"
                             android:textSize="@dimen/_12sdp" />
                     </LinearLayout>

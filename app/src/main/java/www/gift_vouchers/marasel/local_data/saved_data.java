@@ -179,7 +179,7 @@ public class saved_data {
     //GET DELIVERY TIME
     public String getDeliveryTime(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("deliveryTime", MODE_PRIVATE);
-        String deliveryTime = sharedPreferences.getString("lng", "0");
+        String deliveryTime = sharedPreferences.getString("time", "0");
         return deliveryTime;
     }
 

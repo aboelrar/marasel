@@ -113,6 +113,13 @@ public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnCl
         }
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(!new saved_data().getDeliveryTime(getContext()).equals("0"))
+        {
+            binding.deliveryTxtTime.setText(new saved_data().getDeliveryTime(getContext()));
+        }
+    }
 }
 
