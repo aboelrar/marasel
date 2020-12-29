@@ -1,5 +1,9 @@
 package www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import android.renderscript.Double2;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +27,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.Category;
 import www.gift_vouchers.marasel.MainScreen.ui.myLocation.myLocation;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.MakeOrderBinding;
@@ -33,9 +39,9 @@ import www.gift_vouchers.marasel.utils.utils;
  * create an instance of this fragment.
  */
 public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnClickListener {
-   View view;
-   private GoogleMap mMap;
-   MakeOrderBinding binding;
+    View view;
+    private GoogleMap mMap;
+    MakeOrderBinding binding;
 
     public makeOrder() {
         // Required empty public constructor
@@ -57,6 +63,7 @@ public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnCl
         return view;
     }
 
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -70,8 +77,7 @@ public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnCl
         camZoom(lat, lng);
     }
 
-    public void camZoom(Double lat,Double lng)
-    {
+    public void camZoom(Double lat, Double lng) {
         //MOVE CAMERA
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(new LatLng(lat, lng))
@@ -90,26 +96,23 @@ public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnCl
         binding.deliveryTime.setOnClickListener(this);
 
         //SET ADDRESS TEXT
-        if (getArguments() != null)
-        {
-            binding.address.setText(getArguments().getString("address")+", "
-                    +getArguments().getString("flat_no"));
+        if (getArguments() != null) {
+            binding.address.setText(getArguments().getString("address") + ", "
+                    + getArguments().getString("flat_no"));
         }
 
     }
 
     @Override
     public void onClick(View view) {
-       if ((view.getId() == R.id.delivery_place))
-       {
-           new utils().Replace_Fragment(new myLocation(),R.id.frag,getContext());
-       }
-       else if (view.getId() == R.id.delivery_time)
-       {
-           DeliveryTime DeliveryTime = new DeliveryTime();
-           DeliveryTime.show(getActivity().getSupportFragmentManager(),"doc_list");
-       }
+        if ((view.getId() == R.id.delivery_place)) {
+            new utils().Replace_Fragment(new myLocation(), R.id.frag, getContext());
+        } else if (view.getId() == R.id.delivery_time) {
+            DeliveryTime DeliveryTime = new DeliveryTime();
+            DeliveryTime.show(getActivity().getSupportFragmentManager(), "doc_list");
+        }
     }
+
 
 }
 

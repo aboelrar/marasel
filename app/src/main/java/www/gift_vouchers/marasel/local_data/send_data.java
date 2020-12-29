@@ -239,4 +239,12 @@ public class send_data {
         editor.putString("lng", lng);
         editor.commit();
     }
+
+    //SET DELIVERY TIME
+    public static void setDeliveryTime(Context context, String time) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("deliveryTime", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("time", time);
+        editor.commit();
+    }
 }

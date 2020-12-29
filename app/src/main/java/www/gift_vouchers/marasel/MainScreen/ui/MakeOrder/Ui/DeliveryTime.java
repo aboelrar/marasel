@@ -46,8 +46,7 @@ public class DeliveryTime extends BottomSheetDialogFragment {
 
     }
 
-    void getData()
-    {
+    void getData() {
         MakeOrderModelView MakeOrderModelView = new MakeOrderModelView();
         MakeOrderModelView.getData("Bearer " + new saved_data().get_token(getContext()));
 
@@ -59,14 +58,12 @@ public class DeliveryTime extends BottomSheetDialogFragment {
         });
     }
 
-    void setData(DeliveryPlace deliveryPlace)
-    {
+    void setData(DeliveryPlace deliveryPlace) {
         data = deliveryPlace.getData();
-        for(int i = 0 ; i < data.length ; i++)
-        {
-            TimeList.add(new TimeList(""+ data[i].getId(),"" + data[i].getName()));
+        for (int i = 0; i < data.length; i++) {
+            TimeList.add(new TimeList("" + data[i].getId(), "" + data[i].getName()));
         }
-        new utils_adapter().Adapter(binding.deliveryList,new TimeAdapter(getContext(),TimeList),getContext());
+        new utils_adapter().Adapter(binding.deliveryList, new TimeAdapter(getContext(), TimeList, this), getContext());
     }
-    
+
 }

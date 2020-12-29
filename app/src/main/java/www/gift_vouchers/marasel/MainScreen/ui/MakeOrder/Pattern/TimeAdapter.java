@@ -1,6 +1,7 @@
 package www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Pattern;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
 
@@ -21,21 +23,25 @@ import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.MyCartList;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.TimeList;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Ui.DeliveryTime;
 import www.gift_vouchers.marasel.R;
+import www.gift_vouchers.marasel.local_data.send_data;
+import www.gift_vouchers.marasel.utils.utils;
 
 public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.DeliveryPlaceHolder> {
     Context context;
     ArrayList<TimeList> myList;
+    BottomSheetDialogFragment bottomSheetDialogFragment;
 
 
-    public TimeAdapter(Context context, ArrayList<TimeList> myList) {
+    public TimeAdapter(Context context, ArrayList<TimeList> myList, BottomSheetDialogFragment bottomSheetDialogFragment) {
         this.context = context;
         this.myList = myList;
+        this.bottomSheetDialogFragment = bottomSheetDialogFragment;
     }
 
     @NonNull
     @Override
     public DeliveryPlaceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.delivery_time_item,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.delivery_time_item, parent, false);
         DeliveryPlaceHolder DeliveryPlaceHolder = new DeliveryPlaceHolder(view);
         return DeliveryPlaceHolder;
     }
@@ -47,7 +53,11 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.DeliveryPlaceH
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //SET DELIVERY TIME
+                send_data.setDeliveryTime(context, myList.get(position).getTitle());
 
+                //DISMISS FRAGMENT
+                bottomSheetDialogFragment.dismiss();
             }
         });
 
@@ -61,6 +71,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.DeliveryPlaceH
     class DeliveryPlaceHolder extends RecyclerView.ViewHolder {
         TextView time;
         LinearLayout item;
+
         public DeliveryPlaceHolder(@NonNull View itemView) {
             super(itemView);
             time = itemView.findViewById(R.id.time);

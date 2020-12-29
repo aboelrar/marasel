@@ -81,4 +81,17 @@ public interface NetworkInterface {
             @Header("Authorization") String authorization
     );
 
+    @POST("Order/make_order")
+    Call<DeliveryPlace> makeOrder(
+            @Header("Authorization") String authorization,
+            @Query("lat") String lat,
+            @Query("lng") String lng,
+            @Query("time_id") String time_id,
+            @Query("payment_method") String payment_method,
+            @Query("suggest_shipping_price") String suggest_shipping_price,
+            @Query("address") String address,
+            @Query("note") String note
+
+            );
+
 }
