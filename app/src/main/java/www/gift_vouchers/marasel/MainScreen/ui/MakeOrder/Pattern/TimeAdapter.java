@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import es.dmoral.toasty.Toasty;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.MyCartList;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.TimeList;
+import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Ui.Callback;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Ui.DeliveryTime;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.local_data.send_data;
@@ -30,12 +31,14 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.DeliveryPlaceH
     Context context;
     ArrayList<TimeList> myList;
     BottomSheetDialogFragment bottomSheetDialogFragment;
+    Callback callback;
 
 
-    public TimeAdapter(Context context, ArrayList<TimeList> myList, BottomSheetDialogFragment bottomSheetDialogFragment) {
+    public TimeAdapter(Context context, ArrayList<TimeList> myList, BottomSheetDialogFragment bottomSheetDialogFragment,Callback callback) {
         this.context = context;
         this.myList = myList;
         this.bottomSheetDialogFragment = bottomSheetDialogFragment;
+        this.callback = callback;
     }
 
     @NonNull
@@ -54,7 +57,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.DeliveryPlaceH
             @Override
             public void onClick(View view) {
                 //SET DELIVERY TIME
-                send_data.setDeliveryTime(context, myList.get(position).getTitle());
+                callback.callbackMethod(myList.get(position).getTitle());
 
                 //DISMISS FRAGMENT
                 bottomSheetDialogFragment.dismiss();

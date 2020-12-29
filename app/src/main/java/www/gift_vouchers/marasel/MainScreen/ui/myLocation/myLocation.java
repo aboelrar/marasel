@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Locale;
 
 import es.dmoral.toasty.Toasty;
+import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Ui.Callback;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Ui.makeOrder;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.MyLocationBinding;
@@ -48,10 +49,10 @@ public class myLocation extends Fragment implements OnMapReadyCallback, OnComple
     private GoogleMap mGoogleMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     Boolean mLocationPermissionsGranted;
+    Callback callback;
 
-
-    public myLocation() {
-        // Required empty public constructor
+    public myLocation(Callback callback) {
+    this.callback = callback;
     }
 
 
@@ -162,26 +163,15 @@ public class myLocation extends Fragment implements OnMapReadyCallback, OnComple
                 Toasty.warning(getContext(),getString(R.string.enter_flat),Toasty.LENGTH_SHORT).show();
             }
             else {
-                replaceFragment(binding.address.getText().toString(),
+
+                callback.callbackAddressMethod(binding.address.getText().toString()+", "+
                         binding.noHomeFlat.getText().toString());
+
+                getActivity().onBackPressed();
             }
         }
     }
 
-    void replaceFragment(String address, String flat_no)
-    {
-        Fragment makeOrder = new makeOrder();
-        Bundle bundle = new Bundle();
-        bundle.putString("address", address);
-        bundle.putString("flat_no", flat_no);
-
-
-        //set Fragmentclass Arguments
-        makeOrder.setArguments(bundle);
-
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frag, makeOrder).addToBackStack(null).commit();
-    }
 
     @Override
     public void onStart() {

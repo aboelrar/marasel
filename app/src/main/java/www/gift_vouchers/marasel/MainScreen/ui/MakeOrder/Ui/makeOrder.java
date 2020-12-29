@@ -38,10 +38,11 @@ import www.gift_vouchers.marasel.utils.utils;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnClickListener {
+public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnClickListener,Callback{
     View view;
     private GoogleMap mMap;
     MakeOrderBinding binding;
+    private Callback callback;
 
     public makeOrder() {
         // Required empty public constructor
@@ -59,6 +60,8 @@ public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnCl
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        callback = this;
 
         return view;
     }
@@ -96,30 +99,34 @@ public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnCl
         binding.deliveryTime.setOnClickListener(this);
 
         //SET ADDRESS TEXT
-        if (getArguments() != null) {
-            binding.address.setText(getArguments().getString("address") + ", "
-                    + getArguments().getString("flat_no"));
-        }
+
+
+
 
     }
 
     @Override
     public void onClick(View view) {
         if ((view.getId() == R.id.delivery_place)) {
-            new utils().Replace_Fragment(new myLocation(), R.id.frag, getContext());
+            Fragment home = new myLocation(callback);
+            ((AppCompatActivity) getContext()).getSupportFragmentManager().beginTransaction()
+                    .add(R.id.frag, home).addToBackStack(null).commit();
         } else if (view.getId() == R.id.delivery_time) {
-            DeliveryTime DeliveryTime = new DeliveryTime();
+            DeliveryTime DeliveryTime = new DeliveryTime(callback);
             DeliveryTime.show(getActivity().getSupportFragmentManager(), "doc_list");
         }
     }
 
+
     @Override
-    public void onResume() {
-        super.onResume();
-        if(!new saved_data().getDeliveryTime(getContext()).equals("0"))
-        {
-            binding.deliveryTxtTime.setText(new saved_data().getDeliveryTime(getContext()));
-        }
+    public void callbackMethod(String date) {
+        binding.deliveryTxtTime.setText(date);
+
+    }
+
+    @Override
+    public void callbackAddressMethod(String date) {
+        binding.address.setText(date);
     }
 }
 

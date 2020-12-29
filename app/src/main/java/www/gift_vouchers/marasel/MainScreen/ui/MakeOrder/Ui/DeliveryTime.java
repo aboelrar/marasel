@@ -28,6 +28,11 @@ public class DeliveryTime extends BottomSheetDialogFragment {
     Datum[] data;
     ArrayList<TimeList> TimeList = new ArrayList<>();
     DeliveryTimeBinding binding;
+    public Callback callback;
+
+    public DeliveryTime(Callback callback) {
+        this.callback = callback;
+    }
 
     @Nullable
     @Override
@@ -63,7 +68,7 @@ public class DeliveryTime extends BottomSheetDialogFragment {
         for (int i = 0; i < data.length; i++) {
             TimeList.add(new TimeList("" + data[i].getId(), "" + data[i].getName()));
         }
-        new utils_adapter().Adapter(binding.deliveryList, new TimeAdapter(getContext(), TimeList, this), getContext());
+        new utils_adapter().Adapter(binding.deliveryList, new TimeAdapter(getContext(), TimeList, this,callback), getContext());
     }
 
 }
