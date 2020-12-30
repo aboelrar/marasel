@@ -34,7 +34,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.DeliveryPlaceH
     Callback callback;
 
 
-    public TimeAdapter(Context context, ArrayList<TimeList> myList, BottomSheetDialogFragment bottomSheetDialogFragment,Callback callback) {
+    public TimeAdapter(Context context, ArrayList<TimeList> myList, BottomSheetDialogFragment bottomSheetDialogFragment, Callback callback) {
         this.context = context;
         this.myList = myList;
         this.bottomSheetDialogFragment = bottomSheetDialogFragment;
@@ -57,7 +57,11 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.DeliveryPlaceH
             @Override
             public void onClick(View view) {
                 //SET DELIVERY TIME
-                callback.callbackMethod(myList.get(position).getTitle());
+                ArrayList<String> timeList = new ArrayList<>();
+                timeList.add(myList.get(position).getTitle());
+                timeList.add(myList.get(position).getId());
+
+                callback.callbackMethod(timeList);
 
                 //DISMISS FRAGMENT
                 bottomSheetDialogFragment.dismiss();

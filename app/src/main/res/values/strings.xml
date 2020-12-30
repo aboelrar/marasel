@@ -47,5 +47,7 @@
     <string name="no_home_flat">Home number - flat</string>
     <string name="confirm_delivery_place">Confirm Delivery Place</string>
     <string name="enter_flat">Please Insert Flat Number</string>
+    <string name="enter_address">Please Insert Address</string>
+    <string name="enter_time">Please Insert Delivery Time</string>
 
 </resources>

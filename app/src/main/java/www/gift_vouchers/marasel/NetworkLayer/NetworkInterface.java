@@ -9,6 +9,7 @@ import www.gift_vouchers.marasel.AuthScreens.Model.AuthRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.CartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Categories.model.StoreByService;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.DeliveryPlace;
+import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.MakeOrder;
 import www.gift_vouchers.marasel.MainScreen.ui.Product.Model.ProductsByCat;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.AddToCartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.SingleProduct;
@@ -82,7 +83,7 @@ public interface NetworkInterface {
     );
 
     @POST("Order/make_order")
-    Call<DeliveryPlace> makeOrder(
+    Call<MakeOrder> makeOrder(
             @Header("Authorization") String authorization,
             @Query("lat") String lat,
             @Query("lng") String lng,
@@ -91,7 +92,7 @@ public interface NetworkInterface {
             @Query("suggest_shipping_price") String suggest_shipping_price,
             @Query("address") String address,
             @Query("note") String note
-
             );
+
 
 }

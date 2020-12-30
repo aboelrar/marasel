@@ -136,7 +136,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:id="@+id/address"
-                            android:text="@string/please_choose_delivery_place"
+                            android:hint="@string/please_choose_delivery_place"
                             android:textSize="@dimen/_12sdp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -168,7 +168,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:id="@+id/delivery_txt_time"
-                            android:text="@string/choose_delivery_time"
+                            android:hint="@string/choose_delivery_time"
                             android:textSize="@dimen/_12sdp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

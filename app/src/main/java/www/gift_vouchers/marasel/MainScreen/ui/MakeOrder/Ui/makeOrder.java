@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 
 import android.renderscript.Double2;
 import android.util.Log;
@@ -27,7 +28,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
+import es.dmoral.toasty.Toasty;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.Category;
+import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.MakeOrder;
 import www.gift_vouchers.marasel.MainScreen.ui.myLocation.myLocation;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.MakeOrderBinding;
@@ -38,11 +43,14 @@ import www.gift_vouchers.marasel.utils.utils;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnClickListener,Callback{
+public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnClickListener, Callback {
     View view;
     private GoogleMap mMap;
     MakeOrderBinding binding;
     private Callback callback;
+    MakeOrderModelView makeOrderModelView;
+    String locationLat, locationLng;
+    String timeId;
 
     public makeOrder() {
         // Required empty public constructor
@@ -98,9 +106,8 @@ public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnCl
         binding.deliveryPlace.setOnClickListener(this);
         binding.deliveryTime.setOnClickListener(this);
 
-        //SET ADDRESS TEXT
-
-
+        //SET CLICK LISTENER
+        binding.completeOrderNow.setOnClickListener(this);
 
 
     }
@@ -114,19 +121,53 @@ public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnCl
         } else if (view.getId() == R.id.delivery_time) {
             DeliveryTime DeliveryTime = new DeliveryTime(callback);
             DeliveryTime.show(getActivity().getSupportFragmentManager(), "doc_list");
+        } else if (view.getId() == R.id.complete_order_now) {
+
+            if (binding.address.getText().toString().equals("")) {
+                Toasty.warning(getContext(), getString(R.string.enter_address), Toasty.LENGTH_SHORT).show();
+            } else if (binding.deliveryTxtTime.getText().toString().equals("")) {
+                Toasty.warning(getContext(), getString(R.string.enter_time), Toasty.LENGTH_SHORT).show();
+            } else {
+                //GET DATA
+                getData();
+            }
+
         }
     }
 
 
     @Override
-    public void callbackMethod(String date) {
-        binding.deliveryTxtTime.setText(date);
+    public void callbackMethod(ArrayList<String> date) {
+        binding.deliveryTxtTime.setText(date.get(0));
+        timeId = date.get(1);
 
     }
 
     @Override
-    public void callbackAddressMethod(String date) {
-        binding.address.setText(date);
+    public void callbackAddressMethod(ArrayList<String> date) {
+        binding.address.setText(date.get(0));
+        locationLat = date.get(1);
+        locationLng = date.get(2);
+    }
+
+    //SET  DATA
+    void getData() {
+        new utils().set_dialog(getContext()); //OPEN PROGRESS DIALOG
+
+        makeOrderModelView = new MakeOrderModelView();
+        makeOrderModelView.getDataMakeOrder("Bearer "+new saved_data().get_token(getContext()), locationLat, locationLng,
+                timeId, "1", "100", binding.address.getText().toString(), "");
+
+        //OBSERVE DATA
+        makeOrderModelView.MutableLiveDataMakeOrder.observe(this, new Observer<MakeOrder>() {
+            @Override
+            public void onChanged(MakeOrder makeOrder) {
+                new utils().dismiss_dialog(getContext()); //DISMISS DIALOG
+
+                Toasty.success(getContext(), makeOrder.getMessage(), Toasty.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }
 

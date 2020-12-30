@@ -53,7 +53,7 @@ public class DeliveryTime extends BottomSheetDialogFragment {
 
     void getData() {
         MakeOrderModelView MakeOrderModelView = new MakeOrderModelView();
-        MakeOrderModelView.getData("Bearer " + new saved_data().get_token(getContext()));
+        MakeOrderModelView.getDataDeliveryTime("Bearer " + new saved_data().get_token(getContext()));
 
         MakeOrderModelView.MutableLiveData.observe(this, new Observer<DeliveryPlace>() {
             @Override

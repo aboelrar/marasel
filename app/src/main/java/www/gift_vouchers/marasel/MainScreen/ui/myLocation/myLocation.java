@@ -30,6 +30,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -50,9 +51,10 @@ public class myLocation extends Fragment implements OnMapReadyCallback, OnComple
     private FusedLocationProviderClient mFusedLocationProviderClient;
     Boolean mLocationPermissionsGranted;
     Callback callback;
+    double current_lat, current_lng;
 
     public myLocation(Callback callback) {
-    this.callback = callback;
+        this.callback = callback;
     }
 
 
@@ -75,7 +77,7 @@ public class myLocation extends Fragment implements OnMapReadyCallback, OnComple
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
 
-        mLocationPermissionsGranted = new utils().getLocationPermission(getContext(),getActivity()); //MAP PERMISSION OPEN SETTINGS
+        mLocationPermissionsGranted = new utils().getLocationPermission(getContext(), getActivity()); //MAP PERMISSION OPEN SETTINGS
 
         checkPermission(); //CHECk PERMISSION
 
@@ -156,16 +158,17 @@ public class myLocation extends Fragment implements OnMapReadyCallback, OnComple
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.confirm_delivery_place)
-        {
-            if (binding.noHomeFlat.getText().toString().equals(""))
-            {
-                Toasty.warning(getContext(),getString(R.string.enter_flat),Toasty.LENGTH_SHORT).show();
-            }
-            else {
+        if (view.getId() == R.id.confirm_delivery_place) {
+            if (binding.noHomeFlat.getText().toString().equals("")) {
+                Toasty.warning(getContext(), getString(R.string.enter_flat), Toasty.LENGTH_SHORT).show();
+            } else {
+                ArrayList<String> locationList = new ArrayList<>();
+                locationList.add(binding.address.getText().toString() + ", " +
+                        binding.noHomeFlat.getText().toString());  // ADD ADDRESS
+                locationList.add("" + current_lat); // GET CURRENT LAT
+                locationList.add("" + current_lat); // GET CURRENT LNG
 
-                callback.callbackAddressMethod(binding.address.getText().toString()+", "+
-                        binding.noHomeFlat.getText().toString());
+                callback.callbackAddressMethod(locationList);
 
                 getActivity().onBackPressed();
             }
