@@ -46,7 +46,6 @@ public class ChooseLoginType extends Fragment {
           @Override
           public void onClick(View view) {
               new utils().Replace_Fragment(new login(), R.id.frag, getContext());
-
           }
       });
 

@@ -49,5 +49,7 @@
     <string name="enter_flat">Please Insert Flat Number</string>
     <string name="enter_address">Please Insert Address</string>
     <string name="enter_time">Please Insert Delivery Time</string>
+    <string name="your_order_is_processing_n_wait_for_offers_from_stars">Your Order Is Processing... \n Wait For Offers From Stars</string>
+    <string name="my_order">My Order</string>
 
 </resources>
