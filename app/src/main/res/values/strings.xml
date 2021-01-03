@@ -50,7 +50,11 @@
     <string name="enter_address">Please Insert Address</string>
     <string name="enter_time">Please Insert Delivery Time</string>
     <string name="your_order_is_processing_n_wait_for_offers_from_stars">Your Order Is Processing... \n Wait For Offers From Stars</string>
-    <string name="my_order">My Order</string>
+    <string name="my_order">My Orders</string>
     <string name="order_processing_n_wait_for_offers_from_stars">Order Processing... \n Wait for Offers from Stars</string>
+    <string name="a_waiting_offer">Awaiting Offers</string>
+    <string name="has_offers">Has Offers</string>
+    <string name="connecting">Connecting</string>
+    <string name="cancelled">Cancelled</string>
 
 </resources>

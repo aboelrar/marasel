@@ -41,6 +41,7 @@
                     android:layout_marginRight="@dimen/_40sdp"
                     android:layout_marginLeft="@dimen/_40sdp"
                     android:background="@drawable/s_button_bg"
+                    android:id="@+id/myOrders"
                     android:text="@string/my_order"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_15sdp"

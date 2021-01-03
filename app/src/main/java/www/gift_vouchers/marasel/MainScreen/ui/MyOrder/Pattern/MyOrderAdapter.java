@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,15 +17,14 @@ import java.util.ArrayList;
 
 import es.dmoral.toasty.Toasty;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.MyCartList;
+import www.gift_vouchers.marasel.MainScreen.ui.MyOrder.Model.MyOrderList;
 import www.gift_vouchers.marasel.R;
 
 public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyOrderHolder> {
     Context context;
-    ArrayList<MyCartList> myList;
-    int quantityNum;
-    int totalPrice;
+    ArrayList<MyOrderList> myList;
 
-    public MyOrderAdapter(Context context, ArrayList<MyCartList> myList) {
+    public MyOrderAdapter(Context context, ArrayList<MyOrderList> myList) {
         this.context = context;
         this.myList = myList;
     }
@@ -32,14 +32,29 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyOrderH
     @NonNull
     @Override
     public MyOrderHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.my_order_item,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.my_order_item, parent, false);
         MyOrderHolder MyOrderHolder = new MyOrderHolder(view);
         return MyOrderHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyOrderHolder holder, int position) {
+        holder.title.setText(myList.get(position).getName());
+        holder.type.setText(myList.get(position).getOrderName());
+        holder.code.setText(myList.get(position).getCode());
+        holder.time.setText(myList.get(position).getExpectTime());
+        Glide.with(context).load(myList.get(position).getProductImg()).into(holder.img);
 
+        //SET TEXT FOR BUTTON
+        if (myList.get(position).getStatus().equals("1")) {
+            holder.offer_button.setText(context.getString(R.string.a_waiting_offer));
+        } else if (myList.get(position).getStatus().equals("2")) {
+            holder.offer_button.setText(context.getString(R.string.has_offers));
+        } else if (myList.get(position).getStatus().equals("3")) {
+            holder.offer_button.setText(context.getString(R.string.connecting));
+        } else if (myList.get(position).getStatus().equals("4")) {
+            holder.offer_button.setText(context.getString(R.string.cancelled));
+        }
 
     }
 
@@ -51,6 +66,8 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyOrderH
     class MyOrderHolder extends RecyclerView.ViewHolder {
         ImageView img;
         TextView title, type, code, time;
+        Button offer_button;
+
         public MyOrderHolder(@NonNull View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.img);
@@ -58,6 +75,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyOrderH
             type = itemView.findViewById(R.id.type);
             code = itemView.findViewById(R.id.code);
             time = itemView.findViewById(R.id.time);
+            offer_button = itemView.findViewById(R.id.offer_button);
         }
     }
 

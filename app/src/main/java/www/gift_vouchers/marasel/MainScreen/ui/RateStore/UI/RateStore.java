@@ -13,15 +13,17 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 
 import es.dmoral.toasty.Toasty;
+import www.gift_vouchers.marasel.MainScreen.ui.MyOrder.UI.myOrder;
 import www.gift_vouchers.marasel.MainScreen.ui.RateStore.Model.RateStoreRoot;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.RateStoreBinding;
 import www.gift_vouchers.marasel.local_data.saved_data;
+import www.gift_vouchers.marasel.utils.utils;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RateStore extends Fragment implements RatingBar.OnRatingBarChangeListener {
+public class RateStore extends Fragment implements RatingBar.OnRatingBarChangeListener, View.OnClickListener {
     RateStoreBinding binding;
     RateStoreModelView rateStoreModelView;
     public RateStore() {
@@ -37,6 +39,7 @@ public class RateStore extends Fragment implements RatingBar.OnRatingBarChangeLi
                 inflater, R.layout.rate_store, container, false);
         View view = binding.getRoot();
 
+        binding.myOrders.setOnClickListener(this);
         binding.rating.setOnRatingBarChangeListener(this);
         return view;
     }
@@ -65,5 +68,13 @@ public class RateStore extends Fragment implements RatingBar.OnRatingBarChangeLi
                 
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.myOrders)
+        {
+            new utils().Replace_Fragment(new myOrder(),R.id.frag,getContext());
+        }
     }
 }

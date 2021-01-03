@@ -30,8 +30,8 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight=".23"
-        android:textSize="@dimen/_12sdp"
+        android:layout_weight=".21"
+        android:textSize="@dimen/_11sdp"
         android:id="@+id/title"
         android:gravity="center"
         android:layout_gravity="center"
@@ -45,19 +45,11 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="@dimen/_70sdp"
-        android:layout_weight=".3"
+        android:layout_weight=".32"
+        android:weightSum="3"
         android:layout_gravity="center"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:text="resturant"
-            android:id="@+id/type"
-            android:drawablePadding="@dimen/_5sdp"
-            android:drawableLeft="@drawable/coffe"
-            android:textSize="@dimen/_12sdp"
-            android:gravity="center|left"
-            android:layout_weight="1"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -65,17 +57,29 @@
             android:id="@+id/code"
             android:drawablePadding="@dimen/_5sdp"
             android:drawableLeft="@drawable/car"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_11sdp"
             android:gravity="center|left"
             android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/coffe"
+            android:drawablePadding="@dimen/_5sdp"
+            android:gravity="center|left"
+            android:text="resturant"
+            android:textSize="@dimen/_11sdp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:text="4.3"
             android:id="@+id/time"
+            android:ellipsize="end"
             android:drawablePadding="@dimen/_5sdp"
             android:drawableLeft="@drawable/time_icon"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_11sdp"
             android:gravity="center|left"
             android:layout_weight="1"/>
     </LinearLayout>
@@ -89,7 +93,7 @@
             android:layout_gravity="center"
             android:background="@drawable/t_button_bg"
             android:text="Wait Offer"
-            android:id="@+id/offer"
+            android:id="@+id/offer_button"
             android:textSize="@dimen/_10sdp"
             android:textAllCaps="false"
             android:textColor="@android:color/white"/>

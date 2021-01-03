@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -142,6 +143,7 @@ public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnCl
         binding.address.setText(date.get(0));
         locationLat = date.get(1);
         locationLng = date.get(2);
+        Log.e("lat4lng", locationLat + locationLng);
     }
 
     //SET  DATA
@@ -149,7 +151,7 @@ public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnCl
         new utils().set_dialog(getContext()); //OPEN PROGRESS DIALOG
 
         makeOrderModelView = new MakeOrderModelView();
-        makeOrderModelView.getDataMakeOrder("Bearer "+ new saved_data().get_token(getContext()), locationLat, locationLng,
+        makeOrderModelView.getDataMakeOrder("Bearer " + new saved_data().get_token(getContext()), locationLat, locationLng,
                 timeId, "1", "100", binding.address.getText().toString(), "");
 
         //OBSERVE DATA
@@ -162,14 +164,13 @@ public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnCl
 
                 Toasty.success(getContext(), makeOrder.getMessage(), Toasty.LENGTH_SHORT).show();
 
-                replaceFragment(""+datum.getId());
+                replaceFragment("" + datum.getId());
             }
         });
 
     }
 
-    void replaceFragment(String id)
-    {
+    void replaceFragment(String id) {
         Fragment Categories = new RateStore();
         Bundle bundle = new Bundle();
         bundle.putString("id", id);

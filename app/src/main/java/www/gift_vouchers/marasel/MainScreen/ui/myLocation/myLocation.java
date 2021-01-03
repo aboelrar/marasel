@@ -52,6 +52,7 @@ public class myLocation extends Fragment implements OnMapReadyCallback, OnComple
     Boolean mLocationPermissionsGranted;
     Callback callback;
     double current_lat, current_lng;
+    double lat, lng;
 
     public myLocation(Callback callback) {
         this.callback = callback;
@@ -151,8 +152,8 @@ public class myLocation extends Fragment implements OnMapReadyCallback, OnComple
 
     @Override
     public void onCameraChange(CameraPosition cameraPosition) {
-        double lat = cameraPosition.target.latitude;
-        double lng = cameraPosition.target.longitude;
+        lat = cameraPosition.target.latitude;
+        lng = cameraPosition.target.longitude;
         getAddress(lat, lng);
     }
 
@@ -165,8 +166,8 @@ public class myLocation extends Fragment implements OnMapReadyCallback, OnComple
                 ArrayList<String> locationList = new ArrayList<>();
                 locationList.add(binding.address.getText().toString() + ", " +
                         binding.noHomeFlat.getText().toString());  // ADD ADDRESS
-                locationList.add("" + current_lat); // GET CURRENT LAT
-                locationList.add("" + current_lat); // GET CURRENT LNG
+                locationList.add("" + lat); // GET CURRENT LAT
+                locationList.add("" + lng); // GET CURRENT LNG
 
                 callback.callbackAddressMethod(locationList);
 

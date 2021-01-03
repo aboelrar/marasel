@@ -1,4 +1,5 @@
 package www.gift_vouchers.marasel.NetworkLayer;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -10,6 +11,7 @@ import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.CartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Categories.model.StoreByService;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.DeliveryPlace;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.MakeOrder;
+import www.gift_vouchers.marasel.MainScreen.ui.MyOrder.Model.MyOrderRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Product.Model.ProductsByCat;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.AddToCartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.SingleProduct;
@@ -27,7 +29,7 @@ public interface NetworkInterface {
     );
 
     @POST("Auth_general/register")
-    Call<AuthRoot> signUp (
+    Call<AuthRoot> signUp(
             @Query("phone") String phone,
             @Query("email") String email,
             @Query("social") String social,
@@ -93,13 +95,18 @@ public interface NetworkInterface {
             @Query("suggest_shipping_price") String suggest_shipping_price,
             @Query("address") String address,
             @Query("note") String note
-            );
+    );
 
     @POST("Order/rate_store/{id}")
     Call<RateStoreRoot> rateStore(
             @Header("Authorization") String authorization,
             @Path("id") String id,
             @Query("rate") int rate
+    );
+
+    @GET("Order/myOrders")
+    Call<MyOrderRoot> myOrders(
+            @Header("Authorization") String authorization
     );
 
 
