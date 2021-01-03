@@ -183,5 +183,12 @@ public class saved_data {
         return deliveryTime;
     }
 
+    //GET STORE ID
+    public String getStoreId(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("store", MODE_PRIVATE);
+        String num = sharedPreferences.getString("id", "0");
+        return num;
+    }
+
 
 }

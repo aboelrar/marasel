@@ -1,9 +1,5 @@
 package www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Ui;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +7,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
-import android.renderscript.Double2;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,19 +14,18 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
 import es.dmoral.toasty.Toasty;
-import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.Category;
+import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.Datum;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.MakeOrder;
+import www.gift_vouchers.marasel.MainScreen.ui.RateStore.UI.RateStore;
 import www.gift_vouchers.marasel.MainScreen.ui.myLocation.myLocation;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.MakeOrderBinding;
@@ -51,6 +44,7 @@ public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnCl
     MakeOrderModelView makeOrderModelView;
     String locationLat, locationLng;
     String timeId;
+    Datum datum;
 
     public makeOrder() {
         // Required empty public constructor
@@ -155,19 +149,35 @@ public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnCl
         new utils().set_dialog(getContext()); //OPEN PROGRESS DIALOG
 
         makeOrderModelView = new MakeOrderModelView();
-        makeOrderModelView.getDataMakeOrder("Bearer "+new saved_data().get_token(getContext()), locationLat, locationLng,
+        makeOrderModelView.getDataMakeOrder("Bearer "+ new saved_data().get_token(getContext()), locationLat, locationLng,
                 timeId, "1", "100", binding.address.getText().toString(), "");
 
         //OBSERVE DATA
         makeOrderModelView.MutableLiveDataMakeOrder.observe(this, new Observer<MakeOrder>() {
             @Override
             public void onChanged(MakeOrder makeOrder) {
+                datum = makeOrder.getData();
+
                 new utils().dismiss_dialog(getContext()); //DISMISS DIALOG
 
                 Toasty.success(getContext(), makeOrder.getMessage(), Toasty.LENGTH_SHORT).show();
+
+                replaceFragment(""+datum.getId());
             }
         });
 
+    }
+
+    void replaceFragment(String id)
+    {
+        Fragment Categories = new RateStore();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        //set Fragmentclass Arguments
+        Categories.setArguments(bundle);
+
+        ((AppCompatActivity) getContext()).getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frag, Categories).addToBackStack(null).commit();
     }
 }
 

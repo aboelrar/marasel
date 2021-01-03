@@ -51,5 +51,6 @@
     <string name="enter_time">Please Insert Delivery Time</string>
     <string name="your_order_is_processing_n_wait_for_offers_from_stars">Your Order Is Processing... \n Wait For Offers From Stars</string>
     <string name="my_order">My Order</string>
+    <string name="order_processing_n_wait_for_offers_from_stars">Order Processing... \n Wait for Offers from Stars</string>
 
 </resources>

@@ -87,7 +87,7 @@ public class Cart extends Fragment implements View.OnClickListener {
                     cartList.add(new MyCartList(""+products[index].getId(),
                             products[index].getName(),products[index].getPrice(),
                            ""+totalPrice,""+products[index].getQuantity() ,
-                            products[index].getIcon()));
+                            products[index].getIcon(),""+datum.getStore().getId()));
                 }
 
                 new utils_adapter().Adapter(binding.myCartList,
@@ -110,6 +110,8 @@ public class Cart extends Fragment implements View.OnClickListener {
             send_data.setStoreImg(getContext(),store.getIcon()); //Icon
             send_data.setStoreLat(getContext(),store.getLat()); //Lat
             send_data.setStoreLng(getContext(),store.getLng()); //Lng
+            send_data.setStoreId(getContext(),""+store.getId()); //ID
+
 
             new utils().Replace_Fragment(new makeOrder(),R.id.frag,getContext());
         }

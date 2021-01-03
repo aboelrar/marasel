@@ -1,15 +1,16 @@
 package www.gift_vouchers.marasel.MainScreen.ui.Cart.Model;
 
 public class MyCartList {
-    String id , name, price, tPrice, quantity, img;
+    String id , name, price, tPrice, quantity, img, storeId;
 
-    public MyCartList(String id, String name, String price, String tPrice, String quantity, String img) {
+    public MyCartList(String id, String name, String price, String tPrice, String quantity, String img, String storeId) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.tPrice = tPrice;
         this.quantity = quantity;
         this.img = img;
+        this.storeId = storeId;
     }
 
     public String getId() {
@@ -58,5 +59,13 @@ public class MyCartList {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(String storeId) {
+        this.storeId = storeId;
     }
 }

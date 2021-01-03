@@ -247,4 +247,12 @@ public class send_data {
         editor.putString("time", time);
         editor.commit();
     }
+
+    //SET DELIVERY TIME
+    public static void setStoreId(Context context, String id) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("store", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("id", id);
+        editor.commit();
+    }
 }

@@ -13,6 +13,7 @@ import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.MakeOrder;
 import www.gift_vouchers.marasel.MainScreen.ui.Product.Model.ProductsByCat;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.AddToCartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.SingleProduct;
+import www.gift_vouchers.marasel.MainScreen.ui.RateStore.Model.RateStoreRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Store.model.SingleStore;
 import www.gift_vouchers.marasel.MainScreen.ui.home.model.homeRoot;
 
@@ -93,6 +94,13 @@ public interface NetworkInterface {
             @Query("address") String address,
             @Query("note") String note
             );
+
+    @POST("Order/rate_store/{id}")
+    Call<RateStoreRoot> rateStore(
+            @Header("Authorization") String authorization,
+            @Path("id") String id,
+            @Query("rate") int rate
+    );
 
 
 }
