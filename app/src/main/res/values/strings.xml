@@ -56,5 +56,8 @@
     <string name="has_offers">Has Offers</string>
     <string name="connecting">Connecting</string>
     <string name="cancelled">Cancelled</string>
+    <string name="order_details">Order Details</string>
+    <string name="cancel_order">Cancel Order</string>
+    <string name="accept_offer">Accept Offer</string>
 
 </resources>
