@@ -11,6 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/_40sdp"
         android:layout_weight=".2"
+        android:id="@+id/img"
         android:layout_gravity="center"
         android:padding="@dimen/_4sdp"
         android:src="@drawable/location_pin"/>
@@ -23,6 +24,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/name"
             android:text="mohamed ali"
             android:textSize="@dimen/_12sdp"
             />
@@ -30,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="4.5"
+            android:id="@+id/rate"
             android:drawablePadding="@dimen/_3sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:drawableLeft="@drawable/star"
@@ -46,7 +49,7 @@
             android:layout_gravity="center"
             android:background="@drawable/t_button_bg"
             android:text="@string/accept_offer"
-            android:id="@+id/offer_button"
+            android:id="@+id/accept_offer_button"
             android:textSize="@dimen/_10sdp"
             android:textAllCaps="false"
             android:textColor="@android:color/white"/>
@@ -57,6 +60,7 @@
         android:layout_height="@dimen/_40sdp"
         android:src="@drawable/trash"
         android:padding="@dimen/_8sdp"
+        android:id="@+id/reject_offer_button"
         android:layout_weight=".15"/>
 </LinearLayout>
     <TextView
