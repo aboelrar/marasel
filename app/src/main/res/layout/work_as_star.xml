@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Drivers.UI.WorkAsStar.UI.WorkAsStar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/splash"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:weightSum="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp">
+
+                <ImageView
+                    android:src="@drawable/back"
+                    android:layout_weight=".2"
+                    android:layout_gravity="center"
+                    android:layout_width="0dp"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_height="@dimen/_20sdp" />
+
+
+                <LinearLayout
+                    android:layout_weight=".75"
+                    android:layout_width="0dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_weight=".7"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Work As A Star"
+                            android:id="@+id/catTitle"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/_17sdp"
+                            android:textColor="@android:color/black" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".3">
+
+                        <Switch
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_gravity="center"
+                            android:id="@+id/switcher"
+                            android:textColor="@android:color/white" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".65"
+                    android:src="@drawable/rate_img" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight=".2"
+                    android:gravity="center"
+                    android:textColor="@color/f_color"
+                    android:textSize="@dimen/_18sdp"
+                    android:text="@string/activate_business_mode_as_n_a_delivery_personand_make_profits" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+      <ProgressBar
+          android:layout_width="@dimen/_50sdp"
+          android:layout_height="@dimen/_50sdp"
+          android:layout_centerInParent="true"
+          android:id="@+id/progress_circular"
+          android:visibility="gone"
+          android:indeterminateTint="@color/f_color"/>
+  </RelativeLayout>
+</layout>
