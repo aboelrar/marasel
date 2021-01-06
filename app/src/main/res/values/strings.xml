@@ -59,5 +59,6 @@
     <string name="order_details">Order Details</string>
     <string name="cancel_order">Cancel Order</string>
     <string name="accept_offer">Accept Offer</string>
+    <string name="activate_business_mode_as_n_a_delivery_personand_make_profits">Activate business mode as\n a delivery personand make profits</string>
 
 </resources>

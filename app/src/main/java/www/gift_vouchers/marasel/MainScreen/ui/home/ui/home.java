@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import es.dmoral.toasty.Toasty;
+import www.gift_vouchers.marasel.Drivers.UI.WorkAsStar.UI.WorkAsStar;
 import www.gift_vouchers.marasel.MainScreen.ui.home.model.Cat;
 import www.gift_vouchers.marasel.MainScreen.ui.home.model.Datum;
 import www.gift_vouchers.marasel.MainScreen.ui.home.model.MaraselServiceList;
@@ -24,12 +25,13 @@ import www.gift_vouchers.marasel.MainScreen.ui.home.pattern.NearestStoresAdapter
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.HomeBinding;
 import www.gift_vouchers.marasel.local_data.saved_data;
+import www.gift_vouchers.marasel.utils.utils;
 import www.gift_vouchers.marasel.utils.utils_adapter;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class home extends Fragment {
+public class home extends Fragment implements View.OnClickListener {
  HomeBinding binding;
  HomeModeView homeModeView = new HomeModeView();
  Datum datum;
@@ -59,6 +61,7 @@ public class home extends Fragment {
     public void onStart() {
         super.onStart();
         getData();
+        binding.driver.setOnClickListener(this);
     }
 
     void getData()
@@ -96,4 +99,11 @@ public class home extends Fragment {
         });
     }
 
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.driver)
+        {
+            new utils().Replace_Fragment(new WorkAsStar(),R.id.frag,getContext());
+        }
+    }
 }

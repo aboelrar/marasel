@@ -7,6 +7,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import www.gift_vouchers.marasel.AuthScreens.Model.AuthRoot;
+import www.gift_vouchers.marasel.Drivers.UI.WorkAsStar.Model.ActiveDriverRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.CartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Categories.model.StoreByService;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.DeliveryPlace;
@@ -109,5 +110,9 @@ public interface NetworkInterface {
             @Header("Authorization") String authorization
     );
 
+    @POST("Driver/activeDriver")
+    Call<ActiveDriverRoot> activeDriver(
+            @Header("Authorization") String authorization
+    );
 
 }
