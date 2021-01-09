@@ -255,4 +255,12 @@ public class send_data {
         editor.putString("id", id);
         editor.commit();
     }
+
+     //CHECK ACTIVE STAR
+    public static void checkActiveStar(Context context, boolean status) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("star", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("status", status);
+        editor.commit();
+    }
 }

@@ -190,5 +190,12 @@ public class saved_data {
         return num;
     }
 
+    //GET CHECK ACTIVE STAR
+    public Boolean getCheckActiveStar(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("star", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Boolean status = sharedPreferences.getBoolean("status", false);
+        return status;
+    }
 
 }

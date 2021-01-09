@@ -1,12 +1,17 @@
 package www.gift_vouchers.marasel.NetworkLayer;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import www.gift_vouchers.marasel.AuthScreens.Model.AuthRoot;
+import www.gift_vouchers.marasel.Drivers.UI.DriverInfo.Model.DriverInfoRoot;
 import www.gift_vouchers.marasel.Drivers.UI.WorkAsStar.Model.ActiveDriverRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.CartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Categories.model.StoreByService;
@@ -115,4 +120,20 @@ public interface NetworkInterface {
             @Header("Authorization") String authorization
     );
 
+    @Multipart
+    @Headers({
+            "X-Requested-With: XMLHttpRequest"})
+    @POST("Driver/DriverInfo")
+    Call<DriverInfoRoot> driverInfo(
+            @Header("Authorization") String authorization,
+            @Query("bank_number") String bank_number,
+            @Query("bank_type") String bank_type,
+            @Part MultipartBody.Part car_back_image,
+            @Part MultipartBody.Part car_front_image,
+            @Part MultipartBody.Part license_image,
+            @Part MultipartBody.Part id_image,
+            @Query("name") String name,
+            @Query("lat") String lat,
+            @Query("lng") String lng
+    );
 }

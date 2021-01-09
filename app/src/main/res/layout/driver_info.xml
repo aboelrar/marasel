@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Drivers.UI.DriverInfo.UI.DriverInfo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/splash"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:layout_weight=".2"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/back" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".75"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight=".7"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/catTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Work As A Star"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_17sdp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".3">
+
+                        <Switch
+                            android:id="@+id/switcher"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_gravity="center"
+                            android:checked="true"
+                            android:textColor="@android:color/white" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/apply_to_work_as_a_delivery_man"
+                android:textColor="@color/f_color"
+                android:textSize="@dimen/_18sdp" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/edittextbg_second"
+                android:drawableLeft="@drawable/icon_awesome_user_check"
+                android:drawablePadding="@dimen/_5sdp"
+                android:hint="@string/full_name"
+                android:paddingLeft="@dimen/_5sdp" />
+
+            <EditText
+                android:id="@+id/id_copy"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:editable="false"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/edittextbg_second"
+                android:drawableLeft="@drawable/icon_awesome_image"
+                android:drawablePadding="@dimen/_5sdp"
+                android:hint="@string/id_copy"
+                android:paddingLeft="@dimen/_5sdp" />
+
+            <EditText
+                android:id="@+id/license"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:editable="false"
+                android:background="@drawable/edittextbg_second"
+                android:drawableLeft="@drawable/icon_awesome_image"
+                android:drawablePadding="@dimen/_5sdp"
+                android:hint="@string/a_copy_of_the_license"
+                android:paddingLeft="@dimen/_5sdp" />
+
+            <EditText
+                android:id="@+id/front_vehicle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:editable="false"
+                android:background="@drawable/edittextbg_second"
+                android:drawableLeft="@drawable/icon_awesome_image"
+                android:drawablePadding="@dimen/_5sdp"
+                android:hint="@string/a_vehicle_image_from_the_front"
+                android:paddingLeft="@dimen/_5sdp" />
+
+            <EditText
+                android:id="@+id/back_vehicle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:editable="false"
+                android:background="@drawable/edittextbg_second"
+                android:drawableLeft="@drawable/icon_awesome_image"
+                android:drawablePadding="@dimen/_5sdp"
+                android:hint="@string/a_photo_of_the_vehicle_from_the_back"
+                android:paddingLeft="@dimen/_5sdp" />
+
+            <EditText
+                android:id="@+id/bank_type"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:gravity="left|center"
+                android:background="@drawable/edittextbg_second"
+                android:drawableLeft="@drawable/icon_material_edit"
+                android:drawablePadding="@dimen/_5sdp"
+                android:hint="@string/bank_type"
+                android:paddingLeft="@dimen/_5sdp" />
+
+            <EditText
+                android:id="@+id/bank_number"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:inputType="number"
+                android:background="@drawable/edittextbg_second"
+                android:drawableLeft="@drawable/icon_material_edit"
+                android:drawablePadding="@dimen/_5sdp"
+                android:hint="@string/bank_number"
+                android:paddingLeft="@dimen/_5sdp" />
+
+            <Button
+                android:id="@+id/apply"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@drawable/s_button_bg"
+                android:text="@string/apply_request_now"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_19sdp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

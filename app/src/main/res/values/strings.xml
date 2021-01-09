@@ -60,5 +60,25 @@
     <string name="cancel_order">Cancel Order</string>
     <string name="accept_offer">Accept Offer</string>
     <string name="activate_business_mode_as_n_a_delivery_personand_make_profits">Activate business mode as\n a delivery personand make profits</string>
+    <string name="apply_to_work_as_a_delivery_man">Apply to work as a delivery man</string>
+    <string name="full_name">Full Name</string>
+    <string name="id_copy">ID copy</string>
+    <string name="a_copy_of_the_license">A copy of the license</string>
+    <string name="a_vehicle_image_from_the_front">A vehicle image from the front</string>
+    <string name="a_photo_of_the_vehicle_from_the_back">A photo of the vehicle from the back</string>
+    <string name="bank_type">Bank type</string>
+    <string name="bank_number">Bank account number</string>
+    <string name="apply_request_now">Apply Request Now</string>
+    <string name="img_uploaded">Image Uploaded</string>
+    <string name="driver_name">Please Enter Your Name</string>
+    <string name="driver_id">Please Enter Your Id</string>
+    <string name="driver_license">Please Enter Your copy of the license</string>
+    <string name="driver_front">Please Enter Your vehicle image from the front</string>
+    <string name="driver_back">Please Enter Your photo of the vehicle from the back</string>
+    <string name="driver_bank_type">Please Enter Your Bank type</string>
+    <string name="driver_bank_number">Please Enter Your Bank account number</string>
+    <string name="your_request_has_been_successfully_submitted_your_request_is_being_reviewed_and_we_will_contact_you_shortly">Your request has been successfully submitted. Your request is being reviewed and we will contact you shortly</string>
+    <string name="ok">OK</string>
+    <string name="the_mode_of_work_has_been_activated_as_a_delivery_person_safety_accompanies_you">The mode of work has been activated as a delivery person ,, safety accompanies you</string>
 
 </resources>

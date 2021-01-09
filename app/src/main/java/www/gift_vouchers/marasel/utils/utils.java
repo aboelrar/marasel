@@ -30,6 +30,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -222,7 +225,7 @@ public class utils {
                 //SET SECOND QUANTITY  CHECK IF NULL OR NOT
                 if (quantityText2 != null) {
                     quantityText2.setText("" + quantityNum); //SET QUANTITY PRICE
-                    totalPriceText2.setText("" +"" + totalPrice + " " + context.getString(R.string.egp)); //SET TOTAL PRICE
+                    totalPriceText2.setText("" + "" + totalPrice + " " + context.getString(R.string.egp)); //SET TOTAL PRICE
 
                 }
             }
@@ -246,7 +249,7 @@ public class utils {
                     //SET SECOND QUANTITY  CHECK IF NULL OR NOT
                     if (quantityText2 != null) {
                         quantityText2.setText("" + quantityNum); //SET QUANTITY PRICE
-                        totalPriceText2.setText("" +"" + totalPrice + " " + context.getString(R.string.egp)); //SET TOTAL PRICE
+                        totalPriceText2.setText("" + "" + totalPrice + " " + context.getString(R.string.egp)); //SET TOTAL PRICE
 
                     }
                 }
@@ -256,7 +259,7 @@ public class utils {
 
 
     /**
-     *  GET PERMISSION IF YES OR NO
+     * GET PERMISSION IF YES OR NO
      */
 
     public boolean getLocationPermission(Context context, Activity activity) {
@@ -281,5 +284,63 @@ public class utils {
         return mLocationPermissionsGranted;
     }
 
+    /**
+     * @param uri
+     * @param context
+     * @return
+     */
+    public String getRealPathFromURI(Uri uri, Context context) {
+        Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(idx);
+    }
 
+    /**
+     * REDUCE FILE SIZE
+     * @param file
+     * @return
+     */
+    public File saveBitmapToFile(File file) {
+        try {
+
+            // BitmapFactory options to downsize the image
+            BitmapFactory.Options o = new BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            o.inSampleSize = 6;
+            // factor of downsizing the image
+
+            FileInputStream inputStream = new FileInputStream(file);
+            //Bitmap selectedBitmap = null;
+            BitmapFactory.decodeStream(inputStream, null, o);
+            inputStream.close();
+
+            // The new size we want to scale to
+            final int REQUIRED_SIZE = 75;
+
+            // Find the correct scale value. It should be the power of 2.
+            int scale = 1;
+            while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
+                    o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+                scale *= 2;
+            }
+
+            BitmapFactory.Options o2 = new BitmapFactory.Options();
+            o2.inSampleSize = scale;
+            inputStream = new FileInputStream(file);
+
+            Bitmap selectedBitmap = BitmapFactory.decodeStream(inputStream, null, o2);
+            inputStream.close();
+
+            // here i override the original image file
+            file.createNewFile();
+            FileOutputStream outputStream = new FileOutputStream(file);
+
+            selectedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+
+            return file;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

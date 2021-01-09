@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Drivers.UI.DeliveryPersonalInfo.UI.DeliveryPersonalInfo">
+
+   <LinearLayout
+       android:layout_height="match_parent"
+       android:layout_width="match_parent"
+       android:background="@drawable/splash"
+       android:orientation="vertical">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_80sdp"
+           android:orientation="horizontal"
+           android:weightSum="1">
+
+           <ImageView
+               android:layout_width="0dp"
+               android:layout_height="@dimen/_20sdp"
+               android:layout_gravity="center"
+               android:layout_weight=".2"
+               android:padding="@dimen/_5sdp"
+               android:src="@drawable/back" />
+
+
+           <LinearLayout
+               android:layout_width="0dp"
+               android:layout_height="match_parent"
+               android:layout_weight=".75"
+               android:orientation="horizontal"
+               android:weightSum="1">
+
+               <LinearLayout
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:layout_weight=".7"
+                   android:gravity="center"
+                   android:orientation="vertical">
+
+                   <TextView
+                       android:id="@+id/catTitle"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                       android:text="Work As A Star"
+                       android:textColor="@android:color/black"
+                       android:textSize="@dimen/_17sdp" />
+
+
+               </LinearLayout>
+
+               <LinearLayout
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight=".3">
+
+                   <Switch
+                       android:id="@+id/switcher"
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/_25sdp"
+                       android:layout_gravity="center"
+                       android:checked="true"
+                       android:textColor="@android:color/white" />
+               </LinearLayout>
+           </LinearLayout>
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_35sdp"
+           android:layout_marginLeft="@dimen/_15sdp"
+           android:layout_marginRight="@dimen/_15sdp"
+           android:background="@color/t_color"
+           android:weightSum="1"
+           android:paddingLeft="@dimen/_5sdp"
+           android:paddingRight="@dimen/_5sdp"
+           android:orientation="horizontal">
+           <ImageView
+               android:layout_width="0dp"
+               android:layout_height="@dimen/_27sdp"
+               android:layout_weight=".15"
+               android:src="@drawable/moto"/>
+           <TextView
+               android:layout_gravity="center|left"
+               android:layout_weight=".85"
+               android:textSize="@dimen/_11sdp"
+               android:textColor="@android:color/black"
+               android:text="@string/the_mode_of_work_has_been_activated_as_a_delivery_person_safety_accompanies_you"
+               android:layout_width="0dp"
+               android:layout_height="match_parent"/>
+       </LinearLayout>
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:layout_width="@dimen/_45sdp"
+           android:layout_height="@dimen/_45sdp"
+           android:src="@color/f_color"
+           app:civ_border_color="@android:color/white"
+           app:civ_border_width="@dimen/_2sdp"
+           android:layout_gravity="center"
+           android:layout_marginTop="@dimen/_25sdp"/>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_30sdp"
+           android:gravity="center"
+           android:orientation="horizontal">
+
+       </LinearLayout>
+   </LinearLayout>
+</FrameLayout>

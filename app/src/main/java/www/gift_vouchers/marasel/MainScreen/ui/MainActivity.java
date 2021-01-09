@@ -14,11 +14,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        new utils().Replace_Fragment(new home(),R.id.frag,this);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        new utils().Replace_Fragment(new home(),R.id.frag,this);
     }
 }
