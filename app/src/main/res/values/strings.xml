@@ -80,5 +80,10 @@
     <string name="your_request_has_been_successfully_submitted_your_request_is_being_reviewed_and_we_will_contact_you_shortly">Your request has been successfully submitted. Your request is being reviewed and we will contact you shortly</string>
     <string name="ok">OK</string>
     <string name="the_mode_of_work_has_been_activated_as_a_delivery_person_safety_accompanies_you">The mode of work has been activated as a delivery person ,, safety accompanies you</string>
+    <string name="the_balance_of_receivables">The balance of receivables :</string>
+    <string name="delivery_person_name">Delivery Person Name</string>
+    <string name="notifcation_tones">Notifcation Tones</string>
+    <string name="share_your_location">Share Your Location</string>
+    <string name="zero_balance">0 EGP</string>
 
 </resources>

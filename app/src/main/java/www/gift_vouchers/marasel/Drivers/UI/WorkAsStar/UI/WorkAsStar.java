@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
 import es.dmoral.toasty.Toasty;
+import www.gift_vouchers.marasel.Drivers.UI.DeliveryPersonalInfo.UI.DeliveryPersonalInfo;
 import www.gift_vouchers.marasel.Drivers.UI.DriverInfo.UI.DriverInfo;
 import www.gift_vouchers.marasel.Drivers.UI.DriverInfo.UI.DriverInfoAccept;
 import www.gift_vouchers.marasel.Drivers.UI.WorkAsStar.Model.ActiveDriverRoot;
@@ -100,7 +101,7 @@ public class WorkAsStar extends Fragment implements CompoundButton.OnCheckedChan
 
                 new utils().Replace_Fragment(new DriverInfo(), R.id.frag, getContext());
             } else if (datum.getDeliveryStatus() == 1) {
-
+                new utils().Replace_Fragment(new DeliveryPersonalInfo(), R.id.frag, getContext());
             } else if (datum.getDeliveryStatus() == 2) {
 
                 binding.switcher.setChecked(true); //SET SWITCHER TRUE

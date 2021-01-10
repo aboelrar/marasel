@@ -11,6 +11,7 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import www.gift_vouchers.marasel.AuthScreens.Model.AuthRoot;
+import www.gift_vouchers.marasel.Drivers.UI.DeliveryPersonalInfo.Model.DeliveryInfoRoot;
 import www.gift_vouchers.marasel.Drivers.UI.DriverInfo.Model.DriverInfoRoot;
 import www.gift_vouchers.marasel.Drivers.UI.WorkAsStar.Model.ActiveDriverRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.CartRoot;
@@ -135,5 +136,10 @@ public interface NetworkInterface {
             @Query("name") String name,
             @Query("lat") String lat,
             @Query("lng") String lng
+    );
+
+    @GET("Auth_private/my_info")
+    Call<DeliveryInfoRoot> myInfo(
+            @Header("Authorization") String authorization
     );
 }
