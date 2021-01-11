@@ -85,5 +85,7 @@
     <string name="notifcation_tones">Notifcation Tones</string>
     <string name="share_your_location">Share Your Location</string>
     <string name="zero_balance">0 EGP</string>
+    <string name="ready_requests_for_presentation_and_delivery">Ready requests for presentation and delivery</string>
+    <string name="submit_offer">Submit Offer</string>
 
 </resources>

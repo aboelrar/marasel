@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_80sdp"
+    android:layout_marginRight="@dimen/_7sdp"
+    android:layout_marginLeft="@dimen/_7sdp"
+    app:elevation="@dimen/_4sdp"
+    app:cardElevation="@dimen/_4sdp"
+    android:layout_marginTop="@dimen/_10sdp"
+    app:cardCornerRadius="@dimen/_7sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:id="@+id/item"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".22"
+        android:id="@+id/img"
+        android:scaleType="centerCrop"
+        android:layout_margin="@dimen/_2sdp"
+        android:padding="@dimen/_6sdp"
+        android:src="@drawable/coffe"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".21"
+        android:textSize="@dimen/_11sdp"
+        android:id="@+id/title"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textColor="@color/f_color"
+        android:text="resturant"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".05"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_weight=".32"
+        android:weightSum="3"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/coffe"
+            android:drawablePadding="@dimen/_5sdp"
+            android:gravity="center|left"
+            android:text="resturant"
+            android:textSize="@dimen/_11sdp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="40 om"
+            android:id="@+id/code"
+            android:drawablePadding="@dimen/_5sdp"
+            android:drawableLeft="@drawable/car"
+            android:textSize="@dimen/_11sdp"
+            android:gravity="center|left"
+            android:layout_weight="1"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="4.3"
+            android:id="@+id/time"
+            android:ellipsize="end"
+            android:drawablePadding="@dimen/_5sdp"
+            android:drawableLeft="@drawable/time_icon"
+            android:textSize="@dimen/_11sdp"
+            android:gravity="center|left"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".18">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_gravity="center"
+            android:background="@drawable/t_button_bg"
+            android:text="@string/submit_offer"
+            android:id="@+id/submit_offer"
+            android:textSize="@dimen/_10sdp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+</LinearLayout>
+</androidx.cardview.widget.CardView>

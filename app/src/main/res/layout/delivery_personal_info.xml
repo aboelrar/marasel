@@ -295,6 +295,44 @@
                     android:textSize="@dimen/_16sdp" />
 
             </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/_10sdp">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_60sdp"
+                    app:cardElevation="0dp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:id="@+id/goAvailableOrder"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/icon_big_car"
+                        android:textSize="@dimen/_11sdp"
+                        android:paddingLeft="@dimen/_3sdp"
+                        android:paddingRight="@dimen/_9sdp"
+                        android:layout_gravity="center|left"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:text="@string/ready_requests_for_presentation_and_delivery"/>
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/total_available_orders"
+                    android:textStyle="bold"
+                    android:layout_marginRight="@dimen/_14sdp"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:gravity="center"
+                    android:background="@drawable/number_of_available_orders"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_12sdp"/>
+            </RelativeLayout>
         </LinearLayout>
     </FrameLayout>
 </layout>

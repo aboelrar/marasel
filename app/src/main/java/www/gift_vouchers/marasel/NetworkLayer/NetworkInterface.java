@@ -11,6 +11,7 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import www.gift_vouchers.marasel.AuthScreens.Model.AuthRoot;
+import www.gift_vouchers.marasel.Drivers.UI.AvailableOrders.Model.AvailableOrderRoot;
 import www.gift_vouchers.marasel.Drivers.UI.DeliveryPersonalInfo.Model.DeliveryInfoRoot;
 import www.gift_vouchers.marasel.Drivers.UI.DriverInfo.Model.DriverInfoRoot;
 import www.gift_vouchers.marasel.Drivers.UI.WorkAsStar.Model.ActiveDriverRoot;
@@ -140,6 +141,11 @@ public interface NetworkInterface {
 
     @GET("Auth_private/my_info")
     Call<DeliveryInfoRoot> myInfo(
+            @Header("Authorization") String authorization
+    );
+
+    @GET("Driver/availableOrders")
+    Call<AvailableOrderRoot> availableOrders(
             @Header("Authorization") String authorization
     );
 }
