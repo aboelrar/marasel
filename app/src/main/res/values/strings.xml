@@ -87,5 +87,12 @@
     <string name="zero_balance">0 EGP</string>
     <string name="ready_requests_for_presentation_and_delivery">Ready requests for presentation and delivery</string>
     <string name="submit_offer">Submit Offer</string>
+    <string name="add_offer">Add Offer</string>
+    <string name="delivery_price">Delivery Price</string>
+    <string name="price">Price</string>
+    <string name="time">Time</string>
+    <string name="write_your_notes">Write Your Notes</string>
+    <string name="hour">Hour</string>
+    <string name="order_number">Order Number</string>
 
 </resources>

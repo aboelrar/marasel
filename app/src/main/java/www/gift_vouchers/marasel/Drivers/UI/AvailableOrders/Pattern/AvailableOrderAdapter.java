@@ -1,6 +1,7 @@
 package www.gift_vouchers.marasel.Drivers.UI.AvailableOrders.Pattern;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -17,6 +20,7 @@ import java.util.ArrayList;
 
 import www.gift_vouchers.marasel.Drivers.UI.AvailableOrders.Model.OrderList;
 import www.gift_vouchers.marasel.MainScreen.ui.MyOrder.Model.MyOrderList;
+import www.gift_vouchers.marasel.MainScreen.ui.Store.ui.Store;
 import www.gift_vouchers.marasel.R;
 
 public class AvailableOrderAdapter extends RecyclerView.Adapter<AvailableOrderAdapter.MyOrderHolder> {
@@ -44,6 +48,13 @@ public class AvailableOrderAdapter extends RecyclerView.Adapter<AvailableOrderAd
         holder.time.setText(myList.get(position).getTime());
         Glide.with(context).load(myList.get(position).getResImg()).into(holder.img);
 
+        holder.offer_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(myList.get(position).getId());
+            }
+        });
+
     }
 
     @Override
@@ -63,9 +74,19 @@ public class AvailableOrderAdapter extends RecyclerView.Adapter<AvailableOrderAd
             type = itemView.findViewById(R.id.type);
             code = itemView.findViewById(R.id.code);
             time = itemView.findViewById(R.id.time);
-            offer_button = itemView.findViewById(R.id.offer_button);
+            offer_button = itemView.findViewById(R.id.submit_offer);
         }
     }
 
+    void replaceFragment(String id) {
+        Fragment Categories = new Store();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        //set Fragment class Arguments
+        Categories.setArguments(bundle);
+
+        ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frag, Categories).addToBackStack(null).commit();
+    }
 
 }

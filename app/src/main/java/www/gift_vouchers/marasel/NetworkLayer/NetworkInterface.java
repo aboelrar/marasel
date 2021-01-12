@@ -11,6 +11,8 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import www.gift_vouchers.marasel.AuthScreens.Model.AuthRoot;
+import www.gift_vouchers.marasel.Drivers.UI.AddOffer.Model.AddOfferRoot;
+import www.gift_vouchers.marasel.Drivers.UI.AddOffer.Model.SingleOrderRoot;
 import www.gift_vouchers.marasel.Drivers.UI.AvailableOrders.Model.AvailableOrderRoot;
 import www.gift_vouchers.marasel.Drivers.UI.DeliveryPersonalInfo.Model.DeliveryInfoRoot;
 import www.gift_vouchers.marasel.Drivers.UI.DriverInfo.Model.DriverInfoRoot;
@@ -61,6 +63,12 @@ public interface NetworkInterface {
     Call<SingleStore> SingleStore(
             @Header("Authorization") String authorization,
             @Path("store_id") String store_id
+    );
+
+    @GET("Order/singleOrder/{order_id}")
+    Call<SingleOrderRoot> SingleOrder(
+            @Header("Authorization") String authorization,
+            @Path("order_id") String store_id
     );
 
     @GET("Store/products_by_cat")
@@ -147,5 +155,15 @@ public interface NetworkInterface {
     @GET("Driver/availableOrders")
     Call<AvailableOrderRoot> availableOrders(
             @Header("Authorization") String authorization
+    );
+
+    @POST("Driver/AddOffer/{id}")
+    Call<AddOfferRoot> addOffer(
+            @Header("Authorization") String authorization,
+            @Path("id") String id,
+            @Query("price") String price,
+            @Query("time") String time,
+            @Query("time_type") String time_type,
+            @Query("note") String note
     );
 }
