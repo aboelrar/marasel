@@ -21,6 +21,7 @@
     <string name="phone">رقم الهاتف</string>
     <string name="logged_in_successfully">Logged In Successfully...</string>
     <string name="user_val">Username is too short!</string>
+    <string name="delivery_time_val">Username is too short!</string>
     <string name="password_val">Password is too short!</string>
     <string name="invalid_email_address">Invalid email address</string>
     <string name="phone_val">Phone is too short!</string>
@@ -94,5 +95,8 @@
     <string name="write_your_notes">Write Your Notes</string>
     <string name="hour">Hour</string>
     <string name="order_number">Order Number</string>
+    <string name="pls_insert_delivery_price">Please Insert Delivery Price!</string>
+    <string name="pls_insert_delivery_time">Please Insert Delivery Time!</string>
+    <string name="pls_insert_note">Please Insert Your Notes!</string>
 
 </resources>

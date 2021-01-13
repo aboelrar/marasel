@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import www.gift_vouchers.marasel.Drivers.UI.AddOffer.UI.AddOffer;
 import www.gift_vouchers.marasel.Drivers.UI.AvailableOrders.Model.OrderList;
 import www.gift_vouchers.marasel.MainScreen.ui.MyOrder.Model.MyOrderList;
 import www.gift_vouchers.marasel.MainScreen.ui.Store.ui.Store;
@@ -79,14 +80,14 @@ public class AvailableOrderAdapter extends RecyclerView.Adapter<AvailableOrderAd
     }
 
     void replaceFragment(String id) {
-        Fragment Categories = new Store();
+        Fragment addOffer = new AddOffer();
         Bundle bundle = new Bundle();
         bundle.putString("id", id);
         //set Fragment class Arguments
-        Categories.setArguments(bundle);
+        addOffer.setArguments(bundle);
 
         ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frag, Categories).addToBackStack(null).commit();
+                .replace(R.id.frag, addOffer).addToBackStack(null).commit();
     }
 
 }

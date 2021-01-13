@@ -2,6 +2,8 @@
 <TextView android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     android:id="@+id/order_item"
+    android:textSize="@dimen/_11sdp"
     android:text="one cup tea"
+    android:drawablePadding="@dimen/_5sdp"
     android:drawableLeft="@drawable/coffie_offer"
     xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import es.dmoral.toasty.Toasty;
 import www.gift_vouchers.marasel.Drivers.UI.AddOffer.Model.AddOfferRoot;
 import www.gift_vouchers.marasel.Drivers.UI.AddOffer.Model.Order;
 import www.gift_vouchers.marasel.Drivers.UI.AddOffer.Model.OrdersList;
@@ -29,6 +30,8 @@ import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.AddOfferBinding;
 import www.gift_vouchers.marasel.local_data.saved_data;
 import www.gift_vouchers.marasel.utils.utils_adapter;
+
+import static www.gift_vouchers.marasel.utils.utils.yoyo;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,7 +71,7 @@ public class AddOffer extends Fragment implements View.OnClickListener {
         addOfferModelView.MutableLiveData.observe(this, new Observer<AddOfferRoot>() {
             @Override
             public void onChanged(AddOfferRoot addOfferRoot) {
-                Toast.makeText(getContext(), "" + addOfferRoot.getMessage(), Toast.LENGTH_LONG).show();
+                Toasty.success(getContext(), "" + addOfferRoot.getMessage(), Toasty.LENGTH_LONG).show();
             }
         });
     }
@@ -93,7 +96,7 @@ public class AddOffer extends Fragment implements View.OnClickListener {
                 for (int i = 0; i < product.length; i++) {
                     ordersLists.add(new OrdersList("" + product[i].getId(), product[i].getName()));
                 }
-                new utils_adapter().Adapter(binding.orderList,new OrdersAdapter(getContext(),ordersLists),getContext());
+                new utils_adapter().Adapter(binding.orderList, new OrdersAdapter(getContext(), ordersLists), getContext());
 
 
             }
@@ -103,7 +106,21 @@ public class AddOffer extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.submit_offer) {
-            setData();
+            if (binding.time.getText().toString().equals("")) {
+                String deliveryTimeVal = getResources().getString(R.string.pls_insert_delivery_time);
+                binding.time.setError(deliveryTimeVal);
+                yoyo(R.id.time, binding.time);
+            } else if (binding.price.getText().toString().equals("")) {
+                String deliveryPriceVal = getResources().getString(R.string.pls_insert_delivery_price);
+                binding.price.setError(deliveryPriceVal);
+                yoyo(R.id.price, binding.price);
+            } else if (binding.writeNotes.getText().toString().equals("")) {
+                String writeNotesVal = getResources().getString(R.string.write_your_notes);
+                binding.writeNotes.setError(writeNotesVal);
+                yoyo(R.id.write_notes, binding.writeNotes);
+            } else {
+                setData();
+            }
         }
     }
 }

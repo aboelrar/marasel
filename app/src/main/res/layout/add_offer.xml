@@ -172,8 +172,7 @@
                     android:layout_height="@dimen/_50sdp"
                     android:id="@+id/brandImg"
                     android:layout_centerInParent="true"
-                    android:layout_alignParentTop="true"
-                    android:src="@color/colorPrimaryDark" />
+                    android:layout_alignParentTop="true" />
             </RelativeLayout>
 
             <LinearLayout
@@ -207,8 +206,10 @@
                         android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
-                            android:layout_width="@dimen/_60sdp"
-                            android:layout_height="@dimen/_60sdp">
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            app:cardElevation="0dp"
+                            >
 
                             <EditText
                                 android:layout_width="match_parent"
@@ -252,6 +253,7 @@
                         android:text="@string/delivery_time"
                         android:layout_gravity="center"
                         android:textSize="@dimen/_15sdp"
+                        android:drawableTint="@android:color/black"
                         android:drawablePadding="@dimen/_5sdp"
                         android:textColor="@android:color/black" />
 
@@ -262,8 +264,10 @@
                         android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
-                            android:layout_width="@dimen/_60sdp"
-                            android:layout_height="@dimen/_60sdp">
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            app:cardElevation="0dp"
+                            >
 
                             <EditText
                                 android:layout_width="match_parent"
@@ -271,7 +275,7 @@
                                 android:hint="@string/time"
                                 android:id="@+id/time"
                                 android:gravity="center"
-                                android:inputType="number"
+                                android:inputType="datetime"
                                 android:background="@android:color/white" />
 
                         </androidx.cardview.widget.CardView>
@@ -290,16 +294,18 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
+                app:cardElevation="0dp"
                 android:layout_height="@dimen/_90sdp"
                 android:layout_marginTop="@dimen/_25sdp"
                 android:layout_marginRight="@dimen/_15sdp"
                 android:layout_marginLeft="@dimen/_15sdp">
 
-                <TextView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white"
-                    android:text="@string/write_your_notes"
+                    android:hint="@string/write_your_notes"
+                    android:gravity="left"
                     android:textSize="@dimen/_13sdp"
                     android:id="@+id/write_notes"
                     android:padding="@dimen/_10sdp" />
