@@ -166,4 +166,15 @@ public interface NetworkInterface {
             @Query("time_type") String time_type,
             @Query("note") String note
     );
+
+    @POST("Auth_private/check_active_code")
+    Call<AvailableOrderRoot> activeUser(
+            @Header("Authorization") String authorization,
+            @Query("code") String code
+    );
+
+    @POST("Auth_private/resend_code")
+    Call<AvailableOrderRoot> resendCode(
+            @Header("Authorization") String authorization
+    );
 }

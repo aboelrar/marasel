@@ -98,5 +98,11 @@
     <string name="pls_insert_delivery_price">Please Insert Delivery Price!</string>
     <string name="pls_insert_delivery_time">Please Insert Delivery Time!</string>
     <string name="pls_insert_note">Please Insert Your Notes!</string>
+    <string name="verification_code">Verification Code</string>
+    <string name="please_enter_the_verification_code_sent_to">Please enter the verification code sent to</string>
+    <string name="resend_code"><u>Resend Code</u></string>
+    <string name="confirm">Confirm</string>
+    <string name="insert_code">Please inset four digit!</string>
+
 
 </resources>

@@ -41,6 +41,8 @@ public class SignUp extends Fragment implements View.OnClickListener {
                 inflater, R.layout.sign_up, container, false);
         View view = binding.getRoot();
 
+        getData();
+
         // CALL MODEL VIEW
         signUpModeView = new SignUpModeView();
 
@@ -53,7 +55,6 @@ public class SignUp extends Fragment implements View.OnClickListener {
     @Override
     public void onStart() {
         super.onStart();
-        getData();
     }
 
     @Override
@@ -83,6 +84,8 @@ public class SignUp extends Fragment implements View.OnClickListener {
 
                     UserInformation.addLocalData(authRoot.getData(),getContext()); //ADD LOCAL DATA
                     new loading().dialog(getContext(), R.layout.successful_login, .90, "1"); //OPEN DIALOG
+
+
                 }
 
             }
