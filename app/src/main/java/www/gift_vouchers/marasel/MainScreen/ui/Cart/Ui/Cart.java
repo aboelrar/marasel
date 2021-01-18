@@ -34,7 +34,7 @@ import www.gift_vouchers.marasel.utils.utils_adapter;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class Cart extends Fragment implements View.OnClickListener {
+public class Cart extends Fragment implements View.OnClickListener, Callback {
     CartBinding binding;
     CartModelView cartModelView = new CartModelView();
     Product[] products;
@@ -42,6 +42,7 @@ public class Cart extends Fragment implements View.OnClickListener {
     Store store;
     int totalPrice;
     ArrayList<MyCartList> cartList = new ArrayList<>();
+    Callback callback;
 
     public Cart() {
 
@@ -54,6 +55,8 @@ public class Cart extends Fragment implements View.OnClickListener {
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.cart, container, false);
         View view = binding.getRoot();
+
+        callback = this;
 
         return view;
     }
@@ -79,19 +82,18 @@ public class Cart extends Fragment implements View.OnClickListener {
                 binding.lastPrice.setText("" + datum.getTotalPrice() + " " + getString(R.string.egp)); //SET TOTAL PRICE
 
                 //Add data to cart
-                for (int index = 0 ; index < products.length ; index++)
-                {
+                for (int index = 0; index < products.length; index++) {
                     //TOTAL PRICE
                     int totalPrice = products[index].getQuantity() * Integer.parseInt(products[index].getPrice());
 
-                    cartList.add(new MyCartList(""+products[index].getId(),
-                            products[index].getName(),products[index].getPrice(),
-                           ""+totalPrice,""+products[index].getQuantity() ,
-                            products[index].getIcon(),""+datum.getStore().getId()));
+                    cartList.add(new MyCartList("" + products[index].getId(),
+                            products[index].getName(), products[index].getPrice(),
+                            "" + totalPrice, "" + products[index].getQuantity(),
+                            products[index].getIcon(), "" + datum.getStore().getId()));
                 }
 
                 new utils_adapter().Adapter(binding.myCartList,
-                        new MyCartAdapter(getContext(),cartList),getContext());
+                        new MyCartAdapter(getContext(), cartList, cartModelView, callback), getContext());
 
             }
         });
@@ -104,17 +106,24 @@ public class Cart extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.complete_order_now)
-        {
-            send_data.setStoreTitle(getContext(),store.getName()); //title
-            send_data.setStoreImg(getContext(),store.getIcon()); //Icon
-            send_data.setStoreLat(getContext(),store.getLat()); //Lat
-            send_data.setStoreLng(getContext(),store.getLng()); //Lng
-            send_data.setStoreId(getContext(),""+store.getId()); //ID
+        if (v.getId() == R.id.complete_order_now) {
+            send_data.setStoreTitle(getContext(), store.getName()); //title
+            send_data.setStoreImg(getContext(), store.getIcon()); //Icon
+            send_data.setStoreLat(getContext(), store.getLat()); //Lat
+            send_data.setStoreLng(getContext(), store.getLng()); //Lng
+            send_data.setStoreId(getContext(), "" + store.getId()); //ID
 
 
-            new utils().Replace_Fragment(new makeOrder(),R.id.frag,getContext());
+            new utils().Replace_Fragment(new makeOrder(), R.id.frag, getContext());
         }
     }
 
+    @Override
+    public void callbackMethod() {
+        binding.parent.setVisibility(View.GONE);
+        binding.noData.setVisibility(View.VISIBLE);
+
+        binding.completeOrderNow.setClickable(false);
+
+    }
 }

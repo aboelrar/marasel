@@ -16,8 +16,10 @@ import www.gift_vouchers.marasel.Drivers.UI.AddOffer.Model.SingleOrderRoot;
 import www.gift_vouchers.marasel.Drivers.UI.AvailableOrders.Model.AvailableOrderRoot;
 import www.gift_vouchers.marasel.Drivers.UI.DeliveryPersonalInfo.Model.DeliveryInfoRoot;
 import www.gift_vouchers.marasel.Drivers.UI.DriverInfo.Model.DriverInfoRoot;
+import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.MyOffersRoot;
 import www.gift_vouchers.marasel.Drivers.UI.WorkAsStar.Model.ActiveDriverRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.CartRoot;
+import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.DeleteProductRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Categories.model.StoreByService;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.DeliveryPlace;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.MakeOrder;
@@ -176,5 +178,16 @@ public interface NetworkInterface {
     @POST("Auth_private/resend_code")
     Call<AvailableOrderRoot> resendCode(
             @Header("Authorization") String authorization
+    );
+
+    @POST("Driver/myOffers")
+    Call<MyOffersRoot> myOffer(
+            @Header("Authorization") String authorization
+    );
+
+    @POST("Order/delete_from_cart/{id}")
+    Call<DeleteProductRoot> deleteCart(
+            @Header("Authorization") String authorization,
+            @Path("id") String id
     );
 }

@@ -81,6 +81,11 @@
                     </LinearLayout>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/parent"
+                    android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -172,6 +177,15 @@
 
             </LinearLayout>
         </LinearLayout>
+        </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_data"
+            android:textSize="@dimen/_14sdp"
+            android:id="@+id/no_data"
+            android:visibility="gone"
+            android:layout_centerInParent="true"/>
     </RelativeLayout>
 </layout>
