@@ -6,7 +6,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.MyOffersRoot;
-import www.gift_vouchers.marasel.Drivers.UI.WorkAsStar.Model.ActiveDriverRoot;
 import www.gift_vouchers.marasel.NetworkLayer.APIClient;
 
 public class MyOffersViewModel {

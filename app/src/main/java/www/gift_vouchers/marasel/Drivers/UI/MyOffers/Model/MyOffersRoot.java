@@ -1,7 +1,7 @@
 package www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model;//
 //  MyOffersRoot.java
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on January 14, 2021
+//  Created on January 19, 2021
 
 import org.json.*;
 import java.util.*;

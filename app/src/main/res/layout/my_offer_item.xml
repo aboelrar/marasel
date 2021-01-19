@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_70sdp"
+    android:layout_height="@dimen/_75sdp"
     android:layout_marginRight="@dimen/_7sdp"
     android:layout_marginLeft="@dimen/_7sdp"
     app:elevation="@dimen/_4sdp"
@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="1"
+        android:paddingRight="@dimen/_3sdp"
         android:id="@+id/item"
         android:orientation="horizontal">
         <ImageView
@@ -37,14 +38,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".3"
+                android:layout_weight=".4"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
               <TextView
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:text="2 cars"
-                  android:textSize="@dimen/_11sdp"
+                  android:textSize="@dimen/_10sdp"
                   android:drawableTint="@android:color/black"
                   android:id="@+id/product"
                   android:drawablePadding="@dimen/_5sdp"
@@ -56,14 +57,17 @@
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:ellipsize="end"
                     android:id="@+id/address"
-                    android:textSize="@dimen/_11sdp"
+                    android:gravity="left|center"
+
+                    android:lines="2"
+                    android:textSize="@dimen/_10sdp"
                     android:drawablePadding="@dimen/_5sdp"
                     android:drawableLeft="@drawable/location_pin_small"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".7"
+                android:layout_weight=".6"
                 android:weightSum="1"
                 android:orientation="horizontal">
                 <TextView
@@ -76,17 +80,17 @@
                     android:textColor="@android:color/black"
                     android:paddingBottom="@dimen/_5sdp"
                     android:layout_height="match_parent"/>
-                <Button
-                    android:layout_weight=".27"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_27sdp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/t_button_bg"
-                    android:text="@string/submit_offer"
-                    android:id="@+id/submit_offer"
-                    android:textSize="@dimen/_10sdp"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"/>
+<!--                <Button-->
+<!--                    android:layout_weight=".29"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="@dimen/_27sdp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:background="@drawable/t_button_bg"-->
+<!--                    android:text="@string/submit_offer"-->
+<!--                    android:id="@+id/submit_offer"-->
+<!--                    android:textSize="@dimen/_10sdp"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="@android:color/white"/>-->
 
             </LinearLayout>
         </LinearLayout>

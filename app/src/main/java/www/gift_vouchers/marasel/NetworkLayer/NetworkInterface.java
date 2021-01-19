@@ -180,7 +180,7 @@ public interface NetworkInterface {
             @Header("Authorization") String authorization
     );
 
-    @POST("Driver/myOffers")
+    @GET("Driver/myOffers")
     Call<MyOffersRoot> myOffer(
             @Header("Authorization") String authorization
     );

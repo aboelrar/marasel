@@ -1,5 +1,5 @@
 package www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model;//
-//  Driver.java
+//  Client.java
 //  Model Generated using http://www.jsoncafe.com/ 
 //  Created on January 19, 2021
 
@@ -8,7 +8,7 @@ import java.util.*;
 import com.google.gson.annotations.SerializedName;
 
 
-public class Driver{
+public class Client{
 
 	@SerializedName("balance")
 	private String balance;
@@ -143,7 +143,7 @@ public class Driver{
 	/**
 	 * Instantiate the instance using the passed jsonObject to set the properties values
 	 */
-	public Driver(JSONObject jsonObject){
+	public Client(JSONObject jsonObject){
 		if(jsonObject == null){
 			return;
 		}

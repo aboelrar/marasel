@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +14,18 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.Datum;
+import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.Driver;
 import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.MyOfferList;
 import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.MyOffersRoot;
-import www.gift_vouchers.marasel.Drivers.UI.WorkAsStar.UI.WorkAsStarModelView;
+import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.Order;
+import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.Product;
+import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.Time;
+import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Pattern.MyOfferAdapter;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.MyOffersBinding;
 import www.gift_vouchers.marasel.local_data.saved_data;
+import www.gift_vouchers.marasel.utils.utils;
+import www.gift_vouchers.marasel.utils.utils_adapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,8 +35,10 @@ public class MyOffers extends Fragment {
     MyOffersBinding binding;
     MyOffersViewModel myOffersViewModel;
     Datum[] data;
+    Product[] products;
     ArrayList<MyOfferList> myOfferLists = new ArrayList<>();
-
+    Order order;
+    Time time;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,9 +61,20 @@ public class MyOffers extends Fragment {
             @Override
             public void onChanged(MyOffersRoot myOffersRoot) {
                 data = myOffersRoot.getData();
+                Log.e("products", "" + data.length);
+
                 for (int index = 0; index < data.length; index++) {
-//                    myOfferLists.add(new MyOfferList("" + data[index].getId(), ));
+                    order = data[index].getOrder();
+                    products = order.getProducts();
+                    Log.e("products", "" + products.length);
+                    time = order.getTime();
+
+                    for (int i = 0; i < products.length; i++) {
+                        myOfferLists.add(new MyOfferList("" + data[index].getId(), products[i].getQuantity() + " " + products[i].getCat(),
+                                products[i].getIcon(), order.getAddress(), time.getName()));
+                    }
                 }
+                new utils_adapter().Adapter(binding.offerList, new MyOfferAdapter(getContext(), myOfferLists), getContext());
             }
         });
     }

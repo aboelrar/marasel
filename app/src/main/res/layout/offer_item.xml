@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_170sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp"
+    android:weightSum="1"
+    android:background="@drawable/offer_item_bg">
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="0dp"
+     android:layout_weight=".45"
+     android:weightSum="1"
+     android:orientation="horizontal">
+     <LinearLayout
+         android:layout_weight=".25"
+         android:layout_width="0dp"
+         android:gravity="center"
+         android:layout_height="match_parent">
+         <de.hdodenhof.circleimageview.CircleImageView
+             android:layout_width="@dimen/_55sdp"
+             android:layout_height="@dimen/_55sdp"
+             android:src="@color/s_color"
+             app:civ_border_color="@android:color/white"
+             app:civ_border_width="@dimen/_2sdp"/>
+
+     </LinearLayout>
+     <LinearLayout
+         android:layout_weight=".5"
+         android:layout_width="0dp"
+         android:paddingTop="@dimen/_3sdp"
+         android:paddingBottom="@dimen/_3sdp"
+         android:layout_height="match_parent"
+         android:orientation="vertical">
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Mohamed Ali Ahmed"
+             android:textSize="@dimen/_15sdp"
+             android:id="@+id/name"
+             android:textColor="@android:color/white"
+             android:textStyle="bold"/>
+
+     </LinearLayout>
+ </LinearLayout>
+</LinearLayout>

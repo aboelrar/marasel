@@ -4,4 +4,5 @@ import java.util.ArrayList;
 
 public interface Callback {
     public void callbackMethod();
+    public void setTotalPrice(String totalPrice);
 }

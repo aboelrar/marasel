@@ -1,7 +1,7 @@
 package www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model;//
 //  Delivery.java
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on January 14, 2021
+//  Created on January 19, 2021
 
 import org.json.*;
 import java.util.*;
@@ -20,12 +20,16 @@ public class Delivery{
 	private String carBackImage;
 	@SerializedName("car_front_image")
 	private String carFrontImage;
+	@SerializedName("carFormImage")
+	private String carFormImage;
 	@SerializedName("countOfRate")
 	private int countOfRate;
 	@SerializedName("id")
 	private int id;
 	@SerializedName("id_image")
 	private String idImage;
+	@SerializedName("image")
+	private String image;
 	@SerializedName("lat")
 	private String lat;
 	@SerializedName("license_image")
@@ -39,7 +43,7 @@ public class Delivery{
 	@SerializedName("rate")
 	private int rate;
 	@SerializedName("rates")
-	private Object[] rates;
+	private Rate[] rates;
 
 	public void setAvailableOrdersCount(int availableOrdersCount){
 		this.availableOrdersCount = availableOrdersCount;
@@ -71,6 +75,12 @@ public class Delivery{
 	public String getCarFrontImage(){
 		return this.carFrontImage;
 	}
+	public void setCarFormImage(String carFormImage){
+		this.carFormImage = carFormImage;
+	}
+	public String getCarFormImage(){
+		return this.carFormImage;
+	}
 	public void setCountOfRate(int countOfRate){
 		this.countOfRate = countOfRate;
 	}
@@ -88,6 +98,12 @@ public class Delivery{
 	}
 	public String getIdImage(){
 		return this.idImage;
+	}
+	public void setImage(String image){
+		this.image = image;
+	}
+	public String getImage(){
+		return this.image;
 	}
 	public void setLat(String lat){
 		this.lat = lat;
@@ -125,10 +141,10 @@ public class Delivery{
 	public int getRate(){
 		return this.rate;
 	}
-	public void setRates(Object[] rates){
+	public void setRates(Rate[] rates){
 		this.rates = rates;
 	}
-	public Object[] getRates(){
+	public Rate[] getRates(){
 		return this.rates;
 	}
 
@@ -143,7 +159,9 @@ public class Delivery{
 		bankType = jsonObject.optString("bank_type");
 		carBackImage = jsonObject.optString("car_back_image");
 		carFrontImage = jsonObject.optString("car_front_image");
+		carFormImage = jsonObject.optString("carFormImage");
 		idImage = jsonObject.optString("id_image");
+		image = jsonObject.optString("image");
 		lat = jsonObject.optString("lat");
 		licenseImage = jsonObject.optString("license_image");
 		lng = jsonObject.optString("lng");
@@ -153,7 +171,15 @@ public class Delivery{
 		id = jsonObject.optInt("id");
 		ordersCount = jsonObject.optInt("ordersCount");
 		rate = jsonObject.optInt("rate");
-//		rates = jsonObject.optObject[]("rates");
+		JSONArray ratesJsonArray = jsonObject.optJSONArray("rates");
+		if(ratesJsonArray != null){
+			ArrayList<Rate> ratesArrayList = new ArrayList<>();
+			for (int i = 0; i < ratesJsonArray.length(); i++) {
+				JSONObject ratesObject = ratesJsonArray.optJSONObject(i);
+				ratesArrayList.add(new Rate(ratesObject));
+			}
+			rates = (Rate[]) ratesArrayList.toArray();
+		}
 	}
 
 	/**
@@ -168,16 +194,24 @@ public class Delivery{
 			jsonObject.put("bank_type", bankType);
 			jsonObject.put("car_back_image", carBackImage);
 			jsonObject.put("car_front_image", carFrontImage);
+			jsonObject.put("carFormImage", carFormImage);
 			jsonObject.put("countOfRate", countOfRate);
 			jsonObject.put("id", id);
 			jsonObject.put("id_image", idImage);
+			jsonObject.put("image", image);
 			jsonObject.put("lat", lat);
 			jsonObject.put("license_image", licenseImage);
 			jsonObject.put("lng", lng);
 			jsonObject.put("name", name);
 			jsonObject.put("ordersCount", ordersCount);
 			jsonObject.put("rate", rate);
-			jsonObject.put("rates", rates);
+			if(rates != null && rates.length > 0){
+				JSONArray ratesJsonArray = new JSONArray();
+				for(Rate ratesElement : rates){
+					ratesJsonArray.put(ratesElement.toJsonObject());
+				}
+				jsonObject.put("rates", ratesJsonArray);
+			}
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

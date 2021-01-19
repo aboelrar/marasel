@@ -1,7 +1,7 @@
 package www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model;//
 //  Datum.java
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on January 14, 2021
+//  Created on January 19, 2021
 
 import org.json.*;
 import java.util.*;
@@ -16,6 +16,8 @@ public class Datum{
 	private int id;
 	@SerializedName("note")
 	private String note;
+	@SerializedName("order")
+	private Order order;
 	@SerializedName("price")
 	private String price;
 	@SerializedName("time")
@@ -40,6 +42,12 @@ public class Datum{
 	}
 	public String getNote(){
 		return this.note;
+	}
+	public void setOrder(Order order){
+		this.order = order;
+	}
+	public Order getOrder(){
+		return this.order;
 	}
 	public void setPrice(String price){
 		this.price = price;
@@ -73,6 +81,7 @@ public class Datum{
 		id = jsonObject.optInt("id");
 		time = jsonObject.optInt("time");
 		driver = new Driver(jsonObject.optJSONObject("driver"));
+		order = new Order(jsonObject.optJSONObject("order"));
 	}
 
 	/**
@@ -88,6 +97,7 @@ public class Datum{
 			jsonObject.put("time", time);
 			jsonObject.put("time_type", timeType);
 			jsonObject.put("driver", driver.toJsonObject());
+			jsonObject.put("order", order.toJsonObject());
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

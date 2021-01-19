@@ -17,6 +17,7 @@ import www.gift_vouchers.marasel.Drivers.UI.AvailableOrders.UI.AvailableOrders;
 import www.gift_vouchers.marasel.Drivers.UI.DeliveryPersonalInfo.Model.Datum;
 import www.gift_vouchers.marasel.Drivers.UI.DeliveryPersonalInfo.Model.Delivery;
 import www.gift_vouchers.marasel.Drivers.UI.DeliveryPersonalInfo.Model.DeliveryInfoRoot;
+import www.gift_vouchers.marasel.Drivers.UI.MyOffers.UI.MyOffers;
 import www.gift_vouchers.marasel.Drivers.UI.WorkAsStar.UI.WorkAsStarModelView;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.DeliveryPersonalInfoBinding;
@@ -83,6 +84,8 @@ public class DeliveryPersonalInfo extends Fragment implements CompoundButton.OnC
                 binding.rateCounts.setText("" + delivery.getCountOfRate()); //RATE COUNT
 
                 binding.totalAvailableOrders.setText("" + delivery.getAvailableOrdersCount()); //GET AVAILABLE ORDER COUNTS
+
+                new utils().Replace_Fragment(new MyOffers(),R.id.frag,getContext());
 
             }
         });

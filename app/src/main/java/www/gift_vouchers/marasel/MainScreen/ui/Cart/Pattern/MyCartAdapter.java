@@ -2,18 +2,15 @@ package www.gift_vouchers.marasel.MainScreen.ui.Cart.Pattern;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,8 +23,6 @@ import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.DeleteProductRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.MyCartList;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Ui.Callback;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Ui.CartModelView;
-import www.gift_vouchers.marasel.MainScreen.ui.Categories.model.CategoryList;
-import www.gift_vouchers.marasel.MainScreen.ui.Store.ui.Store;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.local_data.saved_data;
 import www.gift_vouchers.marasel.utils.utils;
@@ -60,7 +55,7 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyCartHold
         quantityNum = Integer.parseInt(myList.get(position).getQuantity());
         holder.title.setText(myList.get(position).getName());
         holder.price.setText(myList.get(position).getPrice());
-        holder.price.setText(myList.get(position).gettPrice());
+        holder.tPrice.setText(myList.get(position).gettPrice() + " " + context.getString(R.string.egp));
         holder.quantity.setText(myList.get(position).getQuantity());
         holder.quantityNum.setText(myList.get(position).getQuantity());
         Glide.with(context).load(myList.get(position).getImg()).into(holder.productImg);
@@ -76,6 +71,9 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyCartHold
                 //SET TOTAL PRICE
                 totalPrice = quantityNum * Integer.parseInt(myList.get(position).gettPrice()); //GET TOTAL PRICE
                 holder.tPrice.setText("" + totalPrice + " " + context.getString(R.string.egp)); //SET TOTAL PRICE
+
+                myList.get(position).settPrice("" + totalPrice); //SET TOTAL PRICE IN LIST
+                callback.setTotalPrice("" + setTotalPrice());  //SET TOTAL PRICE
             }
         });
 
@@ -89,10 +87,15 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyCartHold
                 } else {
                     quantityNum--;
                     holder.quantity.setText("" + quantityNum); //SET QUANTITY PRICE
+                    holder.quantityNum.setText("" + quantityNum); //SET QUANTITY PRICE
+
 
                     //SET TOTAL PRICE
                     totalPrice = quantityNum * Integer.parseInt(myList.get(position).gettPrice()); //GET TOTAL PRICE
                     holder.tPrice.setText("" + totalPrice + " " + context.getString(R.string.egp)); //SET TOTAL PRICE
+
+                    myList.get(position).settPrice("" + totalPrice); //SET TOTAL PRICE IN LIST
+                    callback.setTotalPrice("" + setTotalPrice());  //SET TOTAL PRICE
 
                 }
             }
@@ -175,8 +178,19 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyCartHold
                 if (myList.size() == 0) {
                     callback.callbackMethod();
                 }
+
+                callback.setTotalPrice("" + setTotalPrice());  //SET TOTAL PRICE
+
             }
         });
     }
 
+    //SET TOTAL PRICE
+    int setTotalPrice() {
+        int tPrice = 0;
+        for (int index = 0; index < myList.size(); index++) {
+            tPrice += Integer.parseInt(myList.get(index).gettPrice());
+        }
+        return tPrice;
+    }
 }

@@ -32,6 +32,7 @@ import java.io.InputStream;
 
 import io.grpc.Compressor;
 import www.gift_vouchers.marasel.Drivers.UI.DriverInfo.Model.DriverInfoRoot;
+import www.gift_vouchers.marasel.Drivers.UI.MyOffers.UI.MyOffers;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.DriverInfoBinding;
 import www.gift_vouchers.marasel.local_data.saved_data;
@@ -146,6 +147,7 @@ public class DriverInfo extends Fragment implements View.OnClickListener, Compou
 
                 DriverInfoAccept driverInfoAccept = new DriverInfoAccept();
                 driverInfoAccept.dialog(getContext(), R.layout.driver_info_accept, .90);
+
             }
         });
     }

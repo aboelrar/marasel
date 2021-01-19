@@ -58,13 +58,14 @@ public class Cart extends Fragment implements View.OnClickListener, Callback {
 
         callback = this;
 
+        getData();
+
         return view;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        getData();
     }
 
     void getData() {
@@ -125,5 +126,10 @@ public class Cart extends Fragment implements View.OnClickListener, Callback {
 
         binding.completeOrderNow.setClickable(false);
 
+    }
+
+    @Override
+    public void setTotalPrice(String totalPrice) {
+        binding.lastPrice.setText(totalPrice + " " + getString(R.string.egp));
     }
 }
