@@ -24,6 +24,7 @@ import www.gift_vouchers.marasel.MainScreen.ui.Categories.model.StoreByService;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.DeliveryPlace;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.MakeOrder;
 import www.gift_vouchers.marasel.MainScreen.ui.MyOrder.Model.MyOrderRoot;
+import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.MyOrdersRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Product.Model.ProductsByCat;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.AddToCartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.SingleProduct;
@@ -112,7 +113,8 @@ public interface NetworkInterface {
             @Query("payment_method") String payment_method,
             @Query("suggest_shipping_price") String suggest_shipping_price,
             @Query("address") String address,
-            @Query("note") String note
+            @Query("note") String note,
+            @Query("type") String type
     );
 
     @POST("Order/rate_store/{id}")
@@ -189,5 +191,19 @@ public interface NetworkInterface {
     Call<DeleteProductRoot> deleteCart(
             @Header("Authorization") String authorization,
             @Path("id") String id
+    );
+
+    @GET("Order/singleOrder/{id}")
+    Call<MyOrdersRoot> singleOrder(
+            @Header("Authorization") String authorization,
+            @Path("id") String id
+    );
+
+    @POST("Order/acceptedOrRejectedOffer")
+    Call<MyOrdersRoot> acceptedOrRejectedOffer(
+            @Header("Authorization") String authorization,
+            @Query("order_id") String order_id,
+            @Query("offer_id") String offer_id,
+            @Query("status") String status
     );
 }

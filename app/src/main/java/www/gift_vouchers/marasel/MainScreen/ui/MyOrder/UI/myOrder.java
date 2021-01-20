@@ -78,7 +78,7 @@ public class myOrder extends Fragment {
                             time.getName(), "" + datum[i].getStatus(), store.getIcon()));
                 }
 
-                new utils_adapter().Adapter(binding.orderList,new MyOrderAdapter(getContext(),MyOrderList),getContext());
+                new utils_adapter().Adapter(binding.orderList, new MyOrderAdapter(getContext(), MyOrderList), getContext());
             }
         });
     }

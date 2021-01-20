@@ -31,10 +31,10 @@ public class MakeOrderModelView {
     }
 
     void getDataMakeOrder(String token, String lat, String lng, String timeId, String paymentMethod,
-                          String suggestShippingPrice, String address, String note) {
+                          String suggestShippingPrice, String address, String note, String type) {
         www.gift_vouchers.marasel.NetworkLayer.NetworkInterface NetworkInterface = APIClient.getClient().create(www.gift_vouchers.marasel.NetworkLayer.NetworkInterface.class);
         Call<MakeOrder> makeOrderCall = NetworkInterface.makeOrder(token, lat, lng, timeId, paymentMethod,
-                suggestShippingPrice, address, note);
+                suggestShippingPrice, address, note, type);
 
         makeOrderCall.enqueue(new Callback<MakeOrder>() {
             @Override

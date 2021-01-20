@@ -41,7 +41,139 @@
              android:id="@+id/name"
              android:textColor="@android:color/white"
              android:textStyle="bold"/>
+         <RatingBar
+             android:id="@+id/rating"
+             style="?android:attr/ratingBarStyleSmall"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center|left"
+             android:focusable="false"
+             android:isIndicator="false"
+             android:clickable="false"
+             android:numStars="5"
+             android:layout_marginTop="@dimen/_5sdp"
+             android:progressBackgroundTint="@android:color/darker_gray"
+             android:progressTint="#FCCA00"
+             android:rating="5"
+             android:scaleX="1.5"
+             android:scaleY="1.5"
+             android:secondaryProgressTint="#ffffff"
+             android:stepSize="1.2" />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="23 Rate"
+             android:id="@+id/rate"
+             android:textSize="@dimen/_13sdp"
+             android:layout_marginTop="@dimen/_5sdp"
+             android:textColor="@android:color/white"
+             android:gravity="left|center"/>
 
      </LinearLayout>
+     <TextView
+         android:text="From Two Hours"
+         android:layout_weight=".26"
+         android:layout_width="0dp"
+         android:textSize="@dimen/_12sdp"
+         android:textColor="@android:color/white"
+         android:gravity="center|top"
+         android:layout_height="match_parent"/>
  </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".3"
+        android:orientation="horizontal"
+        android:weightSum="1">
+        <LinearLayout
+            android:layout_weight=".5"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/price_key"
+                android:drawablePadding="@dimen/_3sdp"
+                android:drawableTint="@android:color/white"
+                android:drawableLeft="@drawable/dollar"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_13sdp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:drawablePadding="@dimen/_3sdp"
+                android:drawableTint="@android:color/white"
+                android:drawableRight="@drawable/dollar"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_13sdp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight=".5"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_key"
+                android:drawablePadding="@dimen/_3sdp"
+                android:drawableTint="@android:color/white"
+                android:drawableLeft="@drawable/time_offer"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_13sdp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 Hours"
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:drawablePadding="@dimen/_3sdp"
+                android:drawableTint="@android:color/white"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_15sdp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".3"
+        android:orientation="horizontal"
+        android:weightSum="1">
+         <LinearLayout
+             android:layout_weight=".5"
+             android:layout_width="0dp"
+             android:gravity="center"
+             android:layout_height="match_parent">
+             <Button
+                 android:layout_width="@dimen/_70sdp"
+                 android:layout_height="@dimen/_30sdp"
+                 android:layout_gravity="center"
+                 android:background="@drawable/t_button_bg"
+                 android:text="@string/accept"
+                 android:id="@+id/offer_button"
+                 android:textSize="@dimen/_10sdp"
+                 android:textAllCaps="false"
+                 android:textColor="@android:color/white"/>
+         </LinearLayout>
+        <LinearLayout
+            android:layout_weight=".5"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="رفض"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_15sdp"/>
+
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

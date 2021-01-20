@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="ltr"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_29sdp"
+                    android:layout_height="@dimen/_29sdp"
+                    android:layout_marginLeft="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:src="@drawable/cancel_order_icon" />
+
+                <ImageView
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginLeft="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_80sdp"
+                    android:src="@drawable/cancel_order_icon" />
+
+                <ImageView
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_90sdp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/cancel_order_icon" />
+
+                <ImageView
+                    android:layout_width="@dimen/_45sdp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginRight="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/cancel_order_icon" />
+
+                <ImageView
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginRight="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_95sdp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/cancel_order_icon" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@android:color/black"
+                android:padding="@dimen/_10sdp"
+                android:gravity="center"
+                android:text="@string/dear_customer_we_would_like_to_know_the_reason_for_canceling_your_order_in_order_to_work_on_solving_your_problem" />
+
+            <RadioGroup
+                android:paddingRight="@dimen/_20sdp"
+                android:paddingLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:text="@string/there_is_no_delivery_person"
+                    android:backgroundTint="@color/f_color"
+                    android:id="@+id/fButton"
+                    android:drawablePadding="@dimen/_10sdp" />
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:text="@string/i_don_t_need_this_order"
+                    android:backgroundTint="@color/f_color"
+                    android:id="@+id/sButton"
+                    android:drawablePadding="@dimen/_10sdp" />
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:text="@string/delivery_price_is_very_expensive"
+                    android:id="@+id/tButton"
+                    android:backgroundTint="@color/f_color"
+                    android:drawablePadding="@dimen/_10sdp" />
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:backgroundTint="@color/f_color"
+                    android:id="@+id/fthButton"
+                    android:text="@string/another_reason_you_need_to_tell_about_it"
+                    android:drawablePadding="@dimen/_10sdp" />
+            </RadioGroup>
+
+            <Button
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_gravity="center"
+                android:background="@drawable/t_button_bg"
+                android:text="@string/send"
+                android:id="@+id/send"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:textSize="@dimen/_15sdp"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

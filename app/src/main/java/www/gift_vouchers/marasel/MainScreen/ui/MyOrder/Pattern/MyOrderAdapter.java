@@ -1,14 +1,18 @@
 package www.gift_vouchers.marasel.MainScreen.ui.MyOrder.Pattern;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -18,6 +22,8 @@ import java.util.ArrayList;
 import es.dmoral.toasty.Toasty;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.MyCartList;
 import www.gift_vouchers.marasel.MainScreen.ui.MyOrder.Model.MyOrderList;
+import www.gift_vouchers.marasel.MainScreen.ui.Offers.UI.Offers;
+import www.gift_vouchers.marasel.MainScreen.ui.Store.ui.Store;
 import www.gift_vouchers.marasel.R;
 
 public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyOrderHolder> {
@@ -56,6 +62,13 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyOrderH
             holder.offer_button.setText(context.getString(R.string.cancelled));
         }
 
+        //SET ON CLICK LISTENER
+        holder.item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(myList.get(position).getId());
+            }
+        });
     }
 
     @Override
@@ -67,6 +80,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyOrderH
         ImageView img;
         TextView title, type, code, time;
         Button offer_button;
+        LinearLayout item;
 
         public MyOrderHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,8 +90,17 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyOrderH
             code = itemView.findViewById(R.id.code);
             time = itemView.findViewById(R.id.time);
             offer_button = itemView.findViewById(R.id.offer_button);
+            item = itemView.findViewById(R.id.item);
         }
     }
 
+    void replaceFragment(String id) {
+        Fragment offers = new Offers();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        offers.setArguments(bundle);
 
+        ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frag, offers).addToBackStack(null).commit();
+    }
 }

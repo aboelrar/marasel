@@ -111,6 +111,15 @@
     <string name="delete_item">Delete Item</string>
     <string name="are_you_sure_delete">Are you sure you want to delete this entry?</string>
     <string name="no_data">No Data</string>
+    <string name="price_key">Price:</string>
+    <string name="time_key">Time:</string>
+    <string name="accept">Accept</string>
+    <string name="dear_customer_we_would_like_to_know_the_reason_for_canceling_your_order_in_order_to_work_on_solving_your_problem">Dear Customer, We would like to know the reason for canceling your order in order to work on solving your problem</string>
+    <string name="there_is_no_delivery_person">There is no delivery person</string>
+    <string name="send">Send</string>
+    <string name="i_don_t_need_this_order">I don\'t need this order</string>
+    <string name="delivery_price_is_very_expensive">Delivery price is very expensive</string>
+    <string name="another_reason_you_need_to_tell_about_it">Another reason you need to tell about it</string>
 
 
 </resources>

@@ -114,8 +114,8 @@ public class Cart extends Fragment implements View.OnClickListener, Callback {
             send_data.setStoreLng(getContext(), store.getLng()); //Lng
             send_data.setStoreId(getContext(), "" + store.getId()); //ID
 
-
-            new utils().Replace_Fragment(new makeOrder(), R.id.frag, getContext());
+            //REPLACE FRAGMENT
+            replaceFragment(store.getCat());
         }
     }
 
@@ -131,5 +131,16 @@ public class Cart extends Fragment implements View.OnClickListener, Callback {
     @Override
     public void setTotalPrice(String totalPrice) {
         binding.lastPrice.setText(totalPrice + " " + getString(R.string.egp));
+    }
+
+    void replaceFragment(String type) {
+        Fragment makeOrder = new makeOrder();
+        Bundle bundle = new Bundle();
+        bundle.putString("type", type);
+        //set Fragmentclass Arguments
+        makeOrder.setArguments(bundle);
+
+        ((AppCompatActivity) getContext()).getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frag, makeOrder).addToBackStack(null).commit();
     }
 }

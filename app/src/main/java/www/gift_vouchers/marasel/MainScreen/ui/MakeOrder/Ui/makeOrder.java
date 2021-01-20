@@ -148,11 +148,20 @@ public class makeOrder extends Fragment implements OnMapReadyCallback, View.OnCl
 
     //SET  DATA
     void getData() {
+        String type;
+
+        //CHECK STORE TYPE
+        if (getArguments().getString("type").equals("restaurants")) {
+            type = "1";
+        } else {
+            type = "2";
+        }
+
         new utils().set_dialog(getContext()); //OPEN PROGRESS DIALOG
 
         makeOrderModelView = new MakeOrderModelView();
         makeOrderModelView.getDataMakeOrder("Bearer " + new saved_data().get_token(getContext()), locationLat, locationLng,
-                timeId, "1", "100", binding.address.getText().toString(), "");
+                timeId, "1", "100", binding.address.getText().toString(), "", type);
 
         //OBSERVE DATA
         makeOrderModelView.MutableLiveDataMakeOrder.observe(this, new Observer<MakeOrder>() {
