@@ -42,6 +42,13 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersHold
         holder.stars.setText(myList.get(position).getStar());
         holder.desc.setText(myList.get(position).getDesc());
         Glide.with(context).load(myList.get(position).getProductImg()).into(holder.img);
+
+        holder.acceptOffer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

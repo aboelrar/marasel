@@ -109,6 +109,16 @@
                     android:id="@+id/fthButton"
                     android:text="@string/another_reason_you_need_to_tell_about_it"
                     android:drawablePadding="@dimen/_10sdp" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_80sdp"
+                    android:background="@drawable/another_reason_bg"
+                    android:gravity="top"
+                    android:id="@+id/another_reason_tell_us"
+                    android:visibility="gone"
+                    android:padding="@dimen/_5sdp"
+                    android:hint="@string/another_reason_you_need_to_tell_about_it"
+                    android:layout_margin="@dimen/_8sdp"/>
             </RadioGroup>
 
             <Button

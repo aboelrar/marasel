@@ -24,6 +24,7 @@ import www.gift_vouchers.marasel.MainScreen.ui.Categories.model.StoreByService;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.DeliveryPlace;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.MakeOrder;
 import www.gift_vouchers.marasel.MainScreen.ui.MyOrder.Model.MyOrderRoot;
+import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.CancelOrderRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.MyOrdersRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Product.Model.ProductsByCat;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.AddToCartRoot;
@@ -205,5 +206,13 @@ public interface NetworkInterface {
             @Query("order_id") String order_id,
             @Query("offer_id") String offer_id,
             @Query("status") String status
+    );
+
+    @POST("Order/cancelOrder/{id}")
+    Call<CancelOrderRoot> cancelOrder(
+            @Header("Authorization") String authorization,
+            @Path("id") String id,
+            @Query("type") String type,
+            @Query("rejectedReason") String rejectedReason
     );
 }

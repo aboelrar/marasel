@@ -119,7 +119,8 @@
     <string name="send">Send</string>
     <string name="i_don_t_need_this_order">I don\'t need this order</string>
     <string name="delivery_price_is_very_expensive">Delivery price is very expensive</string>
-    <string name="another_reason_you_need_to_tell_about_it">Another reason you need to tell about it</string>
+    <string name="another_reason_you_need_to_tell_about_it">Another reason you need to tell us</string>
+    <string name="pls_insert_cancel_reason">Please Insert Cancel Reason</string>
 
 
 </resources>

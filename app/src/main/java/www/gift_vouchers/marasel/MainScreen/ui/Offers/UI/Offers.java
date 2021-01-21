@@ -38,6 +38,8 @@ public class Offers extends Fragment implements View.OnClickListener, Callback {
     Delivery delivery;
     Callback callback;
     String type;
+    OffersModelView offersModelView;
+    String orderId;
 
     public Offers() {
         // Required empty public constructor
@@ -52,7 +54,11 @@ public class Offers extends Fragment implements View.OnClickListener, Callback {
                 inflater, R.layout.offers, container, false);
         View view = binding.getRoot();
 
+        orderId = getArguments().getString("id");
+
         callback = this;
+
+        offersModelView = new OffersModelView();
 
         getData();
 
@@ -62,8 +68,7 @@ public class Offers extends Fragment implements View.OnClickListener, Callback {
     }
 
     void getData() {
-        OffersModelView offersModelView = new OffersModelView();
-        offersModelView.getData("Bearer " + new saved_data().get_token(getContext()), getArguments().getString("id"));
+        offersModelView.getData("Bearer " + new saved_data().get_token(getContext()), orderId);
 
         offersModelView.MutableLiveOffers.observe(this, new Observer<MyOrdersRoot>() {
             @Override
@@ -88,7 +93,7 @@ public class Offers extends Fragment implements View.OnClickListener, Callback {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.cancel_order) {
-            new CancelDialog().dialog(getContext(), R.layout.cancel_order, .90, callback);
+            new CancelDialog().dialog(getContext(), R.layout.cancel_order, .90, callback, offersModelView, orderId);
         }
     }
 

@@ -7,15 +7,17 @@ import androidx.lifecycle.MutableLiveData;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.CancelOrderRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.MyOrdersRoot;
 import www.gift_vouchers.marasel.NetworkLayer.APIClient;
 
 public class OffersModelView {
     MutableLiveData<MyOrdersRoot> MutableLiveOffers = new MutableLiveData<>();
+    MutableLiveData<CancelOrderRoot> MutableLiveCancelOrder = new MutableLiveData<>();
 
     void getData(String token, String id) {
         www.gift_vouchers.marasel.NetworkLayer.NetworkInterface NetworkInterface = APIClient.getClient().create(www.gift_vouchers.marasel.NetworkLayer.NetworkInterface.class);
-        Call<MyOrdersRoot> MyOrdersRoot = NetworkInterface.singleOrder(token,id);
+        Call<MyOrdersRoot> MyOrdersRoot = NetworkInterface.singleOrder(token, id);
 
         MyOrdersRoot.enqueue(new Callback<MyOrdersRoot>() {
             @Override
@@ -25,13 +27,26 @@ public class OffersModelView {
 
             @Override
             public void onFailure(Call<MyOrdersRoot> call, Throwable t) {
-                Log.e("eeee",""+ t.getLocalizedMessage());
+                Log.e("eeee", "" + t.getLocalizedMessage());
             }
         });
     }
 
-    void acceptOrRejectOrder()
-    {
+    void cancelOrder(String token, String id, String type, String reason) {
+        www.gift_vouchers.marasel.NetworkLayer.NetworkInterface NetworkInterface = APIClient.getClient().create(www.gift_vouchers.marasel.NetworkLayer.NetworkInterface.class);
+        Call<CancelOrderRoot> CancelOrderRoot = NetworkInterface.cancelOrder(token, id, type, reason);
 
+        CancelOrderRoot.enqueue(new Callback<CancelOrderRoot>() {
+            @Override
+            public void onResponse(Call<CancelOrderRoot> call, Response<CancelOrderRoot> response) {
+                Log.e("toto_kapoto", "" + response.code());
+                MutableLiveCancelOrder.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<CancelOrderRoot> call, Throwable t) {
+                Log.e("eeee", "" + t.getLocalizedMessage());
+            }
+        });
     }
 }
