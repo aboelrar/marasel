@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:background="@drawable/text"
-    android:gravity="center"
-    android:layout_marginBottom="@dimen/_10sdp"
-    android:layout_marginRight="@dimen/_10sdp"
-    android:id="@+id/item"
-    android:layout_height="@dimen/_100sdp">
-    <ImageView
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:src="@drawable/coffe"
-        android:padding="@dimen/_15sdp"
-        android:tint="@android:color/white"
-        android:id="@+id/icon"
-        android:background="@drawable/marasel_service_img_bg"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:id="@+id/title"
-        android:layout_gravity="center"
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shimmer_view_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/text"
         android:gravity="center"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:textColor="@drawable/text_bg_co"
-        android:textSize="@dimen/_13sdp"
-        android:text="resturants"/>
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/marasel_service_img_bg"
+            android:padding="@dimen/_15sdp"
+            android:src="@drawable/coffe"
+            android:tint="@android:color/white" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="resturants"
+            android:textColor="@drawable/text_bg_co"
+            android:textSize="@dimen/_13sdp" />
 
 
-
-</LinearLayout>
+    </LinearLayout>
+</com.facebook.shimmer.ShimmerFrameLayout>

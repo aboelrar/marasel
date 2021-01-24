@@ -102,12 +102,13 @@
                     android:textColor="@color/f_color" />
 
 
-                <androidx.recyclerview.widget.RecyclerView
+                <com.cooltechworks.views.shimmer.ShimmerRecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_15sdp"
+                    app:shimmer_demo_layout_manager_type="grid"
                     android:id="@+id/marasel_service_list" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
