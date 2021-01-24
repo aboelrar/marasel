@@ -54,15 +54,13 @@ public class home extends Fragment implements View.OnClickListener {
                 inflater, R.layout.home, container, false);
         View view = binding.getRoot();
 
+        getData();
+
+        binding.driver.setOnClickListener(this);
+
         return view;
     }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        getData();
-        binding.driver.setOnClickListener(this);
-    }
+    
 
     void getData()
     {

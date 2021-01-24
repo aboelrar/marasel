@@ -42,6 +42,13 @@ public class saved_data {
         return picture;
     }
 
+  //GET GENDER
+    public String get_gender(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("personal_info", MODE_PRIVATE);
+        String gender = sharedPreferences.getString("gender", "0");
+        return gender;
+    }
+
     //GET PHONE
     public String get_token(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("personal_info", MODE_PRIVATE);

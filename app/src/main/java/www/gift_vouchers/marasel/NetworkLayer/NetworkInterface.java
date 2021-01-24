@@ -24,8 +24,10 @@ import www.gift_vouchers.marasel.MainScreen.ui.Categories.model.StoreByService;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.DeliveryPlace;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.MakeOrder;
 import www.gift_vouchers.marasel.MainScreen.ui.MyOrder.Model.MyOrderRoot;
+import www.gift_vouchers.marasel.MainScreen.ui.Offers.AcceptOrRejectModel.AcceptedOrRejectedOfferRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.CancelOrderRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.MyOrdersRoot;
+import www.gift_vouchers.marasel.MainScreen.ui.PersonalInformation.Model.editProfileRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Product.Model.ProductsByCat;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.AddToCartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.SingleProduct;
@@ -201,7 +203,7 @@ public interface NetworkInterface {
     );
 
     @POST("Order/acceptedOrRejectedOffer")
-    Call<MyOrdersRoot> acceptedOrRejectedOffer(
+    Call<AcceptedOrRejectedOfferRoot> acceptedOrRejectedOffer(
             @Header("Authorization") String authorization,
             @Query("order_id") String order_id,
             @Query("offer_id") String offer_id,
@@ -214,5 +216,18 @@ public interface NetworkInterface {
             @Path("id") String id,
             @Query("type") String type,
             @Query("rejectedReason") String rejectedReason
+    );
+
+    @Multipart
+    @Headers({
+            "X-Requested-With: XMLHttpRequest"})
+    @POST("Auth_private/edit_profile")
+    Call<editProfileRoot> editProfile(
+            @Header("Authorization") String authorization,
+            @Query("name") String name,
+            @Query("phone") String phone,
+            @Query("email") String email,
+            @Part MultipartBody.Part image,
+            @Query("gender") String gender
     );
 }

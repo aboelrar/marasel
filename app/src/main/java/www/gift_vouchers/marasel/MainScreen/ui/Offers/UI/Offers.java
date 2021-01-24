@@ -13,16 +13,20 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import es.dmoral.toasty.Toasty;
+import www.gift_vouchers.marasel.MainScreen.ui.Offers.AcceptOrRejectModel.AcceptedOrRejectedOfferRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Datum;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Delivery;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Driver;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.MyOrdersRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Offer;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.OfferList;
+import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Order;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Pattern.OffersAdapter;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.OffersBinding;
 import www.gift_vouchers.marasel.local_data.saved_data;
+import www.gift_vouchers.marasel.utils.utils;
 import www.gift_vouchers.marasel.utils.utils_adapter;
 
 /**
@@ -40,6 +44,7 @@ public class Offers extends Fragment implements View.OnClickListener, Callback {
     String type;
     OffersModelView offersModelView;
     String orderId;
+    Order order;
 
     public Offers() {
         // Required empty public constructor
@@ -75,6 +80,7 @@ public class Offers extends Fragment implements View.OnClickListener, Callback {
             public void onChanged(MyOrdersRoot myOrdersRoot) {
                 datum = myOrdersRoot.getData();
                 offers = datum.getOffers();
+                order = datum.getOrder();
 
                 for (int index = 0; index < offers.length; index++) {
                     driver = offers[index].getDriver();
@@ -84,8 +90,18 @@ public class Offers extends Fragment implements View.OnClickListener, Callback {
                     ));
                 }
 
-                new utils_adapter().Adapter(binding.offerList, new OffersAdapter(getContext(), offerList), getContext());
+                new utils_adapter().Adapter(binding.offerList, new OffersAdapter(getContext(), offerList, offersModelView,
+                        "" + order.getId()), getContext());
 
+            }
+        });
+
+        //OBSERVE ACCEPT OR REJECT OFFER
+        offersModelView.MutableLiveAcceptOrRejectOrder.observe(this, new Observer<AcceptedOrRejectedOfferRoot>() {
+            @Override
+            public void onChanged(AcceptedOrRejectedOfferRoot acceptedOrRejectedOfferRoot) {
+                new utils().dismiss_dialog(getContext());
+                Toasty.success(getContext(), acceptedOrRejectedOfferRoot.getMessage(), Toasty.LENGTH_LONG).show();
             }
         });
     }

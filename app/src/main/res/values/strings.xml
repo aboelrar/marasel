@@ -121,6 +121,17 @@
     <string name="delivery_price_is_very_expensive">Delivery price is very expensive</string>
     <string name="another_reason_you_need_to_tell_about_it">Another reason you need to tell us</string>
     <string name="pls_insert_cancel_reason">Please Insert Cancel Reason</string>
+    <string name="profile">Profile</string>
+    <string name="notifcations">Notifcations</string>
+    <string name="requests">Requests</string>
+    <string name="stores">Stores</string>
+    <string name="username">Username</string>
+    <string name="change_password">Change Password</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="gender">Gender</string>
+    <string name="settings">Settings</string>
+    <string name="personal_information_settings">Personal Information Settings</string>
 
 
 </resources>

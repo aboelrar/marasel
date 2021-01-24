@@ -15,15 +15,15 @@ public class UserInformation {
     /**
      * ADD DATA TO LOCAL
      */
-   public static void addLocalData(Datum datum, Context context)
-    {
+    public static void addLocalData(Datum datum, Context context) {
         //ADD USER DATA IN ARRAY LIST
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(datum.getName());
         arrayList.add(datum.getEmail());
         arrayList.add(datum.getPhone());
         arrayList.add(datum.getToken());
-        arrayList.add(""+ datum.getSocial());
+        arrayList.add("" + datum.getSocial());
+        arrayList.add("" + datum.getGender());
 
 
         Observable.fromArray(arrayList).
@@ -37,6 +37,7 @@ public class UserInformation {
                 send_data.send_phone(context, arrayList.get(2)); //ADD PHONE
                 send_data.send_token(context, arrayList.get(3)); //ADD TOKEN
                 send_data.send_type(context, arrayList.get(4)); //ADD TYPE
+                send_data.set_user_gender(context, arrayList.get(5)); //ADD GENDER
 
             }
         });

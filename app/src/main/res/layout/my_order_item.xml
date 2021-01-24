@@ -94,7 +94,7 @@
             android:background="@drawable/t_button_bg"
             android:text="Wait Offer"
             android:id="@+id/offer_button"
-            android:textSize="@dimen/_10sdp"
+            android:textSize="@dimen/_9sdp"
             android:textAllCaps="false"
             android:textColor="@android:color/white"/>
     </LinearLayout>

@@ -3,6 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:background="@drawable/text"
     android:gravity="center"
+    android:layout_marginBottom="@dimen/_10sdp"
     android:layout_marginRight="@dimen/_10sdp"
     android:id="@+id/item"
     android:layout_height="@dimen/_100sdp">
@@ -17,10 +18,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:id="@+id/title"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:textColor="@drawable/text_bg_co"
-        android:textSize="@dimen/_15sdp"
+        android:textSize="@dimen/_13sdp"
         android:text="resturants"/>
 
 
