@@ -50,14 +50,11 @@ public class myOrder extends Fragment {
                 inflater, R.layout.my_order, container, false);
         View view = binding.getRoot();
 
+        getData();
+
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        getData();
-    }
 
     void getData() {
         myOrderModelView = new MyOrderModelView();

@@ -85,12 +85,22 @@
                     android:paddingLeft="@dimen/_15sdp"
                     android:textColor="@color/f_color" />
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_215sdp">
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_190sdp"
                     android:paddingLeft="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_15sdp"
                     android:id="@+id/nearest_store_list" />
+                    <ProgressBar
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:id="@+id/progress_circular"
+                        android:layout_centerInParent="true"/>
+                </RelativeLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -109,6 +119,7 @@
                     android:layout_marginRight="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_15sdp"
                     app:shimmer_demo_layout_manager_type="grid"
+                    app:shimmer_demo_grid_child_count="3"
                     android:id="@+id/marasel_service_list" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

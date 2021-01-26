@@ -180,10 +180,16 @@
             android:layout_marginBottom="@dimen/_270sdp"
             android:layout_height="@dimen/_120sdp">
 
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/shimmer_view_container">
             <androidx.viewpager.widget.ViewPager
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#d3d3d3"
                 android:id="@+id/view_pager" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
         </androidx.cardview.widget.CardView>
 

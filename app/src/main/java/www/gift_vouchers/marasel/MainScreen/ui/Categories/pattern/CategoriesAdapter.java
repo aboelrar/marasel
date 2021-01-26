@@ -1,7 +1,9 @@
 package www.gift_vouchers.marasel.MainScreen.ui.Categories.pattern;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +12,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 
@@ -41,11 +49,28 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
 
     @Override
     public void onBindViewHolder(@NonNull CategoriesHolder holder, int position) {
+        Glide.with(context)
+                .load(myList.get(position).getImg()).placeholder(R.drawable.marasel_service_bg)
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        holder.container.stopShimmerAnimation();
+                        return false;
+                    }
+                })
+                .into(holder.img);
+
      holder.title.setText(myList.get(position).getTitle());
      holder.type.setText(myList.get(position).getType());
      holder.distance.setText(myList.get(position).getDistance());
      holder.rate.setText(myList.get(position).getRate());
-     Glide.with(context).load(myList.get(position).getImg()).into(holder.img);
+
+
 
      holder.item.setOnClickListener(new View.OnClickListener() {
          @Override
@@ -64,6 +89,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
         ImageView img;
         TextView title, type, distance, rate;
         LinearLayout item;
+        ShimmerFrameLayout container;
         public CategoriesHolder(@NonNull View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.img);
@@ -72,6 +98,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
             distance = itemView.findViewById(R.id.distance);
             rate = itemView.findViewById(R.id.rate);
             item = itemView.findViewById(R.id.item);
+            container = itemView.findViewById(R.id.shimmer_view_container);
+            container.startShimmerAnimation();
         }
     }
 

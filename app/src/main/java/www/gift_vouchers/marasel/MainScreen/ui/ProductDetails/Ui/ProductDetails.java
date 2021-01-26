@@ -52,6 +52,8 @@ public class ProductDetails extends Fragment {
                 inflater, R.layout.product_details, container, false);
         view = binding.getRoot();
 
+        binding.shimmerViewContainer.startShimmerAnimation();
+
         return view;
     }
 
@@ -74,6 +76,8 @@ public class ProductDetails extends Fragment {
     }
 
     void setData(SingleProduct SingleProduct) {
+        binding.shimmerViewContainer.stopShimmerAnimation();
+
         datum = SingleProduct.getData();
         image = datum.getImages();
 

@@ -32,13 +32,13 @@ import www.gift_vouchers.marasel.utils.utils_adapter;
  * A simple {@link Fragment} subclass.
  */
 public class home extends Fragment implements View.OnClickListener {
- HomeBinding binding;
- HomeModeView homeModeView = new HomeModeView();
- Datum datum;
- Store[] stores;
- ArrayList<NearestStoresList> NearestStoresList = new ArrayList<>();
- Cat[] cat;
- ArrayList<MaraselServiceList> MaraselServiceList = new ArrayList<>();
+    HomeBinding binding;
+    HomeModeView homeModeView = new HomeModeView();
+    Datum datum;
+    Store[] stores;
+    ArrayList<NearestStoresList> NearestStoresList = new ArrayList<>();
+    Cat[] cat;
+    ArrayList<MaraselServiceList> MaraselServiceList = new ArrayList<>();
 
 
     public home() {
@@ -60,38 +60,37 @@ public class home extends Fragment implements View.OnClickListener {
 
         return view;
     }
-    
 
-    void getData()
-    {
+
+    void getData() {
         homeModeView.getData(new saved_data().get_token(getContext()));
 
         homeModeView.MutableLiveData.observe(this, new Observer<homeRoot>() {
             @Override
             public void onChanged(homeRoot homeRoot) {
+                binding.progressCircular.setVisibility(View.GONE);
+
                 datum = homeRoot.getData(); // Data
                 stores = datum.getStores(); // stores
                 cat = datum.getCats(); // Cats
 
                 //add Data TO store
-                for(int i = 0; i<stores.length;i++)
-                {
-                    NearestStoresList.add(new NearestStoresList(""+stores[i].getId(), stores[i].getIcon(),
-                            stores[i].getName(),stores[i].getCat(),stores[i].getDistance(),
-                            ""+stores[i].getRate(),""+stores[i].getFreeDelivery()));
+                for (int i = 0; i < stores.length; i++) {
+                    NearestStoresList.add(new NearestStoresList("" + stores[i].getId(), stores[i].getIcon(),
+                            stores[i].getName(), stores[i].getCat(), stores[i].getDistance(),
+                            "" + stores[i].getRate(), "" + stores[i].getFreeDelivery()));
                 }
 
-                new utils_adapter().Horozintal(binding.nearestStoreList,new NearestStoresAdapter(getContext(),NearestStoresList),getContext());
+                new utils_adapter().Horozintal(binding.nearestStoreList, new NearestStoresAdapter(getContext(), NearestStoresList), getContext());
 
                 //add Data TO Cats
-                for(int i = 0; i<cat.length;i++)
-                {
-                    MaraselServiceList.add(new MaraselServiceList(""+cat[i].getId(),
-                            cat[i].getIcon(),cat[i].getName()));
+                for (int i = 0; i < cat.length; i++) {
+                    MaraselServiceList.add(new MaraselServiceList("" + cat[i].getId(),
+                            cat[i].getIcon(), cat[i].getName()));
                 }
 
                 new utils_adapter().griddAdapters(binding.maraselServiceList,
-                        new MaraselServiceAdapter(getContext(),MaraselServiceList),getContext(),3);
+                        new MaraselServiceAdapter(getContext(), MaraselServiceList), getContext(), 3);
 
             }
         });
@@ -99,9 +98,8 @@ public class home extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.driver)
-        {
-            new utils().Replace_Fragment(new WorkAsStar(),R.id.frag,getContext());
+        if (v.getId() == R.id.driver) {
+            new utils().Replace_Fragment(new WorkAsStar(), R.id.frag, getContext());
         }
     }
 }

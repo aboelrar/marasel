@@ -132,7 +132,7 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_20sdp" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.cooltechworks.views.shimmer.ShimmerRecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/productList"

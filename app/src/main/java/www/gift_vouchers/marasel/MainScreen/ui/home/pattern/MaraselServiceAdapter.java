@@ -44,21 +44,20 @@ public class MaraselServiceAdapter extends RecyclerView.Adapter<MaraselServiceAd
     @NonNull
     @Override
     public MaraselServiceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.marasel_service_item,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.marasel_service_item, parent, false);
         MaraselServiceHolder maraselServiceHolder = new MaraselServiceHolder(view);
         return maraselServiceHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MaraselServiceHolder holder, int position) {
-       holder.title.setText(myList.get(position).getTitle());
+        holder.title.setText(myList.get(position).getTitle());
 
         Glide.with(context)
                 .load(myList.get(position).getIcon()).placeholder(R.drawable.marasel_service_bg)
-                .listener(new RequestListener<Drawable>() {
+                .listener(new RequestListener<Drawable>  () {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-
                         return false;
                     }
 
@@ -73,7 +72,7 @@ public class MaraselServiceAdapter extends RecyclerView.Adapter<MaraselServiceAd
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            replaceFragment(myList.get(position).getTitle(), myList.get(position).getId());
+                replaceFragment(myList.get(position).getTitle(), myList.get(position).getId());
             }
         });
 
@@ -84,8 +83,7 @@ public class MaraselServiceAdapter extends RecyclerView.Adapter<MaraselServiceAd
         return myList.size();
     }
 
-    void replaceFragment(String title,String id)
-    {
+    void replaceFragment(String title, String id) {
         Fragment Categories = new Categories();
         Bundle bundle = new Bundle();
         bundle.putString("title", title);
@@ -110,7 +108,6 @@ public class MaraselServiceAdapter extends RecyclerView.Adapter<MaraselServiceAd
             item = itemView.findViewById(R.id.item);
             container = itemView.findViewById(R.id.shimmer_view_container);
             container.startShimmerAnimation();
-
         }
     }
 }

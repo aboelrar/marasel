@@ -1,7 +1,9 @@
 package www.gift_vouchers.marasel.MainScreen.ui.Store.ui;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -11,6 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import java.util.ArrayList;
 
@@ -53,6 +59,9 @@ public class Store extends Fragment {
                 inflater, R.layout.store, container, false);
         View view = binding.getRoot();
 
+        binding.shimmerViewContainer.startShimmerAnimation();
+        binding.shimmerContainer.startShimmerAnimation();
+
         return view;
     }
 
@@ -83,7 +92,26 @@ public class Store extends Fragment {
 
         binding.title.setText(datum.getName());
         binding.distance.setText(datum.getDistance());
-        Glide.with(getContext()).load(datum.getIcon()).into(binding.img);
+
+        Glide.with(getContext())
+                .load(datum.getIcon())
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        binding.shimmerViewContainer.stopShimmerAnimation();
+                        return false;
+                    }
+                })
+                .into(binding.img);
+        binding.shimmerContainer.stopShimmerAnimation();
+        binding.shimmer.setVisibility(View.GONE);
+
         binding.rate.setText(""+datum.getRate());
         binding.type.setText(datum.getCat());
 
