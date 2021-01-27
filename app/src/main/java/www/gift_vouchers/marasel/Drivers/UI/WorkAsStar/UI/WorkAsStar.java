@@ -11,7 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import es.dmoral.toasty.Toasty;
+import www.gift_vouchers.marasel.Drivers.Callback;
 import www.gift_vouchers.marasel.Drivers.UI.DeliveryPersonalInfo.UI.DeliveryPersonalInfo;
 import www.gift_vouchers.marasel.Drivers.UI.DriverInfo.UI.DriverInfo;
 import www.gift_vouchers.marasel.Drivers.UI.DriverInfo.UI.DriverInfoAccept;
@@ -31,9 +34,11 @@ public class WorkAsStar extends Fragment implements CompoundButton.OnCheckedChan
     WorkAsStarBinding binding;
     WorkAsStarModelView WorkAsStarModelView;
     Datum datum;
+    Callback callback;
 
-    public WorkAsStar() {
+    public WorkAsStar(Callback callback) {
         // Required empty public constructor
+        this.callback = callback;
     }
 
 
@@ -98,9 +103,10 @@ public class WorkAsStar extends Fragment implements CompoundButton.OnCheckedChan
         if (datum.getDeliveryMode() == 1) {
             if (datum.getDeliveryStatus() == 0) {
                 binding.switcher.setChecked(false);
-
+                callback.setBottomNavVisible();
                 new utils().Replace_Fragment(new DriverInfo(), R.id.frag, getContext());
             } else if (datum.getDeliveryStatus() == 1) {
+                callback.setBottomNavVisible();
                 new utils().Replace_Fragment(new DeliveryPersonalInfo(), R.id.frag, getContext());
             } else if (datum.getDeliveryStatus() == 2) {
 

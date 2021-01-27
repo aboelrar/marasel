@@ -41,8 +41,6 @@ public class SignUp extends Fragment implements View.OnClickListener {
                 inflater, R.layout.sign_up, container, false);
         View view = binding.getRoot();
 
-        getData();
-
         // CALL MODEL VIEW
         signUpModeView = new SignUpModeView();
 
@@ -71,6 +69,10 @@ public class SignUp extends Fragment implements View.OnClickListener {
 
     //GET DATA
     void getData() {
+        //CALL API
+        signUpModeView.getData(binding.phone.getText().toString(),binding.email.getText().toString(),
+                binding.password.getText().toString(),"0","1");
+
         signUpModeView.MutableLiveData.observe(this, new Observer<AuthRoot>() {
             @Override
             public void onChanged(AuthRoot authRoot) {
@@ -121,9 +123,8 @@ public class SignUp extends Fragment implements View.OnClickListener {
             //PROGRESS BAR
             new utils().set_dialog(getContext());
 
-            //CALL API
-            signUpModeView.getData(binding.phone.getText().toString(),binding.email.getText().toString(),
-                    binding.password.getText().toString(),"0","1");
+            getData();
+
         }
     }
 }

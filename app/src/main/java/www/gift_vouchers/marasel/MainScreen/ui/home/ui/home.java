@@ -1,5 +1,6 @@
 package www.gift_vouchers.marasel.MainScreen.ui.home.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import es.dmoral.toasty.Toasty;
+import www.gift_vouchers.marasel.Drivers.Drivers;
 import www.gift_vouchers.marasel.Drivers.UI.WorkAsStar.UI.WorkAsStar;
 import www.gift_vouchers.marasel.MainScreen.ui.home.model.Cat;
 import www.gift_vouchers.marasel.MainScreen.ui.home.model.Datum;
@@ -99,7 +101,7 @@ public class home extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.driver) {
-            new utils().Replace_Fragment(new WorkAsStar(), R.id.frag, getContext());
+            startActivity(new Intent(getContext(), Drivers.class));
         }
     }
 }

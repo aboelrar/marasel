@@ -74,6 +74,7 @@ public class Cart extends Fragment implements View.OnClickListener, Callback {
         cartModelView.MutableLiveData.observe(this, new Observer<CartRoot>() {
             @Override
             public void onChanged(CartRoot cartRoot) {
+                binding.progressCircular.setVisibility(View.GONE); //PROGRESS BAR GONE
                 datum = cartRoot.getData();  //ADD ALL DATA
                 products = datum.getProducts(); //ADD PRODUCTS
                 store = datum.getStore(); //ADD STORES

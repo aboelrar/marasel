@@ -79,7 +79,7 @@ public class ProductDetails extends Fragment {
         binding.shimmerViewContainer.stopShimmerAnimation();
 
         datum = SingleProduct.getData();
-        image = datum.getImages();
+        image = datum.getImages();   
 
         binding.title.setText(datum.getName());
         binding.price.setText(datum.getPrice() + " " + getString(R.string.egp));

@@ -167,12 +167,19 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentTop="true"
+                    android:id="@+id/shimmer_view_container">
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_50sdp"
                     android:id="@+id/brandImg"
-                    android:layout_centerInParent="true"
-                    android:layout_alignParentTop="true" />
+                    android:src="@drawable/secondary_logo"
+                     />
+                </com.facebook.shimmer.ShimmerFrameLayout>
             </RelativeLayout>
 
             <LinearLayout

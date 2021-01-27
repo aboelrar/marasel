@@ -1,6 +1,7 @@
 package www.gift_vouchers.marasel.MainScreen.ui.MyOrder.Pattern;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +12,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 
@@ -49,7 +56,22 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyOrderH
         holder.type.setText(myList.get(position).getOrderName());
         holder.code.setText(myList.get(position).getCode());
         holder.time.setText(myList.get(position).getExpectTime());
-        Glide.with(context).load(myList.get(position).getProductImg()).into(holder.img);
+
+        Glide.with(context)
+                .load(myList.get(position).getProductImg())
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        holder.container.stopShimmerAnimation();
+                        return false;
+                    }
+                })
+                .into(holder.img);
 
         //SET TEXT FOR BUTTON
         if (myList.get(position).getStatus().equals("1")) {
@@ -81,6 +103,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyOrderH
         TextView title, type, code, time;
         Button offer_button;
         LinearLayout item;
+        ShimmerFrameLayout container;
 
         public MyOrderHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,6 +114,8 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyOrderH
             time = itemView.findViewById(R.id.time);
             offer_button = itemView.findViewById(R.id.offer_button);
             item = itemView.findViewById(R.id.item);
+            container = itemView.findViewById(R.id.shimmer_view_container);
+            container.startShimmerAnimation();
         }
     }
 

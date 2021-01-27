@@ -62,7 +62,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.cooltechworks.views.shimmer.ShimmerRecyclerView
                 android:id="@+id/offer_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

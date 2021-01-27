@@ -58,6 +58,7 @@ public class AddOffer extends Fragment implements View.OnClickListener {
         addOfferModelView = new AddOfferModelView();
 
         binding.submitOffer.setOnClickListener(this);
+        binding.shimmerViewContainer.startShimmerAnimation();
 
         getData();
 
@@ -82,6 +83,7 @@ public class AddOffer extends Fragment implements View.OnClickListener {
         addOfferModelView.MutableLiveDataSingleOrder.observe(this, new Observer<SingleOrderRoot>() {
             @Override
             public void onChanged(SingleOrderRoot singleOrderRoot) {
+                binding.shimmerViewContainer.stopShimmerAnimation();
                 singleOrderData = singleOrderRoot.getData();
                 order = singleOrderData.getOrder();
                 store = order.getStore();

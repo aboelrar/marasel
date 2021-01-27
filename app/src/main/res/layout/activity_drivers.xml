@@ -5,5 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Drivers.Drivers">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <FrameLayout
+            android:id="@+id/frag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_50sdp" />
+
+        <include layout="@layout/bottom_navigation_driver" />
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

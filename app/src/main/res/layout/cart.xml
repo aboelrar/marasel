@@ -187,5 +187,10 @@
             android:id="@+id/no_data"
             android:visibility="gone"
             android:layout_centerInParent="true"/>
+        <ProgressBar
+            android:id="@+id/progress_circular"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_centerInParent="true"/>
     </RelativeLayout>
 </layout>
