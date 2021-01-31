@@ -43,8 +43,7 @@ public class Store extends Fragment {
     Datum datum;
     Image[] image;
     Category[] Category;
-    ArrayList<ImgList> ImgList = new ArrayList<>();
-    ArrayList<ProductList> ProductList = new ArrayList<>();
+
 
     public Store() {
         // Required empty public constructor
@@ -62,14 +61,11 @@ public class Store extends Fragment {
         binding.shimmerViewContainer.startShimmerAnimation();
         binding.shimmerContainer.startShimmerAnimation();
 
+        getData();
+
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        getData();
-    }
 
     void getData()
     {
@@ -86,6 +82,10 @@ public class Store extends Fragment {
 
     void setData(SingleStore singleStore)
     {
+
+        ArrayList<ImgList> ImgList = new ArrayList<>();
+        ArrayList<ProductList> ProductList = new ArrayList<>();
+
         datum = singleStore.getData();
         image = datum.getImages();
         Category = datum.getCategories();
@@ -129,17 +129,17 @@ public class Store extends Fragment {
                     Category[i].getIcon(), "22 EGP"));
         }
 
-        new utils_adapter().Horozintal(binding.productList,new StoreAdapter(getContext(), ProductList,
+        new utils_adapter().Adapter(binding.productList,new StoreAdapter(getContext(), ProductList,
                 getArguments().getString("id")),getContext());
 
 
         // Set Data for Store
-        setStore();
+        setStore(ImgList);
 
     }
 
     // Set Data for Store
-    void setStore()
+    void setStore(ArrayList ImgList)
     {
         ArrayList<String> storeItem = new ArrayList<String>();
         storeItem.add(datum.getName());

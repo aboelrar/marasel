@@ -38,7 +38,6 @@ public class Product extends Fragment {
    ProductBinding binding;
    Datum[] datum;
    Image[] image;
-   ArrayList<www.gift_vouchers.marasel.MainScreen.ui.Store.model.ProductList> ProductList = new ArrayList<>();
 
     public Product() {
         // Required empty public constructor
@@ -53,15 +52,13 @@ public class Product extends Fragment {
                 inflater, R.layout.product, container, false);
         View view = binding.getRoot();
 
+        getData();  //  ProductData
+        getStore(); //  Store Data
+
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        getData();  //  ProductData
-        getStore(); //  Store Data
-    }
+
 
     void getData()
     {
@@ -78,6 +75,8 @@ public class Product extends Fragment {
 
     void setData(ProductsByCat productsByCat)
     {
+        ArrayList<www.gift_vouchers.marasel.MainScreen.ui.Store.model.ProductList> ProductList = new ArrayList<>();
+
         datum = productsByCat.getData();
 
         //set Data for Image

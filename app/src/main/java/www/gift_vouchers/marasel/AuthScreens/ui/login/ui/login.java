@@ -5,9 +5,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 import es.dmoral.toasty.Toasty;
@@ -28,7 +33,7 @@ import static www.gift_vouchers.marasel.utils.utils.yoyo;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class login extends Fragment implements View.OnClickListener {
+public class login extends Fragment implements View.OnClickListener, EditText.OnEditorActionListener {
     LoginBinding binding;
     LoginModeView LoginModeView;
     Datum datum;
@@ -50,6 +55,7 @@ public class login extends Fragment implements View.OnClickListener {
 
         binding.login.setOnClickListener(this);
         binding.regist.setOnClickListener(this);
+        binding.password.setOnEditorActionListener(this);
 
         return view;
     }
@@ -119,4 +125,12 @@ public class login extends Fragment implements View.OnClickListener {
     }
     }
 
+    @Override
+    public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+        if (i == EditorInfo.IME_ACTION_DONE) {
+            loginValidation();
+            return true;
+        }
+        return false;
+    }
 }

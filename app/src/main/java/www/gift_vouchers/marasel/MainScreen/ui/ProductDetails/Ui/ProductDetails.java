@@ -54,14 +54,11 @@ public class ProductDetails extends Fragment {
 
         binding.shimmerViewContainer.startShimmerAnimation();
 
+        getData();
+
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        getData();
-    }
 
     void getData() {
         ProductDetailsModelView productModelView = new ProductDetailsModelView();
@@ -79,9 +76,10 @@ public class ProductDetails extends Fragment {
         binding.shimmerViewContainer.stopShimmerAnimation();
 
         datum = SingleProduct.getData();
-        image = datum.getImages();   
+        image = datum.getImages();
 
         binding.title.setText(datum.getName());
+        binding.desc.setText(datum.getDesc());
         binding.price.setText(datum.getPrice() + " " + getString(R.string.egp));
 
         ArrayList<String> imageSt = new ArrayList<>();
@@ -96,6 +94,8 @@ public class ProductDetails extends Fragment {
 
         //SET QUANTITY AND TOTAL PRICE
         price = Integer.parseInt(datum.getPrice());
+        binding.totalPrice.setText("" + price + " " + getString(R.string.egp));
+
 
         // SET QUANTITY
         new utils().setQuantity(binding.inc, binding.dec, quantity,

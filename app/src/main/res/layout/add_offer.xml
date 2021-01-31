@@ -30,7 +30,7 @@
                     android:layout_gravity="center"
                     android:layout_weight=".2"
                     android:padding="@dimen/_5sdp"
-                    android:src="@drawable/back" />
+                     />
 
                 <LinearLayout
                     android:layout_width="0dp"

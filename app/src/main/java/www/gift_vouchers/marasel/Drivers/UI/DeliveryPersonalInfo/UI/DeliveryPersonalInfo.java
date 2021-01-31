@@ -85,8 +85,6 @@ public class DeliveryPersonalInfo extends Fragment implements CompoundButton.OnC
 
                 binding.totalAvailableOrders.setText("" + delivery.getAvailableOrdersCount()); //GET AVAILABLE ORDER COUNTS
 
-                new utils().Replace_Fragment(new MyOffers(),R.id.frag,getContext());
-
             }
         });
     }

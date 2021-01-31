@@ -67,7 +67,7 @@
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:text="@string/user_or_client"
                 android:id="@+id/user"
-                android:textSize="@dimen/_16sdp"
+                android:textSize="@dimen/_13sdp"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="@dimen/_70sdp"
                 android:background="@drawable/s_button_bg" />
@@ -78,6 +78,7 @@
                 android:layout_marginRight="@dimen/_15sdp"
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:text="@string/regisr_seller"
+                android:visibility="gone"
                 android:textColor="@android:color/white"
                 android:id="@+id/seller"
                 android:textSize="@dimen/_16sdp"

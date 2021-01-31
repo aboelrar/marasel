@@ -70,7 +70,7 @@ public class PersonalInformation extends Fragment implements View.OnClickListene
         binding.email.setText(new saved_data().get_email(getContext()));
         binding.phone.setText(new saved_data().get_phone(getContext()));
         //SET PROFILE IMAGE
-        if (!new saved_data().get_picture(getContext()).equals("")) {
+        if (!new saved_data().get_picture(getContext()).equals("0")) {
             Glide.with(getContext()).load(new saved_data().get_picture(getContext())).into(binding.criImg);
         }
         //SET GENDER

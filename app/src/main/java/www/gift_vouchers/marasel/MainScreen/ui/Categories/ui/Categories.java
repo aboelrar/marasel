@@ -63,17 +63,14 @@ public class Categories extends Fragment {
         adapter = new CategoriesAdapter(getContext(),CategoryList);
         binding.resturantList.setAdapter(adapter);
 
+        id = getArguments().getString("id"); //GET id
+        binding.title.setText(getArguments().getString("title"));
+
+        getData();
+
         return view;
     }
 
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        id = getArguments().getString("id"); //GET id
-        binding.title.setText(getArguments().getString("title"));
-        getData();
-    }
 
     void getData()
     {

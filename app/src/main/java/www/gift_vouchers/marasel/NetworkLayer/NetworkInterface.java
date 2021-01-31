@@ -18,11 +18,14 @@ import www.gift_vouchers.marasel.Drivers.UI.DeliveryPersonalInfo.Model.DeliveryI
 import www.gift_vouchers.marasel.Drivers.UI.DriverInfo.Model.DriverInfoRoot;
 import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.MyOffersRoot;
 import www.gift_vouchers.marasel.Drivers.UI.WorkAsStar.Model.ActiveDriverRoot;
+import www.gift_vouchers.marasel.MainScreen.ui.AddCopounCode.Model.AddCouponCodeRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.CartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Model.DeleteProductRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Categories.model.StoreByService;
+import www.gift_vouchers.marasel.MainScreen.ui.ChangePassword.Model.ChangePasswordRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.DeliveryPlace;
 import www.gift_vouchers.marasel.MainScreen.ui.MakeOrder.Model.MakeOrder;
+import www.gift_vouchers.marasel.MainScreen.ui.MyDiscountCopouns.Model.MyDiscountCodeRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.MyOrder.Model.MyOrderRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.AcceptOrRejectModel.AcceptedOrRejectedOfferRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.CancelOrderRoot;
@@ -32,8 +35,11 @@ import www.gift_vouchers.marasel.MainScreen.ui.Product.Model.ProductsByCat;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.AddToCartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.SingleProduct;
 import www.gift_vouchers.marasel.MainScreen.ui.RateStore.Model.RateStoreRoot;
+import www.gift_vouchers.marasel.MainScreen.ui.Settings.Model.LogoutRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Store.model.SingleStore;
+import www.gift_vouchers.marasel.MainScreen.ui.Search.Model.SearchRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.home.model.homeRoot;
+import www.gift_vouchers.marasel.Settings.Model.AppInfoRoot;
 
 public interface NetworkInterface {
 
@@ -53,9 +59,30 @@ public interface NetworkInterface {
             @Query("user_type") String user_type
     );
 
+    @POST("Auth_private/change_password")
+    Call<ChangePasswordRoot> changePassword(
+            @Header("Authorization") String authorization,
+            @Query("newPassword") String newPassword,
+            @Query("oldPassword") String oldPassword
+    );
+
+
+    @POST("Auth_private/logout")
+    Call<LogoutRoot> Logout(
+            @Header("Authorization") String authorization
+    );
+
     @GET("Home/home?lat=30.109760&lng=31.247240")
     Call<homeRoot> home(
             @Header("Authorization") String authorization
+    );
+
+    @GET("Home/search")
+    Call<SearchRoot> search(
+            @Header("Authorization") String authorization,
+            @Query("lat") String lat,
+            @Query("lng") String lng,
+            @Query("text") String text
     );
 
     @GET("Home/store_by_service/{id}")
@@ -229,5 +256,21 @@ public interface NetworkInterface {
             @Query("email") String email,
             @Part MultipartBody.Part image,
             @Query("gender") String gender
+    );
+
+    @GET("Code/myDiscountCodes")
+    Call<MyDiscountCodeRoot> myDiscountCodes(
+            @Header("Authorization") String authorization
+    );
+
+    @POST("Code/add_code")
+    Call<AddCouponCodeRoot> addCouponCode(
+            @Header("Authorization") String authorization,
+            @Query("code") String code
+    );
+
+    @GET("Home/marasel_info")
+    Call<AppInfoRoot> maraselInfo(
+            @Header("Authorization") String authorization
     );
 }

@@ -41,16 +41,13 @@ public class RateStore extends Fragment implements RatingBar.OnRatingBarChangeLi
 
         binding.myOrders.setOnClickListener(this);
         binding.rating.setOnRatingBarChangeListener(this);
-        return view;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
 
         rateStoreModelView = new RateStoreModelView();
         getData();
+
+        return view;
     }
+
 
     @Override
     public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {

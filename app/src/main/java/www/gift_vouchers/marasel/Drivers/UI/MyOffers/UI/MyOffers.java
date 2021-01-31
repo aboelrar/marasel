@@ -36,7 +36,6 @@ public class MyOffers extends Fragment {
     MyOffersViewModel myOffersViewModel;
     Datum[] data;
     Product[] products;
-    ArrayList<MyOfferList> myOfferLists = new ArrayList<>();
     Order order;
     Time time;
 
@@ -60,6 +59,8 @@ public class MyOffers extends Fragment {
         myOffersViewModel.MutableLiveData.observe(this, new Observer<MyOffersRoot>() {
             @Override
             public void onChanged(MyOffersRoot myOffersRoot) {
+                ArrayList<MyOfferList> myOfferLists = new ArrayList<>();
+
                 data = myOffersRoot.getData();
                 Log.e("products", "" + data.length);
 

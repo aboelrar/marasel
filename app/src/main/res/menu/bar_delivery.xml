@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--    <item-->
-<!--        android:id="@+id/person"-->
-<!--        android:icon="@drawable/user"-->
-<!--        android:title="" />-->
 
-<!--    <item-->
-<!--        android:id="@+id/home"-->
-<!--        android:icon="@drawable/home"-->
-<!--        android:title="" />-->
-
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/my_offers"
+        android:icon="@drawable/requests"
+        android:title="@string/my_offers" />
+    <item
+        android:id="@+id/notifcations"
+        android:icon="@drawable/notifcations_"
+        android:title="@string/notifcations" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/profile"
+        android:title="@string/profile" />
 </menu>

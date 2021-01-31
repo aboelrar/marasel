@@ -34,7 +34,6 @@ public class myOrder extends Fragment {
     Datum[] datum;
     Store store;
     Product[] products;
-    ArrayList<MyOrderList> MyOrderList = new ArrayList<>();
     Time time;
 
     public myOrder() {
@@ -63,6 +62,8 @@ public class myOrder extends Fragment {
         myOrderModelView.MutableLiveDataMakeOrder.observe(this, new Observer<MyOrderRoot>() {
             @Override
             public void onChanged(MyOrderRoot myOrderRoot) {
+                ArrayList<MyOrderList> MyOrderList = new ArrayList<>(); //MyOrderList
+
                 datum = myOrderRoot.getData();
                 for (int i = 0; i < datum.length; i++) {
                     store = datum[i].getStore();

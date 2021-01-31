@@ -37,12 +37,15 @@
                         android:layout_height="@dimen/_40sdp"
                         app:cardElevation="@dimen/_4sdp">
 
-                        <TextView
+                        <EditText
                             android:paddingLeft="@dimen/_5sdp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/search_here_any_place"
+                            android:background="@android:color/white"
                             android:gravity="center|left"
+                            android:imeOptions="actionSearch"
+                            android:inputType="text"
                             android:id="@+id/search"
                             android:drawablePadding="@dimen/_10sdp"
                             android:drawableLeft="@drawable/ic_search_black_24dp"
@@ -62,7 +65,7 @@
                         android:id="@+id/driver"
                         app:cardElevation="@dimen/_4sdp"
                         android:padding="@dimen/_3sdp"
-                        android:layout_height="match_parent">
+                        android:layout_height="@dimen/_40sdp">
 
                         <ImageView
                             android:layout_width="@dimen/_35sdp"

@@ -26,21 +26,26 @@
 
             android:layout_alignParentBottom="true" />
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="@dimen/_280sdp"
             android:layout_alignParentBottom="true"
-            android:orientation="vertical"
             android:layout_marginBottom="@dimen/_50sdp"
-            android:background="@drawable/product_details_bg">
+            android:background="@drawable/product_details_bg"
+            >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_280sdp"
+            android:orientation="vertical"
+            >
 
             <me.relex.circleindicator.CircleIndicator
                 android:id="@+id/indicator"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_48sdp"
+                android:layout_height="@dimen/_45sdp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="@dimen/_20sdp"
                 android:padding="@dimen/_3sdp"
                 android:layoutDirection="ltr"
                 app:ci_drawable="@drawable/oookkkkk"
@@ -58,11 +63,20 @@
                 android:id="@+id/title"
                 android:textSize="@dimen/_20sdp"
                 android:textColor="@color/f_color" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/desc"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/_30sdp"
+                android:padding="@dimen/_4sdp"
+                android:textSize="@dimen/_13sdp"
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="22 EGP"
                 android:id="@+id/price"
                 android:layout_marginTop="@dimen/_3sdp"
                 android:layout_gravity="center"
@@ -153,7 +167,6 @@
                 <TextView
                     android:layout_weight=".5"
                     android:layout_width="0dp"
-                    android:text="88 EGP"
                     android:id="@+id/totalPrice"
                     android:textSize="@dimen/_16sdp"
                     android:textColor="@color/f_color"
@@ -164,7 +177,7 @@
 
 
         </LinearLayout>
-
+        </androidx.core.widget.NestedScrollView>
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="@dimen/_280sdp"

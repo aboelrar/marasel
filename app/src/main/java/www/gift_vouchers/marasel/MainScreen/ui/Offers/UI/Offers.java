@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import es.dmoral.toasty.Toasty;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.AcceptOrRejectModel.AcceptedOrRejectedOfferRoot;
+import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Category;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Datum;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Delivery;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Driver;
@@ -22,6 +23,9 @@ import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.MyOrdersRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Offer;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.OfferList;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Order;
+import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Product;
+import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Store;
+import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Time;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Pattern.OffersAdapter;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.databinding.OffersBinding;
@@ -35,7 +39,6 @@ import www.gift_vouchers.marasel.utils.utils_adapter;
  */
 public class Offers extends Fragment implements View.OnClickListener, Callback {
     OffersBinding binding;
-    ArrayList<OfferList> offerList = new ArrayList<>();
     Datum datum;
     Offer[] offers;
     Driver driver;
@@ -45,6 +48,8 @@ public class Offers extends Fragment implements View.OnClickListener, Callback {
     OffersModelView offersModelView;
     String orderId;
     Order order;
+    Time time;
+    Store store;
 
     public Offers() {
         // Required empty public constructor
@@ -78,9 +83,33 @@ public class Offers extends Fragment implements View.OnClickListener, Callback {
         offersModelView.MutableLiveOffers.observe(this, new Observer<MyOrdersRoot>() {
             @Override
             public void onChanged(MyOrdersRoot myOrdersRoot) {
+                binding.progressCircular.setVisibility(View.GONE); // PROGRESS GONE
+
+                ArrayList<OfferList> offerList = new ArrayList<>(); //OFFER LIST
+
                 datum = myOrdersRoot.getData();
                 offers = datum.getOffers();
                 order = datum.getOrder();
+                time = order.getTime();
+                store = order.getStore();
+
+                binding.catTitle.setText(store.getName()); //GET STORE NAME
+                binding.orderNum.setText(getString(R.string.order_number) + " #" + order.getId()); //GET STORE NAME
+                binding.address.setText(order.getAddress()); //GET ADDRESS
+                binding.hours.setText(time.getName()); //GET TIME
+                binding.type.setText(store.getCat()); //GET CATEGORY
+
+                //SET TEXT FOR BUTTON
+                if (order.getStatus() == 1) {
+                    binding.offerButton.setText(getString(R.string.a_waiting_offer));
+                } else if (order.getStatus() == 2) {
+                    binding.offerButton.setText(getString(R.string.has_offers));
+                } else if (order.getStatus() == 3) {
+                    binding.offerButton.setText(getString(R.string.connecting));
+                } else if (order.getStatus() == 4) {
+                    binding.offerButton.setText(getString(R.string.cancelled));
+                }
+
 
                 for (int index = 0; index < offers.length; index++) {
                     driver = offers[index].getDriver();

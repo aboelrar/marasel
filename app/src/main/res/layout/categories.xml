@@ -54,7 +54,6 @@
             <ImageView
                 android:rotation="180"
                 android:layout_weight=".08"
-                android:src="@drawable/back"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_20sdp" />
         </LinearLayout>

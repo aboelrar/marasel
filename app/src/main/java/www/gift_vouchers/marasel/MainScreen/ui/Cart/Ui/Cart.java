@@ -41,7 +41,6 @@ public class Cart extends Fragment implements View.OnClickListener, Callback {
     Datum datum;
     Store store;
     int totalPrice;
-    ArrayList<MyCartList> cartList = new ArrayList<>();
     Callback callback;
 
     public Cart() {
@@ -74,29 +73,48 @@ public class Cart extends Fragment implements View.OnClickListener, Callback {
         cartModelView.MutableLiveData.observe(this, new Observer<CartRoot>() {
             @Override
             public void onChanged(CartRoot cartRoot) {
-                binding.progressCircular.setVisibility(View.GONE); //PROGRESS BAR GONE
-                datum = cartRoot.getData();  //ADD ALL DATA
-                products = datum.getProducts(); //ADD PRODUCTS
-                store = datum.getStore(); //ADD STORES
-                totalPrice = datum.getTotalPrice(); //GET TOTAL PRICE
-                binding.catTitle.setText(store.getName()); //SET CAT TITLE
-                Glide.with(getContext()).load(store.getIcon()).into(binding.catLogo); //SET CAT IMAGE
-                binding.lastPrice.setText("" + datum.getTotalPrice() + " " + getString(R.string.egp)); //SET TOTAL PRICE
+                if (cartRoot.getStatus() == 0) {
+                    binding.parent.setVisibility(View.GONE);
+                    binding.noData.setVisibility(View.VISIBLE);
 
-                //Add data to cart
-                for (int index = 0; index < products.length; index++) {
-                    //TOTAL PRICE
-                    int totalPrice = products[index].getQuantity() * Integer.parseInt(products[index].getPrice());
+                    binding.completeOrderNow.setClickable(false);
+                } else {
+                    ArrayList<MyCartList> cartList = new ArrayList<>(); //CART LIST
+                    binding.progressCircular.setVisibility(View.GONE); //PROGRESS BAR GONE
+                    datum = cartRoot.getData();  //ADD ALL DATA
+                    products = datum.getProducts(); //ADD PRODUCTS
 
-                    cartList.add(new MyCartList("" + products[index].getId(),
-                            products[index].getName(), products[index].getPrice(),
-                            "" + totalPrice, "" + products[index].getQuantity(),
-                            products[index].getIcon(), "" + datum.getStore().getId()));
+                    //CHECK CART HAVE DATA OR NOT
+                    if (products.length == 0) {
+                        binding.parent.setVisibility(View.GONE);
+                        binding.noData.setVisibility(View.VISIBLE);
+                        binding.completeOrderNow.setClickable(false);
+
+                    } else {
+
+                        store = datum.getStore(); //ADD STORES
+                        totalPrice = datum.getTotalPrice(); //GET TOTAL PRICE
+                        binding.catTitle.setText(store.getName()); //SET CAT TITLE
+                        Glide.with(getContext()).load(store.getIcon()).into(binding.catLogo); //SET CAT IMAGE
+                        binding.lastPrice.setText("" + datum.getTotalPrice() + " " + getString(R.string.egp)); //SET TOTAL PRICE
+
+                        //Add data to cart
+                        for (int index = 0; index < products.length; index++) {
+                            //TOTAL PRICE
+                            int totalPrice = products[index].getQuantity() * Integer.parseInt(products[index].getPrice());
+
+                            cartList.add(new MyCartList("" + products[index].getId(),
+                                    products[index].getName(), products[index].getPrice(),
+                                    "" + totalPrice, "" + products[index].getQuantity(),
+                                    products[index].getIcon(), "" + datum.getStore().getId()));
+                        }
+
+                        new utils_adapter().Adapter(binding.myCartList,
+                                new MyCartAdapter(getContext(), cartList, cartModelView, callback), getContext());
+                    }
+
+
                 }
-
-                new utils_adapter().Adapter(binding.myCartList,
-                        new MyCartAdapter(getContext(), cartList, cartModelView, callback), getContext());
-
             }
         });
 

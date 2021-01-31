@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainScreen.ui.AddCopounCode.UI.AddCopounCode">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/my_discount_code"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/add_new_coupon_code"
+                    android:textColor="@color/f_color"
+                    android:textSize="@dimen/_17sdp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:id="@+id/add_copoun"
+                    android:background="@drawable/edittext_bg"
+                    android:drawableLeft="@drawable/discount_small"
+                    android:drawablePadding="@dimen/_7sdp"
+                    android:hint="@string/write_coupon_code"
+                    android:paddingLeft="@dimen/_10sdp" />
+
+                <Button
+                    android:id="@+id/check_copoun"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_margin="@dimen/_15sdp"
+                    android:background="@drawable/s_button_bg"
+                    android:text="@string/check_the_coupon"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_15sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/_40sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/follow_us_on_social_media_for_more_n_discount_coupons"
+                    android:textColor="@color/f_color"
+                    android:textSize="@dimen/_13sdp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </FrameLayout>
+</layout>

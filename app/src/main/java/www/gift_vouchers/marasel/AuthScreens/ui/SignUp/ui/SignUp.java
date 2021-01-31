@@ -6,9 +6,13 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import es.dmoral.toasty.Toasty;
 import www.gift_vouchers.marasel.AuthScreens.Model.AuthRoot;
@@ -24,7 +28,7 @@ import static www.gift_vouchers.marasel.utils.utils.yoyo;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SignUp extends Fragment implements View.OnClickListener {
+public class SignUp extends Fragment implements View.OnClickListener, EditText.OnEditorActionListener {
     SignUpBinding binding;
     SignUpModeView signUpModeView;
 
@@ -46,6 +50,7 @@ public class SignUp extends Fragment implements View.OnClickListener {
 
         binding.back.setOnClickListener(this);
         binding.regist.setOnClickListener(this);
+        binding.password.setOnEditorActionListener(this);
 
         return view;
     }
@@ -126,5 +131,14 @@ public class SignUp extends Fragment implements View.OnClickListener {
             getData();
 
         }
+    }
+
+    @Override
+    public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+        if (i == EditorInfo.IME_ACTION_DONE) {
+            signUpValidation();
+            return true;
+        }
+        return false;
     }
 }

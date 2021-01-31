@@ -20,6 +20,8 @@ public class Datum{
 	private Image[] images;
 	@SerializedName("name")
 	private String name;
+	@SerializedName("desc")
+	private String desc;
 	@SerializedName("price")
 	private String price;
 	@SerializedName("quantity")
@@ -67,6 +69,12 @@ public class Datum{
 	public int getQuantity(){
 		return this.quantity;
 	}
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
 
 	/**
 	 * Instantiate the instance using the passed jsonObject to set the properties values
@@ -79,6 +87,7 @@ public class Datum{
 		icon = jsonObject.optString("icon");
 		name = jsonObject.optString("name");
 		price = jsonObject.optString("price");
+		price = jsonObject.optString("desc");
 		id = jsonObject.optInt("id");
 		quantity = jsonObject.optInt("quantity");
 		JSONArray imagesJsonArray = jsonObject.optJSONArray("images");
@@ -104,6 +113,7 @@ public class Datum{
 			jsonObject.put("id", id);
 			jsonObject.put("name", name);
 			jsonObject.put("price", price);
+			jsonObject.put("desc", desc);
 			jsonObject.put("quantity", quantity);
 			if(images != null && images.length > 0){
 				JSONArray imagesJsonArray = new JSONArray();

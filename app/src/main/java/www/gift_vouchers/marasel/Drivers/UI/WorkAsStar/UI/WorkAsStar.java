@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,10 @@ public class WorkAsStar extends Fragment implements CompoundButton.OnCheckedChan
         //CALL API TO CHECK FOR DRIVER
         checkSwitched();
 
+        binding.switcher.setOnCheckedChangeListener(this);
+
+        getData();
+
 
         return view;
     }
@@ -63,8 +68,6 @@ public class WorkAsStar extends Fragment implements CompoundButton.OnCheckedChan
     @Override
     public void onStart() {
         super.onStart();
-        binding.switcher.setOnCheckedChangeListener(this);
-        getData();
     }
 
     @Override
@@ -90,7 +93,10 @@ public class WorkAsStar extends Fragment implements CompoundButton.OnCheckedChan
 
     //CHECK IF SWITCHED BEFORE OR NOT
     void checkSwitched() {
+        Log.e("status_is", "" + new saved_data().getCheckActiveStar(getContext()));
         if (new saved_data().getCheckActiveStar(getContext()) == true) {
+            Log.e("status_is", "yes");
+
             WorkAsStarModelView.getData("Bearer " + new saved_data().get_token(getContext()));
             binding.progressCircular.setVisibility(View.VISIBLE);
         }
@@ -100,7 +106,9 @@ public class WorkAsStar extends Fragment implements CompoundButton.OnCheckedChan
     void driverStatus() {
         binding.progressCircular.setVisibility(View.GONE); //SET PROGRESS DIALOG GONE
 
-        if (datum.getDeliveryMode() == 1) {
+        Log.e("status_is", "" + datum.getDeliveryMode());
+        Log.e("status_is", "" + datum.getDeliveryStatus());
+
             if (datum.getDeliveryStatus() == 0) {
                 binding.switcher.setChecked(false);
                 callback.setBottomNavVisible();
@@ -115,8 +123,6 @@ public class WorkAsStar extends Fragment implements CompoundButton.OnCheckedChan
                 DriverInfoAccept driverInfoAccept = new DriverInfoAccept();
                 driverInfoAccept.dialog(getContext(), R.layout.driver_info_accept, .90);
 
-
-            }
         }
     }
 }

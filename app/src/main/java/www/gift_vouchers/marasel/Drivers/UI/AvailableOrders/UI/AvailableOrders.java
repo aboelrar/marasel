@@ -34,7 +34,6 @@ public class AvailableOrders extends Fragment {
     Datum[] datum;
     Store store;
     Time time;
-    ArrayList<OrderList> OrderList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,6 +56,7 @@ public class AvailableOrders extends Fragment {
         availableOrdersModelView.MutableLiveData.observe(this, new Observer<AvailableOrderRoot>() {
             @Override
             public void onChanged(AvailableOrderRoot availableOrderRoot) {
+                ArrayList<OrderList> OrderList = new ArrayList<>();
                 datum = availableOrderRoot.getData();
 
                 for (int i = 0; i < datum.length; i++) {

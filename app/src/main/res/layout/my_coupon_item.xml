@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:background="@drawable/my_coupon_code_bg"
+    android:paddingLeft="@dimen/_10sdp"
+    android:paddingRight="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:gravity="center|left"
+    android:layout_marginLeft="@dimen/_10sdp"
+    android:layout_marginRight="@dimen/_10sdp"
+    android:layout_height="@dimen/_50sdp">
+ <de.hdodenhof.circleimageview.CircleImageView
+     android:layout_width="@dimen/_40sdp"
+     android:layout_height="@dimen/_40sdp"
+     android:id="@+id/discount_img"
+     android:src="@drawable/customer"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Discount From Zacks 20%"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:textSize="@dimen/_13sdp"
+        android:id="@+id/discount_title"/>
+
+</LinearLayout>

@@ -76,6 +76,9 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/cri_img"
                         android:layout_width="@dimen/_60sdp"
+                        android:src="@drawable/customer"
+                        android:padding="@dimen/_3sdp"
+                        android:background="@drawable/personal_info_bg"
                         android:layout_height="@dimen/_60sdp"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="@dimen/_8sdp" />
