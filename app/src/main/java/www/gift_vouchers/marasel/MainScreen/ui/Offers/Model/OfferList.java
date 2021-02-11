@@ -1,15 +1,17 @@
 package www.gift_vouchers.marasel.MainScreen.ui.Offers.Model;
 
 public class OfferList {
-    String id, name, star, status, desc, productImg;
+    String id, name, star, status, desc, productImg, driverId, phone;
 
-    public OfferList(String id, String name, String star, String status, String desc, String productImg) {
+    public OfferList(String id, String name, String star, String status, String desc, String productImg, String driverId, String phone) {
         this.id = id;
         this.name = name;
         this.star = star;
         this.status = status;
         this.desc = desc;
         this.productImg = productImg;
+        this.driverId = driverId;
+        this.phone = phone;
     }
 
     public String getId() {
@@ -58,5 +60,21 @@ public class OfferList {
 
     public void setProductImg(String productImg) {
         this.productImg = productImg;
+    }
+
+    public String getDriverId() {
+        return driverId;
+    }
+
+    public void setDriverId(String driverId) {
+        this.driverId = driverId;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

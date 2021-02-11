@@ -13,6 +13,8 @@ import www.gift_vouchers.marasel.AuthScreens.ui.auth;
 import www.gift_vouchers.marasel.R;
 import www.gift_vouchers.marasel.WelcomeTour.SlidePages.pattern.ViewImage;
 
+import static www.gift_vouchers.marasel.local_data.send_data.set_welcome_num;
+
 public class SlidePages extends AppCompatActivity {
     LinearLayout skip;
     @Override
@@ -32,6 +34,7 @@ public class SlidePages extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SlidePages.this, auth.class));
+                set_welcome_num(SlidePages.this,"1");
             }
         });
 

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainScreen.ui.RateDriver.UI.RateDriver">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/splash">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/title_name"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:gravity="center"
+                        android:textColor="@color/f_color"
+                        android:textSize="@dimen/_20sdp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="delivery man"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_70sdp"
+                        android:paddingRight="@dimen/_10sdp"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:weightSum="1"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_weight=".12"
+                            android:layout_width="0dp"
+                            android:id="@+id/location"
+                            android:tint="@android:color/white"
+                            android:src="@drawable/driver_location"
+                            android:padding="@dimen/_7sdp"
+                            android:background="@drawable/rate_driver_f_bg"
+                            android:layout_height="@dimen/_35sdp" />
+
+                        <LinearLayout
+                            android:layout_weight=".76"
+                            android:layout_width="0dp"
+                            android:gravity="center"
+                            android:layout_height="match_parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_60sdp"
+                                android:src="@color/s_color"
+                                android:id="@+id/personal_img"
+                                app:civ_border_color="@android:color/white"
+                                app:civ_border_width="@dimen/_2sdp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_weight=".12"
+                            android:layout_width="0dp"
+                            android:id="@+id/phone"
+                            android:src="@drawable/ic_phone_black_24dp"
+                            android:tint="@android:color/white"
+                            android:padding="@dimen/_8sdp"
+                            android:background="@drawable/t_button_bg"
+                            android:layout_height="@dimen/_35sdp" />
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_90sdp"
+                        android:layout_margin="@dimen/_10sdp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_30sdp"
+                                android:gravity="center"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/delivery_person_name"
+                                    android:textSize="@dimen/_11sdp" />
+
+                                <TextView
+                                    android:layout_marginLeft="@dimen/_5sdp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/personal_name"
+                                    android:textColor="@color/f_color"
+                                    android:textSize="@dimen/_11sdp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_60sdp"
+                                android:orientation="horizontal"
+                                android:gravity="center"
+                                android:weightSum="3">
+
+                                <LinearLayout
+                                    android:layout_weight=".8"
+                                    android:layout_width="0dp"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent">
+
+                                    <TextView
+                                        android:gravity="center|left"
+                                        android:drawableLeft="@drawable/star"
+                                        android:drawablePadding="@dimen/_5sdp"
+                                        android:layout_gravity="center"
+                                        android:id="@+id/star"
+                                        android:textSize="@dimen/_11sdp"
+                                        android:layout_width="wrap_content"
+                                        android:paddingRight="@dimen/_5sdp"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:layout_weight=".01"
+                                    android:background="@android:color/darker_gray" />
+
+                                <LinearLayout
+                                    android:layout_weight="1.2"
+                                    android:layout_width="0dp"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent">
+
+                                    <TextView
+                                        android:gravity="center|left"
+                                        android:drawableLeft="@drawable/car"
+                                        android:paddingLeft="@dimen/_5sdp"
+                                        android:drawablePadding="@dimen/_5sdp"
+                                        android:id="@+id/orders_count"
+                                        android:textSize="@dimen/_11sdp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:layout_weight=".01"
+                                    android:background="@android:color/darker_gray" />
+
+                                <LinearLayout
+                                    android:layout_weight=".8"
+                                    android:layout_width="0dp"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent">
+
+                                    <TextView
+                                        android:gravity="center|left"
+                                        android:drawableLeft="@drawable/icon_awesome_user_check_blue"
+                                        android:paddingLeft="@dimen/_5sdp"
+                                        android:drawablePadding="@dimen/_5sdp"
+                                        android:id="@+id/rate_counts"
+                                        android:textSize="@dimen/_10sdp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/rate_small"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:textSize="@dimen/_15sdp"
+                        android:textColor="@color/f_color"
+                        android:text="@string/rate_delivery_man" />
+
+                    <RatingBar
+                        android:id="@+id/rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:focusable="false"
+                        android:isIndicator="false"
+                        android:numStars="5"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:progressBackgroundTint="@android:color/darker_gray"
+                        android:progressTint="@color/f_color"
+                        android:rating="0"
+                        android:scaleX=".7"
+                        android:scaleY=".7"
+                        android:secondaryProgressTint="#ffffff"
+                        android:stepSize="1.2" />
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:background="@drawable/comment_bg"
+                        android:layout_margin="@dimen/_15sdp"
+                        android:gravity="left|top"
+                        android:id="@+id/add_comment"
+                        android:textSize="@dimen/_12sdp"
+                        android:padding="@dimen/_5sdp"
+                        android:hint="@string/write_your_comment" />
+
+                    <Button
+                        android:layout_width="@dimen/_110sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/t_button_bg"
+                        android:text="@string/send"
+                        android:id="@+id/send"
+                        android:textSize="@dimen/_12sdp"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white" />
+
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+</layout>

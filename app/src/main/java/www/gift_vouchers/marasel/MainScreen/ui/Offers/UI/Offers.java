@@ -2,10 +2,12 @@ package www.gift_vouchers.marasel.MainScreen.ui.Offers.UI;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +29,9 @@ import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Product;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Store;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Time;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.Pattern.OffersAdapter;
+import www.gift_vouchers.marasel.MainScreen.ui.RateDriver.UI.RateDriver;
 import www.gift_vouchers.marasel.R;
+import www.gift_vouchers.marasel.chat.UI.chat;
 import www.gift_vouchers.marasel.databinding.OffersBinding;
 import www.gift_vouchers.marasel.local_data.saved_data;
 import www.gift_vouchers.marasel.utils.utils;
@@ -106,6 +110,7 @@ public class Offers extends Fragment implements View.OnClickListener, Callback {
                     binding.offerButton.setText(getString(R.string.has_offers));
                 } else if (order.getStatus() == 3) {
                     binding.offerButton.setText(getString(R.string.connecting));
+                    binding.cancelOrder.setVisibility(View.GONE);
                 } else if (order.getStatus() == 4) {
                     binding.offerButton.setText(getString(R.string.cancelled));
                 }
@@ -115,12 +120,13 @@ public class Offers extends Fragment implements View.OnClickListener, Callback {
                     driver = offers[index].getDriver();
                     delivery = driver.getDelivery();
                     offerList.add(new OfferList("" + offers[index].getId(), driver.getName(),
-                            "" + delivery.getRate(), "0", offers[index].getNote(), driver.getImage()
+                            "" + delivery.getRate(), "0", offers[index].getNote(), driver.getImage(),
+                            "" + driver.getId(), "" + driver.getPhone()
                     ));
                 }
 
                 new utils_adapter().Adapter(binding.offerList, new OffersAdapter(getContext(), offerList, offersModelView,
-                        "" + order.getId()), getContext());
+                        "" + order.getId(), order.getStatus(), delivery, delivery.getImage()), getContext());
 
             }
         });
@@ -131,6 +137,7 @@ public class Offers extends Fragment implements View.OnClickListener, Callback {
             public void onChanged(AcceptedOrRejectedOfferRoot acceptedOrRejectedOfferRoot) {
                 new utils().dismiss_dialog(getContext());
                 Toasty.success(getContext(), acceptedOrRejectedOfferRoot.getMessage(), Toasty.LENGTH_LONG).show();
+                replaceFragment(orderId);
             }
         });
     }
@@ -146,5 +153,16 @@ public class Offers extends Fragment implements View.OnClickListener, Callback {
     public void setType(String type) {
         this.type = type;
         Toast.makeText(getContext(), type, Toast.LENGTH_LONG).show();
+    }
+
+    //REPLACE FRAGMENT
+    void replaceFragment(String id) {
+        Fragment rateDriver = new chat(delivery, "1");
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        rateDriver.setArguments(bundle);
+
+        ((AppCompatActivity) getContext()).getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frag, rateDriver).addToBackStack(null).commit();
     }
 }

@@ -21,6 +21,13 @@ public class saved_data {
         return name;
     }
 
+    //GET ID
+    public String getId(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("personal_info", MODE_PRIVATE);
+        String id = sharedPreferences.getString("id", "0");
+        return id;
+    }
+
     //GET EMAIL
     public String get_email(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("personal_info", MODE_PRIVATE);

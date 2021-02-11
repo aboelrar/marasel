@@ -28,6 +28,7 @@ import www.gift_vouchers.marasel.local_data.send_data;
 import www.gift_vouchers.marasel.utils.UserInformation;
 import www.gift_vouchers.marasel.utils.utils;
 
+import static www.gift_vouchers.marasel.utils.utils.firebase_token;
 import static www.gift_vouchers.marasel.utils.utils.yoyo;
 
 /**
@@ -57,13 +58,16 @@ public class login extends Fragment implements View.OnClickListener, EditText.On
         binding.regist.setOnClickListener(this);
         binding.password.setOnEditorActionListener(this);
 
+        utils.firebase_token();
+        getData();
+
         return view;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        getData();
+        firebase_token();
     }
 
     @Override
@@ -121,7 +125,7 @@ public class login extends Fragment implements View.OnClickListener, EditText.On
             new utils().set_dialog(getContext());
 
             LoginModeView.getData(binding.email.getText().toString()
-                    , binding.password.getText().toString(), "0"); //CALL API
+                    , binding.password.getText().toString(), firebase_token()); //CALL API
     }
     }
 

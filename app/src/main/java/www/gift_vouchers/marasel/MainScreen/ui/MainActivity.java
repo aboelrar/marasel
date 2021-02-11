@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
+import www.gift_vouchers.marasel.Drivers.Drivers;
 import www.gift_vouchers.marasel.MainScreen.ui.Cart.Ui.Cart;
 import www.gift_vouchers.marasel.MainScreen.ui.MyOrder.UI.myOrder;
 import www.gift_vouchers.marasel.MainScreen.ui.Offers.UI.Offers;
@@ -19,6 +20,7 @@ import www.gift_vouchers.marasel.MainScreen.ui.PersonalInformation.UI.PersonalIn
 import www.gift_vouchers.marasel.MainScreen.ui.Settings.UI.Settings;
 import www.gift_vouchers.marasel.MainScreen.ui.home.ui.home;
 import www.gift_vouchers.marasel.R;
+import www.gift_vouchers.marasel.network_check_status.regist_network_broadcast;
 import www.gift_vouchers.marasel.utils.utils;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -32,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         bottomNavigationView = findViewById(R.id.nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(MainActivity.this);
 
     }
 

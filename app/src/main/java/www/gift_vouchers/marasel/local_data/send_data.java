@@ -25,6 +25,15 @@ public class send_data {
         editor.commit();
     }
 
+   //SAVE PERSONAL_ID
+    public static void sendId(Context context, String id) {
+        //SAVE LANGUAGE STATUS
+        SharedPreferences sharedPreferences = context.getSharedPreferences("personal_info", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("id", id);
+        editor.commit();
+    }
+
     //SAVE PERSONAL_NAME
     public static void send_email(Context context, String email) {
         //SAVE LANGUAGE STATUS

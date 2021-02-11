@@ -18,10 +18,12 @@ import www.gift_vouchers.marasel.Drivers.UI.DeliveryPersonalInfo.UI.DeliveryPers
 import www.gift_vouchers.marasel.Drivers.UI.MyOffers.UI.MyOffers;
 import www.gift_vouchers.marasel.Drivers.UI.WorkAsStar.UI.WorkAsStar;
 import www.gift_vouchers.marasel.MainScreen.ui.MainActivity;
+import www.gift_vouchers.marasel.MainScreen.ui.Offers.Model.Driver;
 import www.gift_vouchers.marasel.MainScreen.ui.PersonalInformation.UI.PersonalInformation;
 import www.gift_vouchers.marasel.MainScreen.ui.Settings.UI.Settings;
 import www.gift_vouchers.marasel.MainScreen.ui.home.ui.home;
 import www.gift_vouchers.marasel.R;
+import www.gift_vouchers.marasel.network_check_status.regist_network_broadcast;
 import www.gift_vouchers.marasel.utils.utils;
 
 public class Drivers extends AppCompatActivity implements Callback, BottomNavigationView.OnNavigationItemSelectedListener {
@@ -41,6 +43,9 @@ public class Drivers extends AppCompatActivity implements Callback, BottomNaviga
 
         callback = this;
         new utils().Replace_Fragment(new WorkAsStar(callback), R.id.frag, this);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(Drivers.this);
 
     }
 

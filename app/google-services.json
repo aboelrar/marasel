@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "77175199567",
+    "firebase_url": "https://maraseel-c4c50-default-rtdb.firebaseio.com",
+    "project_id": "maraseel-c4c50",
+    "storage_bucket": "maraseel-c4c50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77175199567:android:3311159972b561a43e573a",
+        "android_client_info": {
+          "package_name": "www.gift_vouchers.marasel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "77175199567-p5s8c0nnq5omhdlkm2o1l3mgnqgn33or.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-xU6IlxE5pL-HZYSvGdwsKXWStPO8zq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "77175199567-p5s8c0nnq5omhdlkm2o1l3mgnqgn33or.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "77175199567-t1cge66oon41dk2to1d0thhs97r3b5ta.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Mostafa.Mrasil"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

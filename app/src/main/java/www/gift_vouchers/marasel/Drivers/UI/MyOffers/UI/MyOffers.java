@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.Client;
 import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.Datum;
 import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.Driver;
 import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.MyOfferList;
@@ -38,6 +39,7 @@ public class MyOffers extends Fragment {
     Product[] products;
     Order order;
     Time time;
+    Client client;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,12 +69,14 @@ public class MyOffers extends Fragment {
                 for (int index = 0; index < data.length; index++) {
                     order = data[index].getOrder();
                     products = order.getProducts();
+                    client = order.getClient();
+
                     Log.e("products", "" + products.length);
                     time = order.getTime();
 
                     for (int i = 0; i < products.length; i++) {
-                        myOfferLists.add(new MyOfferList("" + data[index].getId(), products[i].getQuantity() + " " + products[i].getCat(),
-                                products[i].getIcon(), order.getAddress(), time.getName()));
+                        myOfferLists.add(new MyOfferList("" + order.getId(), products[i].getQuantity() + " " + products[i].getCat(),
+                                products[i].getIcon(), order.getAddress(), time.getName(), data[index].getStatus(), client.getImage()));
                     }
                 }
                 new utils_adapter().Adapter(binding.offerList, new MyOfferAdapter(getContext(), myOfferLists), getContext());

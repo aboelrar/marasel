@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import es.dmoral.toasty.Toasty;
 import www.gift_vouchers.marasel.AuthScreens.Model.AuthRoot;
+import www.gift_vouchers.marasel.AuthScreens.ui.VerifcationCode.ui.VerifcationCode;
 import www.gift_vouchers.marasel.AuthScreens.ui.login.ui.loading;
 import www.gift_vouchers.marasel.AuthScreens.ui.login.ui.login;
 import www.gift_vouchers.marasel.R;
@@ -52,6 +53,8 @@ public class SignUp extends Fragment implements View.OnClickListener, EditText.O
         binding.regist.setOnClickListener(this);
         binding.password.setOnEditorActionListener(this);
 
+        utils.firebase_token();
+
         return view;
     }
 
@@ -62,11 +65,9 @@ public class SignUp extends Fragment implements View.OnClickListener, EditText.O
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.back)
-        {
+        if (view.getId() == R.id.back) {
             new utils().Replace_Fragment(new login(), R.id.frag, getContext());
-        } else if (view.getId()==R.id.regist)
-        {
+        } else if (view.getId() == R.id.regist) {
 
             signUpValidation();
         }
@@ -75,21 +76,20 @@ public class SignUp extends Fragment implements View.OnClickListener, EditText.O
     //GET DATA
     void getData() {
         //CALL API
-        signUpModeView.getData(binding.phone.getText().toString(),binding.email.getText().toString(),
-                binding.password.getText().toString(),"0","1");
+        signUpModeView.getData(binding.phone.getText().toString(), binding.email.getText().toString(),
+                binding.password.getText().toString(), utils.firebase_token(), "1");
 
         signUpModeView.MutableLiveData.observe(this, new Observer<AuthRoot>() {
             @Override
             public void onChanged(AuthRoot authRoot) {
                 new utils().dismiss_dialog(getContext()); //STOP PROGRESS
 
-                if (authRoot.getStatus() == 0)
-                {
-                    Toasty.warning(getContext(),authRoot.getMessage(),Toasty.LENGTH_LONG).show();
-                }
-                else {
+                if (authRoot.getStatus() == 0) {
+                    Toasty.warning(getContext(), authRoot.getMessage(), Toasty.LENGTH_LONG).show();
+                } else {
 
-                    UserInformation.addLocalData(authRoot.getData(),getContext()); //ADD LOCAL DATA
+                    UserInformation.addLocalData(authRoot.getData(), getContext()); //ADD LOCAL DATA
+//                    new utils().Replace_Fragment(new VerifcationCode(), R.id.frag, getContext());
                     new loading().dialog(getContext(), R.layout.successful_login, .90, "1"); //OPEN DIALOG
 
 
@@ -111,14 +111,11 @@ public class SignUp extends Fragment implements View.OnClickListener, EditText.O
             binding.email.setError(username_val);
             yoyo(R.id.email, binding.email);
 
-        }
-        else if (binding.phone.getText().toString().length() < 11)
-        {
+        } else if (binding.phone.getText().toString().length() < 11) {
             String phone_val = getResources().getString(R.string.phone);
             binding.phone.setError(phone_val);
             yoyo(R.id.phone, binding.phone);
-        }
-        else if (binding.password.getText().toString().length() < 6)  //VALIDATION ON PASSWORD
+        } else if (binding.password.getText().toString().length() < 6)  //VALIDATION ON PASSWORD
         {
             String pass_val = getResources().getString(R.string.password_val);
             binding.password.setError(pass_val);

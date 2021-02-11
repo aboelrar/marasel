@@ -53,7 +53,7 @@ public class RateStore extends Fragment implements RatingBar.OnRatingBarChangeLi
     public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
 
         rateStoreModelView.getData("Bearer "+new saved_data().get_token(getContext()),
-                getArguments().getString("id"),ratingBar.getNumStars());
+                getArguments().getString("id"), (int) ratingBar.getRating());
     }
 
     void getData()
@@ -62,7 +62,7 @@ public class RateStore extends Fragment implements RatingBar.OnRatingBarChangeLi
             @Override
             public void onChanged(RateStoreRoot rateStoreRoot) {
                 Toasty.success(getContext(),""+rateStoreRoot.getMessage(),Toasty.LENGTH_LONG).show();
-                
+
             }
         });
     }

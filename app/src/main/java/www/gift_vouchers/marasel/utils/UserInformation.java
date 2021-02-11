@@ -24,6 +24,8 @@ public class UserInformation {
         arrayList.add(datum.getToken());
         arrayList.add("" + datum.getSocial());
         arrayList.add("" + datum.getGender());
+        arrayList.add("" + datum.getId());
+        arrayList.add("" + datum.getImage());
 
 
         Observable.fromArray(arrayList).
@@ -38,6 +40,11 @@ public class UserInformation {
                 send_data.send_token(context, arrayList.get(3)); //ADD TOKEN
                 send_data.send_type(context, arrayList.get(4)); //ADD TYPE
                 send_data.set_user_gender(context, arrayList.get(5)); //ADD GENDER
+                send_data.sendId(context, arrayList.get(6)); //ADD USER ID
+                send_data.login_status(context, true); //ADD STATUS
+                send_data.set_user_img(context,arrayList.get(7)); //ADD IMAGE
+
+
 
             }
         });

@@ -30,6 +30,7 @@ import www.gift_vouchers.marasel.Settings.Ui.PrivacyPolicy.UI.PrivacyPolicy;
 import www.gift_vouchers.marasel.Settings.Ui.TermsAndCondition.UI.TermsAndCondition;
 import www.gift_vouchers.marasel.databinding.SettingsBinding;
 import www.gift_vouchers.marasel.local_data.saved_data;
+import www.gift_vouchers.marasel.local_data.send_data;
 import www.gift_vouchers.marasel.utils.utils;
 
 /**
@@ -112,6 +113,9 @@ public class Settings extends Fragment implements View.OnClickListener {
                 } else {
                     Toasty.success(getContext(), logoutRoot.getMessage(), Toasty.LENGTH_SHORT).show();
                     startActivity(new Intent(getContext(), auth.class));
+                    send_data.login_status(getContext(), false); //ADD STATUS
+
+
                 }
             }
         });

@@ -237,7 +237,7 @@ public class DriverInfo extends Fragment implements View.OnClickListener, Compou
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         SelectedPhoto.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         SelectedPhoto.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        String path = MediaStore.Images.Media.insertImage(getContext().getContentResolver(), SelectedPhoto, null, null);
+        String path = MediaStore.Images.Media.insertImage(getContext().getContentResolver(), SelectedPhoto, "IMG_" + System.currentTimeMillis(), null);
         return Uri.parse(path);
     }
 

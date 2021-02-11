@@ -91,6 +91,7 @@
                 android:layout_height="@dimen/_40sdp"
                 android:text="@string/next"
                 android:id="@+id/next"
+                android:visibility="gone"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/_17sdp"
                 android:background="@drawable/f_button_bg"/>

@@ -3,6 +3,7 @@ package www.gift_vouchers.marasel.Drivers.UI.MyOffers.Pattern;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ import www.gift_vouchers.marasel.Drivers.UI.AddOffer.UI.AddOffer;
 import www.gift_vouchers.marasel.Drivers.UI.AvailableOrders.Model.OrderList;
 import www.gift_vouchers.marasel.Drivers.UI.MyOffers.Model.MyOfferList;
 import www.gift_vouchers.marasel.R;
+import www.gift_vouchers.marasel.chat.UI.chat;
 
 public class MyOfferAdapter extends RecyclerView.Adapter<MyOfferAdapter.MyOfferHolder> {
     Context context;
@@ -54,10 +56,26 @@ public class MyOfferAdapter extends RecyclerView.Adapter<MyOfferAdapter.MyOfferH
         holder.address.setText(myList.get(position).getAddress());
         holder.time.setText(myList.get(position).getTime());
 
+        if (myList.get(position).getStatus().equals("0")) {
+            holder.status.setText(context.getString(R.string.pending));
+        } else if (myList.get(position).getStatus().equals("1")) {
+            holder.status.setText(context.getString(R.string.accepted));
+            holder.status.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    replaceFragment(myList.get(position).getId(), myList.get(position).getClientImg());
+                }
+            });
+
+        } else if (myList.get(position).getStatus().equals("2")) {
+            holder.status.setText(context.getString(R.string.rejected));
+        }
+
+
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
 
@@ -89,6 +107,7 @@ public class MyOfferAdapter extends RecyclerView.Adapter<MyOfferAdapter.MyOfferH
         ImageView icon;
         ShimmerFrameLayout container;
         LinearLayout item;
+        Button status;
 
         public MyOfferHolder(@NonNull View itemView) {
             super(itemView);
@@ -97,9 +116,22 @@ public class MyOfferAdapter extends RecyclerView.Adapter<MyOfferAdapter.MyOfferH
             time = itemView.findViewById(R.id.time);
             icon = itemView.findViewById(R.id.img);
             item = itemView.findViewById(R.id.item);
-            container= itemView.findViewById(R.id.shimmer_view_container);
+            status = itemView.findViewById(R.id.status);
+            container = itemView.findViewById(R.id.shimmer_view_container);
             container.startShimmerAnimation();
         }
+    }
+
+    //REPLACE FRAGMENT
+    void replaceFragment(String orderId, String secondImg) {
+        Fragment chat = new chat(null, "2");
+        Bundle bundle = new Bundle();
+        bundle.putString("id", orderId);
+        bundle.putString("img", secondImg);
+        chat.setArguments(bundle);
+
+        ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frag, chat).addToBackStack(null).commit();
     }
 
 

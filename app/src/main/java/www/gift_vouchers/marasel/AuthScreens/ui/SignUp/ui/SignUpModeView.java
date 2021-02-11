@@ -15,9 +15,9 @@ import www.gift_vouchers.marasel.NetworkLayer.APIClient;
 public class SignUpModeView extends ViewModel {
     androidx.lifecycle.MutableLiveData<AuthRoot> MutableLiveData = new MutableLiveData<>();
 
-    void getData(String phone, String email, String password, String social,String userType) {
+    void getData(String phone, String email, String password, String social, String userType) {
         www.gift_vouchers.marasel.NetworkLayer.NetworkInterface NetworkInterface = APIClient.getClient().create(www.gift_vouchers.marasel.NetworkLayer.NetworkInterface.class);
-        Call<AuthRoot> call = NetworkInterface.signUp(phone, email, password, social, userType);
+        Call<AuthRoot> call = NetworkInterface.signUp(phone, email, password, social, userType, social);
 
         call.enqueue(new Callback<AuthRoot>() {
             @Override

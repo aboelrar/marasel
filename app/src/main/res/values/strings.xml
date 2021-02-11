@@ -166,6 +166,18 @@
     <string name="search">Search</string>
     <string name="search_result">Search Result</string>
     <string name="other_search_result">Other Search Result</string>
+    <string name="rate_delivery_man">Rate Delivery Man</string>
+    <string name="rate">Rate</string>
+    <string name="you_must_rate">You Must Rate First</string>
+    <string name="write_your_comment">Write Your Comment</string>
+    <string name="add_comment">Add Comment</string>
+    <string name="open">Open</string>
+    <string name="close">Closed</string>
+    <string name="write_message">Write Message</string>
+    <string name="pending">Pending</string>
+    <string name="accepted">Accepted</string>
+    <string name="rejected">Rejected</string>
+    <string name="chat">Chat</string>
 
 
 </resources>

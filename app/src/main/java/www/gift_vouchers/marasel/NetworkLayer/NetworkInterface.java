@@ -34,12 +34,14 @@ import www.gift_vouchers.marasel.MainScreen.ui.PersonalInformation.Model.editPro
 import www.gift_vouchers.marasel.MainScreen.ui.Product.Model.ProductsByCat;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.AddToCartRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.ProductDetails.Model.SingleProduct;
+import www.gift_vouchers.marasel.MainScreen.ui.RateDriver.Model.RateDriverRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.RateStore.Model.RateStoreRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Settings.Model.LogoutRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.Store.model.SingleStore;
 import www.gift_vouchers.marasel.MainScreen.ui.Search.Model.SearchRoot;
 import www.gift_vouchers.marasel.MainScreen.ui.home.model.homeRoot;
 import www.gift_vouchers.marasel.Settings.Model.AppInfoRoot;
+import www.gift_vouchers.marasel.chat.Model.UploadImage;
 
 public interface NetworkInterface {
 
@@ -47,7 +49,8 @@ public interface NetworkInterface {
     Call<AuthRoot> login(
             @Query("emailOrphone") String emailOrPhone,
             @Query("password") String password,
-            @Query("social") String social
+            @Query("social") String social,
+            @Query("fire_base") String firebase
     );
 
     @POST("Auth_general/register")
@@ -56,7 +59,8 @@ public interface NetworkInterface {
             @Query("email") String email,
             @Query("social") String social,
             @Query("password") String password,
-            @Query("user_type") String user_type
+            @Query("user_type") String user_type,
+            @Query("fire_base") String firebase
     );
 
     @POST("Auth_private/change_password")
@@ -272,5 +276,21 @@ public interface NetworkInterface {
     @GET("Home/marasel_info")
     Call<AppInfoRoot> maraselInfo(
             @Header("Authorization") String authorization
+    );
+
+    @POST("Driver/rateDriver/{id}")
+    Call<RateDriverRoot> rateDriver(
+            @Header("Authorization") String authorization,
+            @Path("id") String id,
+            @Query("comment") String comment,
+            @Query("rate") int rate
+    );
+
+    @Multipart
+    @Headers({
+            "X-Requested-With: XMLHttpRequest"})
+    @POST("Save_image")
+    Call<UploadImage> saveImage(
+            @Part MultipartBody.Part image
     );
 }

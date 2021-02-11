@@ -20,7 +20,7 @@ public class LoginModeView extends ViewModel {
 
     void getData(String emailOrPhone, String password, String social) {
         www.gift_vouchers.marasel.NetworkLayer.NetworkInterface NetworkInterface = APIClient.getClient().create(www.gift_vouchers.marasel.NetworkLayer.NetworkInterface.class);
-        Call<AuthRoot> call = NetworkInterface.login(emailOrPhone, password, social);
+        Call<AuthRoot> call = NetworkInterface.login(emailOrPhone, password, social, social);
 
         call.enqueue(new Callback<AuthRoot>() {
             @Override
